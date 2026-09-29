@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Institute Optimizer</title>
+<title>Institute Optimizer — Prototype</title>
 
 <style>
 *{
@@ -13,654 +13,252 @@
   padding:0;
 }
 
-:root{
-  --bg:#f4f1eb;
-  --card:#ffffff;
-  --text:#171717;
-  --muted:#77736c;
-  --line:#e7e2d9;
-  --dark:#171717;
-  --soft:#f8f6f2;
-  --green:#247a4c;
-  --red:#b83b3b;
-  --orange:#a56a16;
-  --blue:#315d9c;
-}
-
 body{
-  font-family:Inter,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  min-height:100vh;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#f4f5f7;
+  color:#171717;
+  padding:20px;
 }
 
-button,
-input,
-select{
-  font:inherit;
-}
-
-button{
-  cursor:pointer;
-}
-
-.app{
-  min-height:100vh;
+.container{
+  max-width:1200px;
+  margin:auto;
 }
 
 header{
-  height:72px;
-  background:#fff;
-  border-bottom:1px solid var(--line);
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 28px;
-  position:sticky;
-  top:0;
-  z-index:20;
+  background:#111;
+  color:white;
+  padding:24px;
+  border-radius:18px;
+  margin-bottom:20px;
 }
 
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-weight:800;
-  letter-spacing:-.5px;
+header h1{
+  font-size:26px;
+  margin-bottom:6px;
 }
 
-.brand-mark{
-  width:38px;
-  height:38px;
-  border-radius:12px;
-  background:#171717;
-  color:#fff;
+header p{
+  color:#aaa;
+  font-size:14px;
+}
+
+.card{
+  background:white;
+  border:1px solid #e5e5e5;
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:20px;
+}
+
+.card h2{
+  font-size:19px;
+  margin-bottom:14px;
+}
+
+.info-grid{
   display:grid;
-  place-items:center;
-  font-size:14px;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
 }
 
-.header-right{
-  display:flex;
-  align-items:center;
-  gap:10px;
+.info{
+  background:#f7f7f7;
+  border-radius:12px;
+  padding:15px;
 }
 
-.week-pill{
-  padding:9px 13px;
-  border:1px solid var(--line);
-  border-radius:999px;
-  font-size:13px;
-  color:var(--muted);
-  background:#fff;
-}
-
-.layout{
-  display:flex;
-  min-height:calc(100vh - 72px);
-}
-
-.sidebar{
-  width:230px;
-  background:#fff;
-  border-right:1px solid var(--line);
-  padding:20px 14px;
-  flex-shrink:0;
-}
-
-.nav-title{
-  font-size:10px;
-  font-weight:800;
-  color:#aaa49b;
-  letter-spacing:1.3px;
-  margin:10px 10px 8px;
-  text-transform:uppercase;
-}
-
-.nav-btn{
-  width:100%;
-  border:0;
-  background:transparent;
-  text-align:left;
-  padding:11px 12px;
-  border-radius:10px;
-  margin-bottom:3px;
-  color:#68635c;
-  font-size:14px;
-}
-
-.nav-btn:hover{
-  background:var(--soft);
-  color:#111;
-}
-
-.nav-btn.active{
-  background:#171717;
-  color:#fff;
-}
-
-.main{
-  flex:1;
-  padding:28px;
-  min-width:0;
-}
-
-.page{
-  display:none;
-}
-
-.page.active{
+.info small{
   display:block;
-}
-
-.page-head{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:20px;
-  margin-bottom:24px;
-}
-
-.page-head h1{
-  font-size:28px;
-  letter-spacing:-1px;
+  color:#777;
   margin-bottom:5px;
 }
 
-.page-head p{
-  color:var(--muted);
+.info strong{
+  font-size:18px;
+}
+
+button{
+  border:0;
+  border-radius:10px;
+  padding:12px 18px;
+  font-weight:bold;
+  cursor:pointer;
   font-size:14px;
+}
+
+.primary{
+  background:#111;
+  color:white;
+}
+
+.secondary{
+  background:#eee;
+  color:#111;
+}
+
+button:disabled{
+  opacity:.45;
+  cursor:not-allowed;
 }
 
 .actions{
   display:flex;
-  gap:9px;
+  gap:10px;
   flex-wrap:wrap;
 }
 
-.btn{
-  border:1px solid var(--line);
-  background:#fff;
-  padding:10px 14px;
-  border-radius:10px;
-  font-size:13px;
-  font-weight:700;
-}
-
-.btn:hover{
-  background:#f5f2ed;
-}
-
-.btn.dark{
-  background:#171717;
-  color:#fff;
-  border-color:#171717;
-}
-
-.btn.danger{
-  color:#a52d2d;
-}
-
-.btn.green{
-  background:#247a4c;
-  border-color:#247a4c;
-  color:#fff;
-}
-
-.stats{
+.attendance-list{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:14px;
-  margin-bottom:18px;
-}
-
-.stat{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:15px;
-  padding:18px;
-}
-
-.stat-label{
-  color:var(--muted);
-  font-size:12px;
-  margin-bottom:9px;
-}
-
-.stat-value{
-  font-size:27px;
-  font-weight:800;
-  letter-spacing:-1px;
-}
-
-.grid{
-  display:grid;
-  gap:16px;
-}
-
-.grid-2{
-  grid-template-columns:repeat(2,minmax(0,1fr));
-}
-
-.card{
-  background:#fff;
-  border:1px solid var(--line);
-  border-radius:15px;
-  padding:18px;
-}
-
-.card-title{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
   gap:10px;
-  margin-bottom:15px;
 }
 
-.card-title h2{
-  font-size:16px;
+.teacher-check{
+  border:1px solid #ddd;
+  padding:12px;
+  border-radius:10px;
+  background:#fafafa;
 }
 
-.card-title span{
-  color:var(--muted);
-  font-size:12px;
-}
-
-.form-row{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:12px;
-  margin-bottom:12px;
-}
-
-.field{
+.teacher-check label{
   display:flex;
-  flex-direction:column;
-  gap:6px;
+  align-items:center;
+  gap:8px;
+  cursor:pointer;
 }
 
-.field label{
-  font-size:12px;
-  font-weight:700;
-  color:#625e57;
+.teacher-check input{
+  width:17px;
+  height:17px;
 }
 
-.field input,
-.field select{
-  width:100%;
-  border:1px solid var(--line);
-  background:#fff;
-  border-radius:9px;
-  padding:10px 11px;
-  outline:none;
+.warning{
+  background:#fff4d6;
+  border:1px solid #f0d48a;
+  padding:12px;
+  border-radius:10px;
+  margin-top:12px;
+  display:none;
 }
 
-.field input:focus,
-.field select:focus{
-  border-color:#999;
+.success{
+  background:#e8f8ed;
+  border:1px solid #a8dfb7;
+  padding:12px;
+  border-radius:10px;
+  margin-top:12px;
+  display:none;
 }
 
 .table-wrap{
-  overflow:auto;
-  border:1px solid var(--line);
-  border-radius:12px;
+  overflow-x:auto;
 }
 
 table{
   width:100%;
   border-collapse:collapse;
-  min-width:700px;
+  min-width:850px;
 }
 
-th,
-td{
-  padding:11px 12px;
-  border-bottom:1px solid var(--line);
+th,td{
+  border:1px solid #ddd;
+  padding:10px;
   text-align:left;
-  font-size:12px;
-  white-space:nowrap;
+  vertical-align:top;
 }
 
 th{
-  background:#faf8f4;
-  color:#716c64;
-  font-weight:800;
+  background:#111;
+  color:white;
+  font-size:13px;
 }
 
-tr:last-child td{
-  border-bottom:0;
+td:first-child{
+  font-weight:bold;
+  background:#f7f7f7;
+  white-space:nowrap;
 }
 
-.badge{
-  display:inline-flex;
-  align-items:center;
-  padding:4px 8px;
-  border-radius:999px;
-  font-size:10px;
-  font-weight:800;
-}
-
-.badge.green{
-  background:#e8f5ed;
-  color:#247a4c;
-}
-
-.badge.red{
-  background:#fae9e9;
-  color:#a52d2d;
-}
-
-.badge.orange{
-  background:#fbf0dd;
-  color:#99631c;
-}
-
-.badge.blue{
-  background:#e9effa;
-  color:#315d9c;
-}
-
-.badge.gray{
-  background:#efede9;
-  color:#69645d;
-}
-
-.search{
-  width:100%;
-  border:1px solid var(--line);
-  background:#fff;
-  border-radius:10px;
-  padding:11px 12px;
-  outline:none;
-  margin-bottom:14px;
-}
-
-.controls{
-  display:flex;
-  gap:9px;
-  flex-wrap:wrap;
-  margin-bottom:15px;
-}
-
-.controls select,
-.controls input{
-  border:1px solid var(--line);
-  background:#fff;
+.lesson{
+  padding:9px;
   border-radius:9px;
-  padding:9px 10px;
+  background:#f3f3f3;
 }
 
-.attendance-row{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-  padding:12px 0;
-  border-bottom:1px solid var(--line);
-}
-
-.attendance-row:last-child{
-  border-bottom:0;
-}
-
-.teacher-info strong{
+.lesson strong{
   display:block;
-  font-size:13px;
+  margin-bottom:4px;
 }
 
-.teacher-info small{
-  color:var(--muted);
-  font-size:11px;
+.lesson small{
+  color:#666;
 }
 
-.attendance-toggle{
-  border:1px solid var(--line);
-  border-radius:999px;
-  padding:7px 12px;
-  background:#fff;
-  font-size:11px;
-  font-weight:800;
+.monitor{
+  background:#fff0d9;
+  border:1px solid #efc978;
 }
 
-.attendance-toggle.absent{
-  background:#fae9e9;
-  color:#a52d2d;
-  border-color:#efcaca;
+.absent{
+  color:#c62828;
+  font-weight:bold;
 }
 
-.notice{
-  padding:12px 14px;
-  background:#faf8f4;
-  border:1px solid var(--line);
-  border-radius:10px;
-  color:#68635d;
-  font-size:12px;
-  line-height:1.5;
-  margin-bottom:15px;
-}
-
-.replacement-card{
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:14px;
-  margin-bottom:10px;
-}
-
-.replacement-head{
+.validation{
   display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:10px;
-  margin-bottom:10px;
-}
-
-.replacement-head strong{
-  font-size:13px;
-}
-
-.replacement-details{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
+  flex-direction:column;
   gap:8px;
 }
 
-.detail{
-  background:#faf8f4;
-  border-radius:8px;
-  padding:8px;
+.validation-item{
+  padding:11px;
+  border-radius:9px;
+  background:#f5f5f5;
 }
 
-.detail span{
-  display:block;
-  color:var(--muted);
-  font-size:9px;
-  margin-bottom:3px;
+.validation-item.ok{
+  background:#e9f8ed;
+  color:#17652c;
 }
 
-.detail strong{
-  font-size:11px;
+.validation-item.bad{
+  background:#ffe8e8;
+  color:#9b1c1c;
 }
 
-.timetable-wrap{
-  overflow:auto;
-}
-
-.timetable{
-  min-width:1050px;
-  display:grid;
-  gap:1px;
-  background:var(--line);
-  border:1px solid var(--line);
+.log{
+  background:#111;
+  color:#ddd;
+  padding:15px;
   border-radius:12px;
-  overflow:hidden;
-}
-
-.tt-head,
-.tt-row{
-  display:grid;
-  grid-template-columns:150px repeat(7,minmax(125px,1fr));
-  gap:1px;
-}
-
-.tt-head > div{
-  background:#f8f6f2;
-  padding:10px;
-  font-size:10px;
-  font-weight:800;
-  color:#6e6961;
-}
-
-.tt-row > div{
-  background:#fff;
-  min-height:100px;
-  padding:9px;
-}
-
-.tt-class{
-  font-size:11px;
-  font-weight:800;
-}
-
-.tt-teacher{
-  font-size:10px;
-  margin-top:5px;
-  color:#4c4944;
-}
-
-.tt-subject{
-  font-size:9px;
-  margin-top:4px;
-  color:var(--muted);
-}
-
-.tt-free{
-  color:#aaa49d;
-  font-size:10px;
-}
-
-.tt-absent{
-  background:#fff3f3 !important;
-}
-
-.tt-unassigned{
-  background:#fff9ec !important;
-}
-
-.mini{
-  font-size:10px;
-  color:var(--muted);
-}
-
-.empty{
-  text-align:center;
-  padding:35px 15px;
-  color:var(--muted);
-  font-size:13px;
-}
-
-.setting-note{
-  color:var(--muted);
-  font-size:11px;
-  line-height:1.5;
-  margin-top:5px;
-}
-
-.toast{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  background:#171717;
-  color:#fff;
-  padding:11px 15px;
-  border-radius:10px;
+  font-family:monospace;
   font-size:12px;
-  opacity:0;
-  transform:translateY(10px);
-  pointer-events:none;
-  transition:.2s;
-  z-index:100;
+  line-height:1.6;
+  white-space:pre-wrap;
 }
 
-.toast.show{
-  opacity:1;
-  transform:translateY(0);
-}
-
-@media(max-width:900px){
-
-  .sidebar{
-    width:190px;
+@media(max-width:800px){
+  body{
+    padding:10px;
   }
 
-  .stats{
+  .info-grid{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .grid-2{
-    grid-template-columns:1fr;
+  .attendance-list{
+    grid-template-columns:repeat(2,1fr);
   }
-
 }
 
-@media(max-width:680px){
-
-  header{
-    padding:0 14px;
+@media(max-width:500px){
+  .info-grid{
+    grid-template-columns:1fr 1fr;
   }
 
-  .week-pill{
-    display:none;
-  }
-
-  .layout{
-    display:block;
-  }
-
-  .sidebar{
-    width:100%;
-    border-right:0;
-    border-bottom:1px solid var(--line);
-    padding:8px;
-    display:flex;
-    overflow:auto;
-    gap:4px;
-  }
-
-  .nav-title{
-    display:none;
-  }
-
-  .nav-btn{
-    min-width:max-content;
-    margin:0;
-  }
-
-  .main{
-    padding:18px 12px;
-  }
-
-  .page-head{
-    flex-direction:column;
-  }
-
-  .stats{
-    gap:9px;
-  }
-
-  .stat{
-    padding:13px;
-  }
-
-  .stat-value{
-    font-size:22px;
-  }
-
-  .form-row{
+  .attendance-list{
     grid-template-columns:1fr;
-  }
-
-  .replacement-details{
-    grid-template-columns:repeat(2,1fr);
   }
 }
 </style>
@@ -668,3423 +266,1200 @@ tr:last-child td{
 
 <body>
 
-<div class="app">
+<div class="container">
 
 <header>
-
-  <div class="brand">
-    <div class="brand-mark">IO</div>
-    <div>Institute Optimizer</div>
-  </div>
-
-  <div class="header-right">
-    <div class="week-pill" id="weekLabel">
-      Week 1
-    </div>
-  </div>
-
+  <h1>Institute Optimizer</h1>
+  <p>Small scheduling prototype — timetable + teacher absence + monitor replacement</p>
 </header>
 
 
-<div class="layout">
+<!-- SYSTEM INFORMATION -->
 
-  <aside class="sidebar">
+<div class="card">
 
-    <div class="nav-title">Workspace</div>
+  <h2>Prototype Setup</h2>
 
-    <button class="nav-btn active" data-page="home">
-      Dashboard
+  <div class="info-grid">
+
+    <div class="info">
+      <small>Sections</small>
+      <strong>10</strong>
+    </div>
+
+    <div class="info">
+      <small>Subject Teachers</small>
+      <strong>20</strong>
+    </div>
+
+    <div class="info">
+      <small>Monitor Teachers</small>
+      <strong>3</strong>
+    </div>
+
+    <div class="info">
+      <small>Periods</small>
+      <strong>5</strong>
+    </div>
+
+  </div>
+
+  <br>
+
+  <p>
+    <b>Subjects:</b>
+    English, Physics, Chemistry, Maths, Biology
+  </p>
+
+  <p style="margin-top:8px;">
+    <b>Time:</b>
+    9:40 AM – 1:35 PM &nbsp; | &nbsp;
+    <b>Lunch:</b> 11:45 AM – 12:15 PM
+  </p>
+
+  <br>
+
+  <div class="actions">
+    <button class="primary" onclick="generateTimetable()">
+      Generate Timetable
     </button>
 
-    <button class="nav-btn" data-page="attendance">
-      Attendance
+    <button class="secondary" onclick="resetAll()">
+      Reset
     </button>
-
-    <button class="nav-btn" data-page="replacement">
-      Replacement Plan
-    </button>
-
-    <button class="nav-btn" data-page="timetable">
-      Timetable
-    </button>
-
-
-    <div class="nav-title">Data</div>
-
-    <button class="nav-btn" data-page="teachers">
-      Teachers
-    </button>
-
-    <button class="nav-btn" data-page="classes">
-      Classes
-    </button>
-
-
-    <div class="nav-title">System</div>
-
-    <button class="nav-btn" data-page="settings">
-      Settings
-    </button>
-
-  </aside>
-
-
-  <main class="main">
-
-
-    <!-- =====================================================
-         DASHBOARD
-         ===================================================== -->
-
-    <section class="page active" id="page-home">
-
-      <div class="page-head">
-
-        <div>
-          <h1>Institute Dashboard</h1>
-          <p>
-            Build the weekly timetable, handle absences and
-            automatically find replacement teachers.
-          </p>
-        </div>
-
-        <div class="actions">
-
-          <button
-            class="btn"
-            id="nextWeekBtn">
-            Generate Next Week
-          </button>
-
-          <button
-            class="btn dark"
-            id="generateBtn">
-            Generate Schedule
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div class="stats">
-
-        <div class="stat">
-          <div class="stat-label">Teachers</div>
-          <div class="stat-value" id="statTeachers">0</div>
-        </div>
-
-        <div class="stat">
-          <div class="stat-label">Classes</div>
-          <div class="stat-value" id="statClasses">0</div>
-        </div>
-
-        <div class="stat">
-          <div class="stat-label">Buildings</div>
-          <div class="stat-value" id="statBuildings">3</div>
-        </div>
-
-        <div class="stat">
-          <div class="stat-label">Today's Absences</div>
-          <div class="stat-value" id="statAbsences">0</div>
-        </div>
-
-      </div>
-
-
-      <div class="grid grid-2">
-
-        <div class="card">
-
-          <div class="card-title">
-            <h2>Scheduling Model</h2>
-            <span>Current configuration</span>
-          </div>
-
-          <div class="notice">
-            The optimizer first creates a complete base timetable
-            as if all teachers are present. Absences are then
-            applied and replacement teachers are selected.
-          </div>
-
-          <div class="table-wrap">
-
-            <table>
-
-              <tbody>
-
-                <tr>
-                  <td>Buildings</td>
-                  <td><strong>3</strong></td>
-                </tr>
-
-                <tr>
-                  <td>Classes</td>
-                  <td><strong>60</strong></td>
-                </tr>
-
-                <tr>
-                  <td>Teachers</td>
-                  <td><strong>75</strong></td>
-                </tr>
-
-                <tr>
-                  <td>Periods / Day</td>
-                  <td><strong>7</strong></td>
-                </tr>
-
-                <tr>
-                  <td>Maximum Absences</td>
-                  <td><strong>5</strong></td>
-                </tr>
-
-              </tbody>
-
-            </table>
-
-          </div>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="card-title">
-            <h2>Scheduling Rules</h2>
-            <span>Optimizer priorities</span>
-          </div>
-
-          <div class="notice">
-
-            <strong>1.</strong> Teacher must know the subject.<br>
-            <strong>2.</strong> Teacher cannot teach two classes in one period.<br>
-            <strong>3.</strong> Daily lecture limit is respected.<br>
-            <strong>4.</strong> Same-building teaching is strongly preferred.<br>
-            <strong>5.</strong> Workload is balanced using rotation.<br>
-            <strong>6.</strong> Absences are handled after the base schedule.<br>
-            <strong>7.</strong> If no valid replacement exists, the class is marked unassigned.
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         ATTENDANCE
-         ===================================================== -->
-
-    <section class="page" id="page-attendance">
-
-      <div class="page-head">
-
-        <div>
-          <h1>Attendance</h1>
-          <p>
-            Mark teachers absent before generating replacements.
-          </p>
-        </div>
-
-        <div class="actions">
-
-          <button
-            class="btn"
-            id="clearAttendanceBtn">
-            Clear Day
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div class="controls">
-
-        <select id="attendanceDay"></select>
-
-        <input
-          id="attendanceSearch"
-          placeholder="Search teacher...">
-
-      </div>
-
-
-      <div class="card">
-
-        <div
-          class="card-title">
-
-          <h2>Teachers</h2>
-
-          <span id="absenceCount">
-            0 / 5 absent
-          </span>
-
-        </div>
-
-        <div id="attendanceList"></div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         REPLACEMENT
-         ===================================================== -->
-
-    <section class="page" id="page-replacement">
-
-      <div class="page-head">
-
-        <div>
-          <h1>Replacement Plan</h1>
-          <p>
-            Automatically generated replacement assignments.
-          </p>
-        </div>
-
-        <div class="actions">
-
-          <button
-            class="btn dark"
-            id="generateReplacementBtn">
-            Recalculate Replacements
-          </button>
-
-        </div>
-
-      </div>
-
-
-      <div id="replacementSummary"></div>
-
-      <div id="replacementList"></div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         TIMETABLE
-         ===================================================== -->
-
-    <section class="page" id="page-timetable">
-
-      <div class="page-head">
-
-        <div>
-          <h1>Timetable</h1>
-          <p>
-            View the generated timetable period by period.
-          </p>
-        </div>
-
-      </div>
-
-
-      <div class="controls">
-
-        <select id="timetableDay"></select>
-
-        <select id="timetableBuilding"></select>
-
-      </div>
-
-
-      <div class="card">
-
-        <div class="timetable-wrap">
-
-          <div
-            class="timetable"
-            id="timetableGrid">
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         TEACHERS
-         ===================================================== -->
-
-    <section class="page" id="page-teachers">
-
-      <div class="page-head">
-
-        <div>
-          <h1>Teachers</h1>
-          <p>
-            View teacher subjects, building and workload limits.
-          </p>
-        </div>
-
-      </div>
-
-
-      <input
-        class="search"
-        id="teacherSearch"
-        placeholder="Search teachers...">
-
-
-      <div class="card">
-
-        <div
-          class="table-wrap"
-          id="teachersTable">
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         CLASSES
-         ===================================================== -->
-
-    <section class="page" id="page-classes">
-
-      <div class="page-head">
-
-        <div>
-          <h1>Classes</h1>
-          <p>
-            View classes, buildings and required subjects.
-          </p>
-        </div>
-
-      </div>
-
-
-      <input
-        class="search"
-        id="classSearch"
-        placeholder="Search classes...">
-
-
-      <div class="card">
-
-        <div
-          class="table-wrap"
-          id="classesTable">
-        </div>
-
-      </div>
-
-    </section>
-
-
-
-    <!-- =====================================================
-         SETTINGS
-         ===================================================== -->
-
-    <section class="page" id="page-settings">
-
-      <div class="page-head">
-
-        <div>
-          <h1>Settings</h1>
-          <p>
-            Configure the scheduling engine.
-          </p>
-        </div>
-
-      </div>
-
-
-      <div class="grid grid-2">
-
-        <div class="card">
-
-          <div class="card-title">
-            <h2>Scheduling</h2>
-          </div>
-
-
-          <div class="form-row">
-
-            <div class="field">
-
-              <label>
-                Default Maximum Lectures
-              </label>
-
-              <input
-                type="number"
-                id="maxLecturesInput"
-                min="1"
-                max="7">
-
-            </div>
-
-
-            <div class="field">
-
-              <label>
-                Maximum Daily Absences
-              </label>
-
-              <input
-                type="number"
-                id="maxAbsencesInput"
-                min="1"
-                max="5">
-
-            </div>
-
-          </div>
-
-
-          <div class="form-row">
-
-            <div class="field">
-
-              <label>
-                Week Number
-              </label>
-
-              <input
-                type="number"
-                id="weekNumberInput"
-                min="1">
-
-            </div>
-
-          </div>
-
-
-          <button
-            class="btn dark"
-            id="saveSettingsBtn">
-            Save Settings
-          </button>
-
-        </div>
-
-
-        <div class="card">
-
-          <div class="card-title">
-            <h2>Data</h2>
-          </div>
-
-          <div class="notice">
-            Export the current system data as JSON or reset the
-            demonstration institute back to its original state.
-          </div>
-
-
-          <div class="actions">
-
-            <button
-              class="btn"
-              id="exportBtn">
-              Export JSON
-            </button>
-
-            <button
-              class="btn danger"
-              id="resetBtn">
-              Reset Demo
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-  </main>
+  </div>
 
 </div>
 
 
-<div
-  class="toast"
-  id="toast">
+<!-- ATTENDANCE -->
+
+<div class="card">
+
+  <h2>Teacher Attendance</h2>
+
+  <p style="color:#666;font-size:14px;margin-bottom:15px;">
+    Select subject teachers who are absent today.
+    Maximum: <b>3 teachers</b>.
+  </p>
+
+  <div id="attendanceList" class="attendance-list"></div>
+
+  <div id="absenceWarning" class="warning">
+    Maximum 3 subject teachers can be absent.
+  </div>
+
+  <br>
+
+  <button
+    id="replacementBtn"
+    class="primary"
+    onclick="generateReplacements()"
+    disabled
+  >
+    Generate Replacements
+  </button>
+
+  <div id="replacementSuccess" class="success"></div>
+
+</div>
+
+
+<!-- TIMETABLE -->
+
+<div class="card">
+
+  <h2>Timetable</h2>
+
+  <div id="timetableArea">
+    <p style="color:#777;">
+      Generate the timetable first.
+    </p>
+  </div>
+
+</div>
+
+
+<!-- VALIDATION -->
+
+<div class="card">
+
+  <h2>System Validation</h2>
+
+  <div id="validationArea" class="validation">
+
+    <div class="validation-item">
+      Timetable has not been generated yet.
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- LOG -->
+
+<div class="card">
+
+  <h2>Optimizer Log</h2>
+
+  <div id="log" class="log">
+Waiting...
+  </div>
+
+</div>
+
 </div>
 
 
 <script>
 
-/* ============================================================
-   CONFIGURATION
-   ============================================================ */
-
-const STORAGE_KEY =
-  "institute_optimizer_clean_v1";
-
-const DAYS = [
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday"
-];
-
-const PERIODS = [
-  "9:40 - 10:35",
-  "10:35 - 11:30",
-  "11:30 - 12:25",
-  "12:25 - 1:20",
-  "1:20 - 2:15",
-  "2:15 - 3:10",
-  "3:10 - 4:20"
-];
-
-const BUILDINGS = [
-  "Building 1",
-  "Building 2",
-  "Building 3"
-];
+/* =========================================================
+   BASIC CONFIGURATION
+========================================================= */
 
 const SUBJECTS = [
-  "BME",
-  "BEEE",
-  "PHYSICS",
-  "CHEMISTRY",
-  "ED",
-  "BCE",
-  "BCEM",
-  "M1",
-  "M2",
-  "ENGLISH"
+  "English",
+  "Physics",
+  "Chemistry",
+  "Maths",
+  "Biology"
 ];
 
-let MAX_LECTURES = 6;
-let MAX_ABSENCES = 5;
+const SECTION_COUNT = 10;
 
-let teachers = [];
-let classes = [];
-let attendance = {};
-let timetable = {};
-let replacementPlan = {};
-let weekNumber = 1;
-let currentPage = "home";
-
-
-/* ============================================================
-   UTILITIES
-   ============================================================ */
-
-function escapeHtml(value){
-
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
-
-}
-
-
-function showToast(message){
-
-  const toast =
-    document.getElementById("toast");
-
-  if(!toast) return;
-
-  toast.textContent = message;
-
-  toast.classList.add("show");
-
-  clearTimeout(showToast.timer);
-
-  showToast.timer = setTimeout(() => {
-
-    toast.classList.remove("show");
-
-  },2200);
-
-}
-
-
-/* ============================================================
-   STORAGE
-   ============================================================ */
-
-function saveData(){
-
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify({
-
-      teachers,
-      classes,
-      attendance,
-      timetable,
-      replacementPlan,
-      weekNumber,
-      maxLectures:MAX_LECTURES,
-      maxAbsences:MAX_ABSENCES
-
-    })
-  );
-
-}
-
-
-function loadData(){
-
-  const raw =
-    localStorage.getItem(STORAGE_KEY);
-
-  if(!raw){
-
-    createInitialData();
-
-    return;
-
+const PERIODS = [
+  {
+    number: 1,
+    time: "9:40 - 10:25"
+  },
+  {
+    number: 2,
+    time: "10:25 - 11:10"
+  },
+  {
+    number: 3,
+    time: "11:10 - 11:45"
+  },
+  {
+    number: 4,
+    time: "12:15 - 12:55"
+  },
+  {
+    number: 5,
+    time: "12:55 - 1:35"
   }
+];
 
-  try{
-
-    const data =
-      JSON.parse(raw);
-
-    teachers =
-      Array.isArray(data.teachers)
-        ? data.teachers
-        : [];
-
-    classes =
-      Array.isArray(data.classes)
-        ? data.classes
-        : [];
-
-    attendance =
-      data.attendance || {};
-
-    timetable =
-      data.timetable || {};
-
-    replacementPlan =
-      data.replacementPlan || {};
-
-    weekNumber =
-      Number(data.weekNumber) || 1;
-
-    MAX_LECTURES =
-      Number(data.maxLectures) || 6;
-
-    MAX_ABSENCES =
-      Math.min(
-        5,
-        Math.max(
-          1,
-          Number(data.maxAbsences) || 5
-        )
-      );
-
-  }catch(error){
-
-    console.error(error);
-
-    createInitialData();
-
-  }
-
-}
+const MAX_ABSENCES = 3;
 
 
-/* ============================================================
-   INITIAL DATA
-   ============================================================ */
+/* =========================================================
+   TEACHER DATA
+========================================================= */
 
-function createInitialData(){
+const teachers = [];
 
-  teachers = [];
+let teacherId = 1;
 
-  classes = [];
-
-  attendance = {};
-
-  timetable = {};
-
-  replacementPlan = {};
-
-  weekNumber = 1;
-
+SUBJECTS.forEach(subject => {
 
   /*
-    75 teachers
-    25 teachers per building
+    4 teachers per subject.
+
+    5 subjects × 4 teachers
+    = 20 subject teachers
   */
 
-  for(let i=1;i<=75;i++){
-
-    const building =
-      BUILDINGS[
-        Math.floor((i-1)/25)
-      ];
-
-
-    const s1 =
-      SUBJECTS[
-        (i-1) %
-        SUBJECTS.length
-      ];
-
-    const s2 =
-      SUBJECTS[
-        (i+2) %
-        SUBJECTS.length
-      ];
-
-    const s3 =
-      SUBJECTS[
-        (i+5) %
-        SUBJECTS.length
-      ];
-
-
-    const subjects =
-      [...new Set([
-        s1,
-        s2,
-        s3
-      ])];
-
+  for(let i = 1; i <= 4; i++){
 
     teachers.push({
-
-      id:"T"+i,
-
-      name:"Teacher "+i,
-
-      building,
-
-      subjects,
-
-      maxLectures:6
-
+      id: teacherId,
+      name: "Teacher " + teacherId,
+      subject: subject,
+      type: "subject",
+      absent: false
     });
 
+    teacherId++;
   }
 
-
-  /*
-    60 classes
-    20 classes per building
-  */
-
-  for(let i=1;i<=60;i++){
-
-    const building =
-      BUILDINGS[
-        Math.floor((i-1)/20)
-      ];
+});
 
 
-    const subject =
-      SUBJECTS[
-        (i-1) %
-        SUBJECTS.length
-      ];
+/*
+  3 teachers who don't teach subjects.
+  They ONLY monitor a section when needed.
+*/
 
+for(let i = 1; i <= 3; i++){
 
-    classes.push({
-
-      id:"C"+i,
-
-      name:"Class "+i,
-
-      building,
-
-      subject
-
-    });
-
-  }
-
-
-  /*
-    Attendance structure
-  */
-
-  DAYS.forEach(day => {
-
-    attendance[day] = {};
-
-    teachers.forEach(teacher => {
-
-      attendance[day][teacher.id] =
-        false;
-
-    });
-
+  teachers.push({
+    id: teacherId,
+    name: "Monitor " + i,
+    subject: null,
+    type: "monitor",
+    absent: false
   });
 
+  teacherId++;
+}
 
-  saveData();
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+const sections = [];
+
+for(let i = 1; i <= SECTION_COUNT; i++){
+
+  sections.push({
+    id: i,
+    name: "Section " + i
+  });
 
 }
 
 
-/* ============================================================
-   LOOKUPS
-   ============================================================ */
+/* =========================================================
+   GLOBAL TIMETABLE
+========================================================= */
 
-function getTeacher(id){
-
-  return teachers.find(
-    teacher =>
-      teacher.id === id
-  );
-
-}
+let timetable = [];
 
 
-function getClass(id){
+/*
+  timetable structure:
 
-  return classes.find(
-    item =>
-      item.id === id
-  );
+  timetable[period][section]
 
-}
+  Example:
 
+  timetable[0][0]
 
-function teacherHasSubject(
-  teacher,
-  subject
-){
-
-  return !!(
-    teacher &&
-    Array.isArray(teacher.subjects) &&
-    teacher.subjects.includes(subject)
-  );
-
-}
+  = period 1, section 1
+*/
 
 
-function isAbsent(
-  teacherId,
-  day
-){
+/* =========================================================
+   ATTENDANCE UI
+========================================================= */
 
-  return !!(
-    attendance[day] &&
-    attendance[day][teacherId]
-  );
+function createAttendanceList(){
 
-}
+  const container =
+    document.getElementById("attendanceList");
 
+  container.innerHTML = "";
 
-/* ============================================================
-   ATTENDANCE
-   ============================================================ */
+  teachers
+    .filter(t => t.type === "subject")
+    .forEach(teacher => {
 
-function getAbsenceCount(day){
+      const div = document.createElement("div");
 
-  if(!attendance[day]){
+      div.className = "teacher-check";
 
-    return 0;
+      div.innerHTML = `
+        <label>
+          <input
+            type="checkbox"
+            value="${teacher.id}"
+            onchange="attendanceChanged()"
+          >
 
-  }
+          <span>
+            ${teacher.name}
+            <br>
+            <small style="color:#777;">
+              ${teacher.subject}
+            </small>
+          </span>
 
-  return Object.values(
-    attendance[day]
-  )
-  .filter(Boolean)
-  .length;
+        </label>
+      `;
+
+      container.appendChild(div);
+
+    });
 
 }
 
 
-function setAttendance(
-  teacherId,
-  day
-){
+/* =========================================================
+   ATTENDANCE CHANGE
+========================================================= */
 
-  if(!attendance[day]){
+function attendanceChanged(){
 
-    attendance[day] = {};
+  const checked =
+    [...document.querySelectorAll(
+      "#attendanceList input:checked"
+    )];
 
-  }
+  const warning =
+    document.getElementById("absenceWarning");
 
+  const button =
+    document.getElementById("replacementBtn");
 
-  const current =
-    !!attendance[day][teacherId];
+  if(checked.length > MAX_ABSENCES){
 
+    warning.style.display = "block";
 
-  if(!current){
-
-    if(
-      getAbsenceCount(day)
-      >= MAX_ABSENCES
-    ){
-
-      showToast(
-        "Maximum 5 absences allowed"
-      );
-
-      return;
-
-    }
-
-  }
-
-
-  attendance[day][teacherId] =
-    !current;
-
-
-  saveData();
-
-  renderAttendance();
-
-  updateDashboard();
-
-}
-
-
-function clearAttendance(){
-
-  const day =
-    document.getElementById(
-      "attendanceDay"
-    ).value;
-
-
-  if(!attendance[day]){
+    button.disabled = true;
 
     return;
 
   }
 
+  warning.style.display = "none";
 
-  teachers.forEach(teacher => {
-
-    attendance[day][teacher.id] =
-      false;
-
-  });
-
-
-  saveData();
-
-  renderAttendance();
-
-  updateDashboard();
-
-  showToast(
-    "Attendance cleared"
-  );
+  button.disabled =
+    checked.length === 0 ||
+    timetable.length === 0;
 
 }
 
 
-/* ============================================================
-   TIMETABLE HELPERS
-   ============================================================ */
+/* =========================================================
+   GENERATE BASE TIMETABLE
+========================================================= */
 
-function clearTimetable(){
+function generateTimetable(){
 
-  timetable = {};
+  timetable = [];
 
-  replacementPlan = {};
-
-}
-
-
-function getDayAssignments(day){
-
-  const result = [];
-
-  if(!timetable[day]){
-
-    return result;
-
-  }
-
-
-  Object.values(
-    timetable[day]
-  )
-  .forEach(assignments => {
-
-    if(Array.isArray(assignments)){
-
-      result.push(
-        ...assignments
-      );
-
-    }
-
-  });
-
-
-  return result;
-
-}
-
-
-function getTeacherAssignments(
-  day,
-  teacherId
-){
-
-  return getDayAssignments(day)
-    .filter(
-      assignment =>
-        assignment.teacherId ===
-        teacherId
-    );
-
-}
-
-
-function getTeacherLectureCount(
-  day,
-  teacherId
-){
-
-  return getTeacherAssignments(
-    day,
-    teacherId
-  ).length;
-
-}
-
-
-function teacherBusy(
-  day,
-  periodIndex,
-  teacherId
-){
-
-  const assignments =
-    timetable[day] &&
-    timetable[day][periodIndex];
-
-
-  if(!assignments){
-
-    return false;
-
-  }
-
-
-  return assignments.some(
-    assignment =>
-      assignment.teacherId ===
-      teacherId
-  );
-
-}
-
-
-function teacherBuildings(
-  day,
-  teacherId
-){
-
-  return [
-    ...new Set(
-      getTeacherAssignments(
-        day,
-        teacherId
-      )
-      .map(
-        assignment =>
-          assignment.building
-      )
-    )
-  ];
-
-}
-
-
-/* ============================================================
-   WEEKLY ROTATION
-   ============================================================ */
-
-function getRotationGroup(
-  teacher
-){
-
-  const number =
-    parseInt(
-      teacher.id.replace("T",""),
-      10
-    );
-
-
-  return (
-    number - 1
-  ) % 3;
-
-}
-
-
-function getDayIndex(day){
-
-  return DAYS.indexOf(day);
-
-}
-
-
-function getRotationPriority(
-  teacher,
-  day
-){
-
-  const group =
-    getRotationGroup(teacher);
-
-
-  const dayIndex =
-    getDayIndex(day);
-
-
-  return (
-    (
-      group -
-      (
-        (weekNumber - 1) +
-        dayIndex
-      )
-    ) + 3
-  ) % 3;
-
-}
-
-
-function getDailyTarget(
-  teacher,
-  day
-){
-
-  const priority =
-    getRotationPriority(
-      teacher,
-      day
-    );
-
-
-  if(priority === 0){
-
-    return Math.min(
-      5,
-      teacher.maxLectures ||
-      MAX_LECTURES
-    );
-
-  }
-
-
-  return Math.min(
-    6,
-    teacher.maxLectures ||
-    MAX_LECTURES
-  );
-
-}
-
-
-/* ============================================================
-   TEACHER SCORING
-   ============================================================ */
-
-function scoreTeacher(
-  teacher,
-  classItem,
-  day,
-  periodIndex,
-  mode
-){
-
-  if(!teacher){
-
-    return -Infinity;
-
-  }
-
-
-  if(
-    !teacherHasSubject(
-      teacher,
-      classItem.subject
-    )
-  ){
-
-    return -Infinity;
-
-  }
-
-
-  if(
-    teacherBusy(
-      day,
-      periodIndex,
-      teacher.id
-    )
-  ){
-
-    return -Infinity;
-
-  }
-
+  writeLog("Starting timetable generation...\n");
 
   /*
-    During replacement mode,
-    absent teachers cannot replace anyone.
+    Every section receives all 5 subjects once.
+
+    To distribute the load:
+
+    Period 1:
+    Sections 1-2 = English
+    Sections 3-4 = Physics
+    Sections 5-6 = Chemistry
+    Sections 7-8 = Maths
+    Sections 9-10 = Biology
+
+    Then the subjects rotate every period.
+
+    This means each subject appears exactly
+    twice in every period.
+
+    Four teachers exist for each subject,
+    so we have enough capacity.
   */
 
-  if(
-    mode === "replacement" &&
-    isAbsent(
-      teacher.id,
-      day
-    )
-  ){
 
-    return -Infinity;
+  for(let periodIndex = 0;
+      periodIndex < PERIODS.length;
+      periodIndex++){
 
-  }
+    const periodData = [];
 
+    for(let sectionIndex = 0;
+        sectionIndex < sections.length;
+        sectionIndex++){
 
-  const load =
-    getTeacherLectureCount(
-      day,
-      teacher.id
-    );
+      /*
+        Rotate subject order every period.
+      */
 
+      const subjectIndex =
+        (sectionIndex + periodIndex) % SUBJECTS.length;
 
-  const hardLimit =
-    teacher.maxLectures ||
-    MAX_LECTURES;
+      const subject =
+        SUBJECTS[subjectIndex];
 
 
-  if(load >= hardLimit){
+      /*
+        Find teachers for this subject.
+      */
 
-    return -Infinity;
-
-  }
-
-
-  const target =
-    getDailyTarget(
-      teacher,
-      day
-    );
-
-
-  let score = 0;
-
-
-  /*
-    Same building is strongly preferred.
-  */
-
-  if(
-    teacher.building ===
-    classItem.building
-  ){
-
-    score += 100;
-
-  }else{
-
-    score -= 40;
-
-  }
-
-
-  /*
-    If teacher already teaches in
-    this building today, keep them there.
-  */
-
-  const buildings =
-    teacherBuildings(
-      day,
-      teacher.id
-    );
-
-
-  if(
-    buildings.includes(
-      classItem.building
-    )
-  ){
-
-    score += 80;
-
-  }
-
-
-  /*
-    Avoid unnecessary building movement.
-  */
-
-  if(
-    buildings.length > 0 &&
-    !buildings.includes(
-      classItem.building
-    )
-  ){
-
-    score -= 70;
-
-  }
-
-
-  /*
-    Balance workload.
-  */
-
-  score -= load * 12;
-
-
-  /*
-    Prefer teachers below their target.
-  */
-
-  if(load < target){
-
-    score += 45;
-
-  }else{
-
-    score -= 60;
-
-  }
-
-
-  /*
-    Rotation priority.
-  */
-
-  const rotation =
-    getRotationPriority(
-      teacher,
-      day
-    );
-
-
-  if(rotation === 0){
-
-    if(load < 5){
-
-      score += 20;
-
-    }
-
-  }else{
-
-    if(load < 6){
-
-      score += 20;
-
-    }
-
-  }
-
-
-  /*
-    Extra same-building preference
-    during replacement.
-  */
-
-  if(
-    mode === "replacement" &&
-    teacher.building ===
-    classItem.building
-  ){
-
-    score += 30;
-
-  }
-
-
-  return score;
-
-}
-
-
-/* ============================================================
-   CLASS ORDER
-   ============================================================ */
-
-function getClassesForPeriod(
-  day,
-  periodIndex
-){
-
-  const offset =
-    (
-      getDayIndex(day) +
-      periodIndex +
-      weekNumber
-    ) % classes.length;
-
-
-  const rotated = [
-    ...classes.slice(offset),
-    ...classes.slice(0,offset)
-  ];
-
-
-  /*
-    Subjects with fewer qualified teachers
-    are handled first.
-  */
-
-  return rotated.sort((a,b) => {
-
-    const aCount =
-      teachers.filter(
-        teacher =>
-          teacherHasSubject(
-            teacher,
-            a.subject
-          )
-      ).length;
-
-
-    const bCount =
-      teachers.filter(
-        teacher =>
-          teacherHasSubject(
-            teacher,
-            b.subject
-          )
-      ).length;
-
-
-    return aCount - bCount;
-
-  });
-
-}
-
-
-/* ============================================================
-   FIND BEST TEACHER
-   ============================================================ */
-
-function findBestTeacher(
-  classItem,
-  day,
-  periodIndex,
-  mode = "base"
-){
-
-  let best = null;
-
-  let bestScore =
-    -Infinity;
-
-
-  teachers.forEach(teacher => {
-
-    const score =
-      scoreTeacher(
-        teacher,
-        classItem,
-        day,
-        periodIndex,
-        mode
-      );
-
-
-    if(
-      score > bestScore
-    ){
-
-      bestScore = score;
-
-      best = teacher;
-
-    }
-
-  });
-
-
-  return best;
-
-}
-
-
-/* ============================================================
-   BASE DAY
-   ============================================================ */
-
-function generateBaseDay(day){
-
-  timetable[day] = {};
-
-
-  for(
-    let periodIndex = 0;
-    periodIndex < PERIODS.length;
-    periodIndex++
-  ){
-
-    timetable[day][periodIndex] =
-      [];
-
-
-    const periodClasses =
-      getClassesForPeriod(
-        day,
-        periodIndex
-      );
-
-
-    periodClasses.forEach(
-      classItem => {
-
-        const teacher =
-          findBestTeacher(
-            classItem,
-            day,
-            periodIndex,
-            "base"
-          );
-
-
-        if(!teacher){
-
-          timetable[day][periodIndex]
-            .push({
-
-              classId:
-                classItem.id,
-
-              teacherId:
-                null,
-
-              originalTeacherId:
-                null,
-
-              building:
-                classItem.building,
-
-              subject:
-                classItem.subject,
-
-              replacement:false,
-
-              status:"unassigned"
-
-            });
-
-          return;
-
-        }
-
-
-        timetable[day][periodIndex]
-          .push({
-
-            classId:
-              classItem.id,
-
-            teacherId:
-              teacher.id,
-
-            originalTeacherId:
-              teacher.id,
-
-            building:
-              classItem.building,
-
-            subject:
-              classItem.subject,
-
-            replacement:false,
-
-            status:"assigned"
-
-          });
-
-      }
-    );
-
-  }
-
-}
-
-
-/* ============================================================
-   REPLACEMENT
-   ============================================================ */
-
-function findReplacement(
-  assignment,
-  day,
-  periodIndex
-){
-
-  const classItem =
-    getClass(
-      assignment.classId
-    );
-
-
-  if(!classItem){
-
-    return null;
-
-  }
-
-
-  let best = null;
-
-  let bestScore =
-    -Infinity;
-
-
-  teachers.forEach(teacher => {
-
-    if(
-      teacher.id ===
-      assignment.originalTeacherId
-    ){
-
-      return;
-
-    }
-
-
-    const score =
-      scoreTeacher(
-        teacher,
-        classItem,
-        day,
-        periodIndex,
-        "replacement"
-      );
-
-
-    if(
-      score > bestScore
-    ){
-
-      bestScore = score;
-
-      best = teacher;
-
-    }
-
-  });
-
-
-  return best;
-
-}
-
-
-function processAbsencesForDay(
-  day
-){
-
-  if(!timetable[day]){
-
-    return;
-
-  }
-
-
-  replacementPlan[day] = [];
-
-
-  for(
-    let periodIndex = 0;
-    periodIndex < PERIODS.length;
-    periodIndex++
-  ){
-
-    const assignments =
-      timetable[day][periodIndex];
-
-
-    assignments.forEach(
-      assignment => {
-
-        if(
-          !assignment.teacherId
-        ){
-
-          return;
-
-        }
-
-
-        if(
-          !isAbsent(
-            assignment.teacherId,
-            day
-          )
-        ){
-
-          return;
-
-        }
-
-
-        const absentTeacher =
-          getTeacher(
-            assignment.teacherId
-          );
-
-
-        const classItem =
-          getClass(
-            assignment.classId
-          );
-
-
-        const replacement =
-          findReplacement(
-            assignment,
-            day,
-            periodIndex
-          );
-
-
-        if(replacement){
-
-          assignment.teacherId =
-            replacement.id;
-
-          assignment.replacement =
-            true;
-
-          assignment.status =
-            "replaced";
-
-
-          replacementPlan[day]
-            .push({
-
-              periodIndex,
-
-              period:
-                PERIODS[periodIndex],
-
-              classId:
-                assignment.classId,
-
-              className:
-                classItem
-                  ? classItem.name
-                  : "Unknown",
-
-              subject:
-                assignment.subject,
-
-              building:
-                assignment.building,
-
-              absentTeacher:
-                absentTeacher
-                  ? absentTeacher.name
-                  : "Unknown",
-
-              replacementTeacher:
-                replacement.name,
-
-              replacementTeacherId:
-                replacement.id
-
-            });
-
-        }else{
-
-          assignment.teacherId =
-            null;
-
-          assignment.replacement =
-            false;
-
-          assignment.status =
-            "unassigned";
-
-
-          replacementPlan[day]
-            .push({
-
-              periodIndex,
-
-              period:
-                PERIODS[periodIndex],
-
-              classId:
-                assignment.classId,
-
-              className:
-                classItem
-                  ? classItem.name
-                  : "Unknown",
-
-              subject:
-                assignment.subject,
-
-              building:
-                assignment.building,
-
-              absentTeacher:
-                absentTeacher
-                  ? absentTeacher.name
-                  : "Unknown",
-
-              replacementTeacher:null,
-
-              replacementTeacherId:null
-
-            });
-
-        }
-
-      }
-    );
-
-  }
-
-}
-
-
-/* ============================================================
-   GENERATE FULL SCHEDULE
-   ============================================================ */
-
-function generateSchedule(){
-
-  clearTimetable();
-
-
-  /*
-    FIRST:
-    Build normal timetable with everybody available.
-  */
-
-  DAYS.forEach(day => {
-
-    generateBaseDay(day);
-
-  });
-
-
-  /*
-    SECOND:
-    Apply absences and replacements.
-  */
-
-  DAYS.forEach(day => {
-
-    processAbsencesForDay(day);
-
-  });
-
-
-  saveData();
-
-  renderAll();
-
-  showToast(
-    "Weekly schedule generated"
-  );
-
-}
-
-
-/* ============================================================
-   NEXT WEEK
-   ============================================================ */
-
-function generateNextWeek(){
-
-  weekNumber++;
-
-  generateSchedule();
-
-  showToast(
-    "Week " +
-    weekNumber +
-    " generated"
-  );
-
-}
-
-
-/* ============================================================
-   DASHBOARD
-   ============================================================ */
-
-function updateDashboard(){
-
-  document.getElementById(
-    "statTeachers"
-  ).textContent =
-    teachers.length;
-
-
-  document.getElementById(
-    "statClasses"
-  ).textContent =
-    classes.length;
-
-
-  document.getElementById(
-    "statBuildings"
-  ).textContent =
-    BUILDINGS.length;
-
-
-  const day =
-    document.getElementById(
-      "attendanceDay"
-    )?.value ||
-    "Monday";
-
-
-  document.getElementById(
-    "statAbsences"
-  ).textContent =
-    getAbsenceCount(day);
-
-
-  document.getElementById(
-    "weekLabel"
-  ).textContent =
-    "Week " +
-    weekNumber;
-
-}
-
-
-/* ============================================================
-   PAGE NAVIGATION
-   ============================================================ */
-
-function showPage(page){
-
-  currentPage = page;
-
-
-  document
-    .querySelectorAll(".page")
-    .forEach(section => {
-
-      section.classList.remove(
-        "active"
-      );
-
-    });
-
-
-  const target =
-    document.getElementById(
-      "page-" + page
-    );
-
-
-  if(target){
-
-    target.classList.add(
-      "active"
-    );
-
-  }
-
-
-  document
-    .querySelectorAll(".nav-btn")
-    .forEach(button => {
-
-      button.classList.toggle(
-        "active",
-        button.dataset.page === page
-      );
-
-    });
-
-
-  if(page === "attendance"){
-    renderAttendance();
-  }
-
-  if(page === "replacement"){
-    renderReplacementPlan();
-  }
-
-  if(page === "timetable"){
-    renderTimetable();
-  }
-
-  if(page === "teachers"){
-    renderTeachers();
-  }
-
-  if(page === "classes"){
-    renderClasses();
-  }
-
-  if(page === "settings"){
-    renderSettings();
-  }
-
-}
-
-
-/* ============================================================
-   ATTENDANCE RENDER
-   ============================================================ */
-
-function renderAttendance(){
-
-  const day =
-    document.getElementById(
-      "attendanceDay"
-    ).value ||
-    "Monday";
-
-
-  const search =
-    (
-      document.getElementById(
-        "attendanceSearch"
-      ).value ||
-      ""
-    )
-    .trim()
-    .toLowerCase();
-
-
-  const list =
-    document.getElementById(
-      "attendanceList"
-    );
-
-
-  const filtered =
-    teachers.filter(teacher => {
-
-      if(!search){
-
-        return true;
-
-      }
-
-
-      return (
-        teacher.name
-          .toLowerCase()
-          .includes(search)
-        ||
-        teacher.id
-          .toLowerCase()
-          .includes(search)
-        ||
-        teacher.building
-          .toLowerCase()
-          .includes(search)
-      );
-
-    });
-
-
-  document.getElementById(
-    "absenceCount"
-  ).textContent =
-    getAbsenceCount(day) +
-    " / " +
-    MAX_ABSENCES +
-    " absent";
-
-
-  if(!filtered.length){
-
-    list.innerHTML =
-      `<div class="empty">
-        No teachers found.
-      </div>`;
-
-    return;
-
-  }
-
-
-  list.innerHTML =
-    filtered.map(teacher => {
-
-      const absent =
-        isAbsent(
-          teacher.id,
-          day
+      const subjectTeachers =
+        teachers.filter(t =>
+          t.type === "subject" &&
+          t.subject === subject
         );
 
 
-      return `
-        <div class="attendance-row">
+      /*
+        Choose a teacher using the load-balancing
+        algorithm.
+      */
 
-          <div class="teacher-info">
-
-            <strong>
-              ${escapeHtml(
-                teacher.name
-              )}
-            </strong>
-
-            <small>
-              ${escapeHtml(
-                teacher.id
-              )}
-              ·
-              ${escapeHtml(
-                teacher.building
-              )}
-              ·
-              ${escapeHtml(
-                teacher.subjects.join(", ")
-              )}
-            </small>
-
-          </div>
-
-          <button
-            class="attendance-toggle
-              ${absent ? "absent" : ""}"
-            data-attendance="${teacher.id}">
-
-            ${
-              absent
-                ? "ABSENT"
-                : "Present"
-            }
-
-          </button>
-
-        </div>
-      `;
-
-    }).join("");
+      const chosenTeacher =
+        chooseTeacher(
+          subjectTeachers,
+          periodIndex
+        );
 
 
-  list
-    .querySelectorAll(
-      "[data-attendance]"
-    )
-    .forEach(button => {
+      periodData.push({
 
-      button.addEventListener(
-        "click",
-        () => {
+        section: sections[sectionIndex],
 
-          setAttendance(
-            button.dataset.attendance,
-            day
-          );
+        subject: subject,
 
-        }
-      );
+        teacher: chosenTeacher,
 
-    });
+        originalTeacher: chosenTeacher,
+
+        replacement: null
+
+      });
+
+    }
+
+    timetable.push(periodData);
+
+  }
+
+
+  writeLog(
+    "Base timetable generated successfully.\n" +
+    "5 periods × 10 sections = 50 lessons.\n"
+  );
+
+
+  renderTimetable();
+
+  runValidation();
+
+  document.getElementById(
+    "replacementBtn"
+  ).disabled = true;
 
 }
 
 
-/* ============================================================
-   REPLACEMENT RENDER
-   ============================================================ */
+/* =========================================================
+   TEACHER SELECTION
+========================================================= */
 
-function renderReplacementPlan(){
+function chooseTeacher(
+  availableTeachers,
+  periodIndex
+){
 
-  const summary =
-    document.getElementById(
-      "replacementSummary"
-    );
+  /*
+    Count how many lessons each teacher
+    already has.
+  */
 
+  const scored = availableTeachers.map(teacher => {
 
-  const list =
-    document.getElementById(
-      "replacementList"
-    );
+    let load = 0;
 
+    timetable.forEach(period => {
 
-  let total = 0;
+      period.forEach(lesson => {
 
-  let replaced = 0;
+        if(
+          lesson.teacher &&
+          lesson.teacher.id === teacher.id
+        ){
 
-  let unassigned = 0;
+          load++;
 
+        }
 
-  DAYS.forEach(day => {
-
-    const items =
-      replacementPlan[day] || [];
-
-
-    total += items.length;
-
-
-    items.forEach(item => {
-
-      if(item.replacementTeacher){
-
-        replaced++;
-
-      }else{
-
-        unassigned++;
-
-      }
-
-    });
-
-  });
-
-
-  summary.innerHTML = `
-
-    <div class="stats">
-
-      <div class="stat">
-        <div class="stat-label">
-          Absence Assignments
-        </div>
-        <div class="stat-value">
-          ${total}
-        </div>
-      </div>
-
-      <div class="stat">
-        <div class="stat-label">
-          Replacements Found
-        </div>
-        <div class="stat-value">
-          ${replaced}
-        </div>
-      </div>
-
-      <div class="stat">
-        <div class="stat-label">
-          Unassigned
-        </div>
-        <div class="stat-value">
-          ${unassigned}
-        </div>
-      </div>
-
-      <div class="stat">
-        <div class="stat-label">
-          Max Absences
-        </div>
-        <div class="stat-value">
-          ${MAX_ABSENCES}
-        </div>
-      </div>
-
-    </div>
-
-  `;
-
-
-  const allItems = [];
-
-
-  DAYS.forEach(day => {
-
-    (
-      replacementPlan[day] || []
-    )
-    .forEach(item => {
-
-      allItems.push({
-        ...item,
-        day
       });
 
     });
 
+
+    /*
+      We also don't want the same teacher teaching
+      two sections in the same period.
+    */
+
+    const busyThisPeriod =
+      timetable[periodIndex] &&
+      timetable[periodIndex].some(
+        lesson =>
+          lesson.teacher &&
+          lesson.teacher.id === teacher.id
+      );
+
+
+    return {
+
+      teacher: teacher,
+
+      load: load,
+
+      busy: busyThisPeriod
+
+    };
+
   });
 
 
-  if(!allItems.length){
+  /*
+    Prefer teachers who aren't already busy.
 
-    list.innerHTML = `
-      <div class="card">
-        <div class="empty">
-          No replacement assignments yet.
-        </div>
-      </div>
-    `;
+    Then prefer lowest workload.
+  */
 
-    return;
+  scored.sort((a,b) => {
 
-  }
+    if(a.busy !== b.busy){
 
+      return a.busy ? 1 : -1;
 
-  list.innerHTML =
-    allItems.map(item => {
+    }
 
-      const success =
-        !!item.replacementTeacher;
+    return a.load - b.load;
+
+  });
 
 
-      return `
-
-        <div class="replacement-card">
-
-          <div class="replacement-head">
-
-            <strong>
-              ${escapeHtml(item.day)}
-              ·
-              ${escapeHtml(item.period)}
-            </strong>
-
-            <span class="badge ${
-              success
-                ? "green"
-                : "red"
-            }">
-
-              ${
-                success
-                  ? "REPLACED"
-                  : "UNASSIGNED"
-              }
-
-            </span>
-
-          </div>
-
-
-          <div class="replacement-details">
-
-            <div class="detail">
-              <span>Class</span>
-              <strong>
-                ${escapeHtml(
-                  item.className
-                )}
-              </strong>
-            </div>
-
-            <div class="detail">
-              <span>Subject</span>
-              <strong>
-                ${escapeHtml(
-                  item.subject
-                )}
-              </strong>
-            </div>
-
-            <div class="detail">
-              <span>Absent Teacher</span>
-              <strong>
-                ${escapeHtml(
-                  item.absentTeacher
-                )}
-              </strong>
-            </div>
-
-            <div class="detail">
-              <span>Replacement</span>
-              <strong>
-                ${
-                  item.replacementTeacher
-                    ? escapeHtml(
-                        item.replacementTeacher
-                      )
-                    : "No suitable teacher"
-                }
-              </strong>
-            </div>
-
-          </div>
-
-        </div>
-
-      `;
-
-    }).join("");
+  return scored[0].teacher;
 
 }
 
 
-/* ============================================================
-   FILTERS
-   ============================================================ */
-
-function populateFilters(){
-
-  const attendanceDay =
-    document.getElementById(
-      "attendanceDay"
-    );
-
-
-  const timetableDay =
-    document.getElementById(
-      "timetableDay"
-    );
-
-
-  const timetableBuilding =
-    document.getElementById(
-      "timetableBuilding"
-    );
-
-
-  attendanceDay.innerHTML =
-    DAYS.map(day =>
-      `<option value="${day}">
-        ${day}
-      </option>`
-    ).join("");
-
-
-  timetableDay.innerHTML =
-    DAYS.map(day =>
-      `<option value="${day}">
-        ${day}
-      </option>`
-    ).join("");
-
-
-  timetableBuilding.innerHTML =
-    BUILDINGS.map(building =>
-      `<option value="${building}">
-        ${building}
-      </option>`
-    ).join("");
-
-}
-
-
-/* ============================================================
-   TIMETABLE RENDER
-   ============================================================ */
+/* =========================================================
+   RENDER TIMETABLE
+========================================================= */
 
 function renderTimetable(){
 
-  const grid =
-    document.getElementById(
-      "timetableGrid"
-    );
+  const area =
+    document.getElementById("timetableArea");
 
+  if(timetable.length === 0){
 
-  if(!grid){
+    area.innerHTML =
+      "<p>Generate the timetable first.</p>";
 
     return;
 
   }
 
 
-  const day =
-    document.getElementById(
-      "timetableDay"
-    ).value ||
-    "Monday";
-
-
-  const building =
-    document.getElementById(
-      "timetableBuilding"
-    ).value ||
-    BUILDINGS[0];
-
-
   let html = `
+    <div class="table-wrap">
 
-    <div class="tt-head">
+    <table>
 
-      <div>
-        Class
-      </div>
+      <thead>
 
-      ${PERIODS.map(period =>
-        `<div>
-          ${escapeHtml(period)}
-        </div>`
-      ).join("")}
+        <tr>
 
-    </div>
-
+          <th>Period</th>
   `;
 
 
-  const buildingClasses =
-    classes.filter(
-      item =>
-        item.building ===
-        building
-    );
+  sections.forEach(section => {
+
+    html += `
+      <th>${section.name}</th>
+    `;
+
+  });
 
 
-  buildingClasses.forEach(
-    classItem => {
+  html += `
+        </tr>
 
-      html += `
+      </thead>
 
-        <div class="tt-row">
-
-          <div>
-
-            <div class="tt-class">
-              ${escapeHtml(
-                classItem.name
-              )}
-            </div>
-
-            <div class="tt-subject">
-              ${escapeHtml(
-                classItem.subject
-              )}
-            </div>
-
-          </div>
-
-      `;
+      <tbody>
+  `;
 
 
-      for(
-        let p=0;
-        p<PERIODS.length;
-        p++
-      ){
+  timetable.forEach((periodData, periodIndex) => {
 
-        const assignment =
-          timetable[day] &&
-          timetable[day][p]
-            ? timetable[day][p].find(
-                item =>
-                  item.classId ===
-                  classItem.id
-              )
-            : null;
+    html += `
+      <tr>
+
+        <td>
+          <b>Period ${PERIODS[periodIndex].number}</b>
+          <br>
+          <small>
+            ${PERIODS[periodIndex].time}
+          </small>
+        </td>
+    `;
 
 
-        if(!assignment){
+    periodData.forEach(lesson => {
 
-          html += `
-            <div>
-              <div class="tt-free">
-                —
-              </div>
-            </div>
-          `;
-
-          continue;
-
-        }
+      const isMonitor =
+        lesson.replacement &&
+        lesson.replacement.type === "monitor";
 
 
-        if(
-          assignment.status ===
-          "unassigned"
-        ){
-
-          html += `
-
-            <div class="tt-unassigned">
-
-              <div class="tt-class">
-                ${escapeHtml(
-                  classItem.name
-                )}
-              </div>
-
-              <div class="tt-teacher">
-                UNASSIGNED
-              </div>
-
-              <div class="tt-subject">
-                ${escapeHtml(
-                  classItem.subject
-                )}
-              </div>
-
-            </div>
-
-          `;
-
-          continue;
-
-        }
-
-
-        const teacher =
-          getTeacher(
-            assignment.teacherId
-          );
-
+      if(isMonitor){
 
         html += `
+          <td>
 
-          <div class="${
-            assignment.replacement
-              ? "tt-absent"
-              : ""
-          }">
+            <div class="lesson monitor">
 
-            <div class="tt-class">
-              ${escapeHtml(
-                classItem.name
-              )}
-            </div>
+              <strong>
+                ${lesson.subject}
+              </strong>
 
-            <div class="tt-teacher">
+              <small>
+                <span class="absent">
+                  ${lesson.originalTeacher.name}
+                  ABSENT
+                </span>
+              </small>
 
-              ${
-                teacher
-                  ? escapeHtml(
-                      teacher.name
-                    )
-                  : "Unknown"
-              }
+              <br>
 
-              ${
-                assignment.replacement
-                  ? " · Replacement"
-                  : ""
-              }
+              <small>
+                👤 ${lesson.replacement.name}
+                <br>
+                <b>SUBSTITUTE / MONITOR</b>
+              </small>
 
             </div>
 
-            <div class="tt-subject">
-              ${escapeHtml(
-                classItem.subject
-              )}
+          </td>
+        `;
+
+      }else{
+
+        html += `
+          <td>
+
+            <div class="lesson">
+
+              <strong>
+                ${lesson.subject}
+              </strong>
+
+              <small>
+                ${lesson.teacher.name}
+              </small>
+
             </div>
 
-          </div>
-
+          </td>
         `;
 
       }
 
-
-      html += `</div>`;
-
-    }
-  );
-
-
-  grid.innerHTML =
-    html;
-
-}
-
-
-/* ============================================================
-   TEACHERS
-   ============================================================ */
-
-function renderTeachers(){
-
-  const container =
-    document.getElementById(
-      "teachersTable"
-    );
-
-
-  const search =
-    (
-      document.getElementById(
-        "teacherSearch"
-      ).value ||
-      ""
-    )
-    .trim()
-    .toLowerCase();
-
-
-  const filtered =
-    teachers.filter(teacher => {
-
-      if(!search){
-
-        return true;
-
-      }
-
-
-      return (
-        teacher.name
-          .toLowerCase()
-          .includes(search)
-        ||
-        teacher.id
-          .toLowerCase()
-          .includes(search)
-        ||
-        teacher.building
-          .toLowerCase()
-          .includes(search)
-      );
-
     });
 
 
-  container.innerHTML = `
+    html += `
+      </tr>
+    `;
 
-    <table>
+  });
 
-      <thead>
 
-        <tr>
-          <th>ID</th>
-          <th>Teacher</th>
-          <th>Building</th>
-          <th>Subjects</th>
-          <th>Max Lectures</th>
-        </tr>
-
-      </thead>
-
-      <tbody>
-
-        ${filtered.map(teacher => `
-
-          <tr>
-
-            <td>
-              ${escapeHtml(
-                teacher.id
-              )}
-            </td>
-
-            <td>
-              <strong>
-                ${escapeHtml(
-                  teacher.name
-                )}
-              </strong>
-            </td>
-
-            <td>
-              ${escapeHtml(
-                teacher.building
-              )}
-            </td>
-
-            <td>
-              ${escapeHtml(
-                teacher.subjects.join(", ")
-              )}
-            </td>
-
-            <td>
-              ${teacher.maxLectures}
-            </td>
-
-          </tr>
-
-        `).join("")}
-
+  html += `
       </tbody>
 
     </table>
 
+    </div>
   `;
+
+
+  area.innerHTML = html;
 
 }
 
 
-/* ============================================================
-   CLASSES
-   ============================================================ */
+/* =========================================================
+   GENERATE REPLACEMENTS
+========================================================= */
 
-function renderClasses(){
+function generateReplacements(){
 
-  const container =
-    document.getElementById(
-      "classesTable"
-    );
+  if(timetable.length === 0){
 
+    alert("Generate the timetable first.");
 
-  const search =
-    (
-      document.getElementById(
-        "classSearch"
-      ).value ||
-      ""
-    )
-    .trim()
-    .toLowerCase();
+    return;
+
+  }
 
 
-  const filtered =
-    classes.filter(item => {
-
-      if(!search){
-
-        return true;
-
-      }
+  const checked =
+    [...document.querySelectorAll(
+      "#attendanceList input:checked"
+    )];
 
 
-      return (
-        item.name
-          .toLowerCase()
-          .includes(search)
-        ||
-        item.id
-          .toLowerCase()
-          .includes(search)
-        ||
-        item.building
-          .toLowerCase()
-          .includes(search)
-        ||
-        item.subject
-          .toLowerCase()
-          .includes(search)
-      );
+  if(checked.length > MAX_ABSENCES){
+
+    alert("Maximum 3 absences allowed.");
+
+    return;
+
+  }
+
+
+  /*
+    Reset previous replacements.
+  */
+
+  timetable.forEach(period => {
+
+    period.forEach(lesson => {
+
+      lesson.replacement = null;
 
     });
 
+  });
 
-  container.innerHTML = `
 
-    <table>
+  /*
+    Mark selected teachers absent.
+  */
 
-      <thead>
+  teachers.forEach(teacher => {
 
-        <tr>
-          <th>ID</th>
-          <th>Class</th>
-          <th>Building</th>
-          <th>Subject</th>
-        </tr>
-
-      </thead>
-
-      <tbody>
-
-        ${filtered.map(item => `
-
-          <tr>
-
-            <td>
-              ${escapeHtml(item.id)}
-            </td>
-
-            <td>
-              <strong>
-                ${escapeHtml(item.name)}
-              </strong>
-            </td>
-
-            <td>
-              ${escapeHtml(
-                item.building
-              )}
-            </td>
-
-            <td>
-              <span class="badge blue">
-                ${escapeHtml(
-                  item.subject
-                )}
-              </span>
-            </td>
-
-          </tr>
-
-        `).join("")}
-
-      </tbody>
-
-    </table>
-
-  `;
-
-}
-
-
-/* ============================================================
-   SETTINGS
-   ============================================================ */
-
-function renderSettings(){
-
-  document.getElementById(
-    "maxLecturesInput"
-  ).value =
-    MAX_LECTURES;
-
-
-  document.getElementById(
-    "maxAbsencesInput"
-  ).value =
-    MAX_ABSENCES;
-
-
-  document.getElementById(
-    "weekNumberInput"
-  ).value =
-    weekNumber;
-
-}
-
-
-function saveSettings(){
-
-  const maxLectures =
-    Number(
-      document.getElementById(
-        "maxLecturesInput"
-      ).value
-    );
-
-
-  const maxAbsences =
-    Number(
-      document.getElementById(
-        "maxAbsencesInput"
-      ).value
-    );
-
-
-  const newWeek =
-    Number(
-      document.getElementById(
-        "weekNumberInput"
-      ).value
-    );
-
-
-  if(
-    maxLectures < 1 ||
-    maxLectures > 7
-  ){
-
-    showToast(
-      "Maximum lectures must be 1-7"
-    );
-
-    return;
-
-  }
-
-
-  if(
-    maxAbsences < 1 ||
-    maxAbsences > 5
-  ){
-
-    showToast(
-      "Maximum absences must be 1-5"
-    );
-
-    return;
-
-  }
-
-
-  MAX_LECTURES =
-    maxLectures;
-
-
-  MAX_ABSENCES =
-    maxAbsences;
-
-
-  weekNumber =
-    Math.max(
-      1,
-      newWeek || 1
-    );
-
-
-  teachers.forEach(
-    teacher => {
-
-      teacher.maxLectures =
-        Math.min(
-          teacher.maxLectures || 6,
-          MAX_LECTURES
-        );
-
-    }
-  );
-
-
-  saveData();
-
-  renderSettings();
-
-  updateDashboard();
-
-  showToast(
-    "Settings saved"
-  );
-
-}
-
-
-/* ============================================================
-   EXPORT
-   ============================================================ */
-
-function exportData(){
-
-  const data = {
-
-    exportedAt:
-      new Date().toISOString(),
-
-    weekNumber,
-
-    teachers,
-
-    classes,
-
-    attendance,
-
-    timetable,
-
-    replacementPlan,
-
-    configuration:{
-
-      days:DAYS,
-
-      periods:PERIODS,
-
-      buildings:BUILDINGS,
-
-      subjects:SUBJECTS,
-
-      maxLectures:
-        MAX_LECTURES,
-
-      maxAbsences:
-        MAX_ABSENCES
-
-    }
-
-  };
-
-
-  const blob =
-    new Blob(
-      [
-        JSON.stringify(
-          data,
-          null,
-          2
-        )
-      ],
-      {
-        type:
-          "application/json"
-      }
-    );
-
-
-  const url =
-    URL.createObjectURL(
-      blob
-    );
-
-
-  const link =
-    document.createElement(
-      "a"
-    );
-
-
-  link.href = url;
-
-  link.download =
-    "institute-optimizer-week-" +
-    weekNumber +
-    ".json";
-
-
-  document.body.appendChild(
-    link
-  );
-
-  link.click();
-
-  link.remove();
-
-  URL.revokeObjectURL(
-    url
-  );
-
-
-  showToast(
-    "Data exported"
-  );
-
-}
-
-
-/* ============================================================
-   RESET
-   ============================================================ */
-
-function resetDemo(){
-
-  const confirmed =
-    confirm(
-      "Reset the complete Institute Optimizer demo?"
-    );
-
-
-  if(!confirmed){
-
-    return;
-
-  }
-
-
-  localStorage.removeItem(
-    STORAGE_KEY
-  );
-
-
-  createInitialData();
-
-  loadData();
-
-  populateFilters();
-
-  renderAll();
-
-  showPage("home");
-
-  showToast(
-    "Demo data reset"
-  );
-
-}
-
-
-/* ============================================================
-   RENDER ALL
-   ============================================================ */
-
-function renderAll(){
-
-  updateDashboard();
-
-  renderAttendance();
-
-  renderReplacementPlan();
-
-  renderTeachers();
-
-  renderClasses();
-
-  renderSettings();
-
-  renderTimetable();
-
-}
-
-
-/* ============================================================
-   EVENTS
-   ============================================================ */
-
-document
-  .querySelectorAll("[data-page]")
-  .forEach(button => {
-
-    button.addEventListener(
-      "click",
-      () => {
-
-        showPage(
-          button.dataset.page
-        );
-
-      }
+    teacher.absent = checked.some(
+      checkbox =>
+        Number(checkbox.value) === teacher.id
     );
 
   });
 
 
-document
-  .getElementById("generateBtn")
-  .addEventListener(
-    "click",
-    generateSchedule
-  );
+  const absentTeachers =
+    teachers.filter(
+      teacher =>
+        teacher.type === "subject" &&
+        teacher.absent
+    );
 
 
-document
-  .getElementById("nextWeekBtn")
-  .addEventListener(
-    "click",
-    generateNextWeek
-  );
+  /*
+    Available monitor teachers.
+  */
+
+  const monitors =
+    teachers.filter(
+      teacher =>
+        teacher.type === "monitor"
+    );
 
 
-document
-  .getElementById("clearAttendanceBtn")
-  .addEventListener(
-    "click",
-    clearAttendance
-  );
+  /*
+    Track which monitors are already working
+    during each period.
+  */
+
+  const monitorUsage = {};
+
+  PERIODS.forEach((_, index) => {
+
+    monitorUsage[index] = [];
+
+  });
 
 
-document
-  .getElementById("generateReplacementBtn")
-  .addEventListener(
-    "click",
-    () => {
+  let replacementCount = 0;
+
+
+  /*
+    Find every lesson belonging to an absent teacher.
+  */
+
+  timetable.forEach((period, periodIndex) => {
+
+    period.forEach(lesson => {
 
       if(
-        Object.keys(timetable)
-          .length === 0
+        lesson.originalTeacher &&
+        lesson.originalTeacher.absent
       ){
 
-        generateSchedule();
+        /*
+          Find a monitor who is free during this period.
+        */
+
+        const freeMonitor =
+          monitors.find(
+            monitor =>
+              !monitorUsage[periodIndex].some(
+                id => id === monitor.id
+              )
+          );
+
+
+        if(freeMonitor){
+
+          lesson.replacement = freeMonitor;
+
+          monitorUsage[periodIndex].push(
+            freeMonitor.id
+          );
+
+          replacementCount++;
+
+        }else{
+
+          /*
+            This should only happen if more absent
+            teachers require monitoring than the
+            3 available monitors.
+          */
+
+          lesson.replacement = {
+            name: "NO MONITOR AVAILABLE",
+            type: "monitor"
+          };
+
+        }
+
+      }
+
+    });
+
+  });
+
+
+  const success =
+    document.getElementById("replacementSuccess");
+
+
+  success.style.display = "block";
+
+
+  success.innerHTML =
+    `<b>${replacementCount}</b> lesson(s) now have
+     monitor coverage for absent teachers.`;
+
+
+  writeLog(
+    "Absence processing complete.\n" +
+    "Absent subject teachers: " +
+    absentTeachers.length + "\n" +
+    "Monitor teachers available: 3\n" +
+    "Lessons requiring monitoring: " +
+    replacementCount + "\n"
+  );
+
+
+  renderTimetable();
+
+  runValidation();
+
+}
+
+
+/* =========================================================
+   VALIDATION ENGINE
+========================================================= */
+
+function runValidation(){
+
+  const area =
+    document.getElementById("validationArea");
+
+  const results = [];
+
+
+  /*
+    RULE 1:
+    Every section has exactly one lesson
+    per period.
+  */
+
+  let sectionProblem = false;
+
+
+  timetable.forEach(period => {
+
+    if(period.length !== SECTION_COUNT){
+
+      sectionProblem = true;
+
+    }
+
+  });
+
+
+  results.push({
+
+    ok: !sectionProblem,
+
+    text:
+      sectionProblem
+        ? "Some periods do not contain all 10 sections."
+        : "✓ Every period contains all 10 sections."
+
+  });
+
+
+  /*
+    RULE 2:
+    A teacher cannot teach two sections
+    during the same period.
+  */
+
+  let doubleBooking = false;
+
+
+  timetable.forEach(period => {
+
+    const used = new Set();
+
+    period.forEach(lesson => {
+
+      /*
+        Monitors also cannot monitor two sections
+        at the same time.
+      */
+
+      const person =
+        lesson.replacement ||
+        lesson.teacher;
+
+
+      if(!person || !person.id){
 
         return;
 
       }
 
 
-      DAYS.forEach(day => {
+      if(used.has(person.id)){
 
-        generateBaseDay(day);
+        doubleBooking = true;
 
-      });
+      }
 
+      used.add(person.id);
 
-      DAYS.forEach(day => {
+    });
 
-        processAbsencesForDay(day);
-
-      });
-
-
-      saveData();
-
-      renderAll();
-
-      showToast(
-        "Replacements recalculated"
-      );
-
-    }
-  );
+  });
 
 
-document
-  .getElementById("attendanceDay")
-  .addEventListener(
-    "change",
-    () => {
+  results.push({
 
-      renderAttendance();
+    ok: !doubleBooking,
 
-      updateDashboard();
+    text:
+      doubleBooking
+        ? "✗ A teacher/monitor is assigned twice in one period."
+        : "✓ No teacher or monitor is double-booked."
 
-    }
-  );
+  });
 
 
-document
-  .getElementById("attendanceSearch")
-  .addEventListener(
-    "input",
-    renderAttendance
-  );
+  /*
+    RULE 3:
+    Absent teachers should never remain
+    as the active teacher.
+  */
+
+  let absentTeaching = false;
 
 
-document
-  .getElementById("timetableDay")
-  .addEventListener(
-    "change",
-    renderTimetable
-  );
+  timetable.forEach(period => {
+
+    period.forEach(lesson => {
+
+      if(
+        lesson.teacher &&
+        lesson.teacher.absent &&
+        !lesson.replacement
+      ){
+
+        absentTeaching = true;
+
+      }
+
+    });
+
+  });
 
 
-document
-  .getElementById("timetableBuilding")
-  .addEventListener(
-    "change",
-    renderTimetable
-  );
+  results.push({
+
+    ok: !absentTeaching,
+
+    text:
+      absentTeaching
+        ? "✗ An absent teacher is still assigned to a lesson."
+        : "✓ No absent teacher remains assigned."
+
+  });
 
 
-document
-  .getElementById("teacherSearch")
-  .addEventListener(
-    "input",
-    renderTeachers
-  );
+  /*
+    RULE 4:
+    Monitor teachers must never be shown as
+    teaching a subject.
+  */
+
+  let monitorTeaching = false;
 
 
-document
-  .getElementById("classSearch")
-  .addEventListener(
-    "input",
-    renderClasses
-  );
+  timetable.forEach(period => {
+
+    period.forEach(lesson => {
+
+      if(
+        lesson.teacher &&
+        lesson.teacher.type === "monitor"
+      ){
+
+        monitorTeaching = true;
+
+      }
+
+    });
+
+  });
 
 
-document
-  .getElementById("saveSettingsBtn")
-  .addEventListener(
-    "click",
-    saveSettings
-  );
+  results.push({
+
+    ok: !monitorTeaching,
+
+    text:
+      monitorTeaching
+        ? "✗ A monitor is incorrectly teaching a subject."
+        : "✓ Monitors are only used as supervision/replacement."
+
+  });
 
 
-document
-  .getElementById("exportBtn")
-  .addEventListener(
-    "click",
-    exportData
-  );
+  /*
+    RULE 5:
+    Maximum 3 absences.
+  */
+
+  const absentCount =
+    teachers.filter(
+      teacher =>
+        teacher.type === "subject" &&
+        teacher.absent
+    ).length;
 
 
-document
-  .getElementById("resetBtn")
-  .addEventListener(
-    "click",
-    resetDemo
-  );
+  results.push({
+
+    ok: absentCount <= MAX_ABSENCES,
+
+    text:
+      absentCount <= MAX_ABSENCES
+        ? `✓ Absences: ${absentCount}/3`        : `✗ Absences exceed maximum: ${absentCount}/3`
+
+  });
 
 
-/* ============================================================
-   START
-   ============================================================ */
+  /*
+    Display validation results.
+  */
 
-loadData();
+  area.innerHTML = results.map(result => {
 
-populateFilters();
+    return `
+      <div class="validation-item ${result.ok ? "ok" : "bad"}">
+        ${result.text}
+      </div>
+    `;
 
-renderAll();
+  }).join("");
 
-showPage("home");
+}
+
+
+/* =========================================================
+   LOGGING
+========================================================= */
+
+function writeLog(message){
+
+  const log =
+    document.getElementById("log");
+
+  log.textContent += message;
+
+}
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+function resetAll(){
+
+  timetable = [];
+
+
+  teachers.forEach(teacher => {
+
+    teacher.absent = false;
+
+  });
+
+
+  document
+    .querySelectorAll("#attendanceList input")
+    .forEach(input => {
+
+      input.checked = false;
+
+    });
+
+
+  document.getElementById(
+    "timetableArea"
+  ).innerHTML = `
+    <p style="color:#777;">
+      Generate the timetable first.
+    </p>
+  `;
+
+
+  document.getElementById(
+    "validationArea"
+  ).innerHTML = `
+    <div class="validation-item">
+      Timetable has not been generated yet.
+    </div>
+  `;
+
+
+  document.getElementById(
+    "replacementSuccess"
+  ).style.display = "none";
+
+
+  document.getElementById(
+    "replacementBtn"
+  ).disabled = true;
+
+
+  document.getElementById(
+    "absenceWarning"
+  ).style.display = "none";
+
+
+  document.getElementById(
+    "log"
+  ).textContent = "Reset complete.\n";
+
+}
+
+
+/* =========================================================
+   START APPLICATION
+========================================================= */
+
+createAttendanceList();
 
 </script>
 
