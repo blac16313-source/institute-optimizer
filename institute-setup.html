@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 
-<title>Institute Setup — Optimizer</title>
+<title>Institute Setup</title>
 
 <style>
 *{
@@ -14,20 +14,20 @@
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#f4f5f7;
-  color:#151515;
+  font-family:Arial,sans-serif;
+  background:#f5f5f3;
+  color:#171717;
   padding:16px;
 }
 
 .container{
-  max-width:1100px;
+  max-width:1000px;
   margin:auto;
 }
 
 header{
   background:#111;
-  color:white;
+  color:#fff;
   padding:24px;
   border-radius:18px;
   margin-bottom:18px;
@@ -44,69 +44,71 @@ header p{
 }
 
 .card{
-  background:white;
+  background:#fff;
   border:1px solid #e5e5e5;
   border-radius:16px;
-  padding:20px;
-  margin-bottom:18px;
+  padding:18px;
+  margin-bottom:16px;
 }
 
 .card h2{
-  font-size:19px;
+  font-size:18px;
   margin-bottom:6px;
 }
 
 .description{
   color:#777;
   font-size:13px;
-  margin-bottom:18px;
-}
-
-input,
-select{
-  width:100%;
-  padding:11px 12px;
-  border:1px solid #d8d8d8;
-  border-radius:9px;
-  font-size:14px;
-  background:white;
-}
-
-input:focus,
-select:focus{
-  outline:2px solid #111;
-  border-color:#111;
+  margin-bottom:16px;
 }
 
 label{
   display:block;
   font-size:13px;
   font-weight:bold;
-  margin-bottom:7px;
+  margin-bottom:6px;
+}
+
+input,
+select{
+  width:100%;
+  padding:11px;
+  border:1px solid #ccc;
+  border-radius:9px;
+  background:#fff;
+  font-size:14px;
+  outline:none;
+}
+
+input:focus,
+select:focus{
+  border-color:#111;
+}
+
+.form-row{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:10px;
+  align-items:end;
 }
 
 .form-grid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:14px;
-}
-
-.form-grid.three{
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:1fr 1fr;
+  gap:12px;
 }
 
 button{
   border:0;
   border-radius:9px;
-  padding:11px 16px;
-  font-size:14px;
+  padding:11px 15px;
   font-weight:bold;
   cursor:pointer;
 }
 
 .primary{
   background:#111;
-  color:white;
+  color:#fff;
 }
 
 .secondary{
@@ -115,8 +117,86 @@ button{
 }
 
 .danger{
-  background:#ffe7e7;
-  color:#a40000;
+  background:#ffe5e5;
+  color:#a00000;
+}
+
+.small{
+  padding:8px 11px;
+  font-size:12px;
+}
+
+.list{
+  margin-top:14px;
+}
+
+.item{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  border:1px solid #e5e5e5;
+  border-radius:11px;
+  padding:12px;
+  margin-bottom:8px;
+}
+
+.item-main{
+  min-width:0;
+}
+
+.item-title{
+  font-weight:bold;
+  font-size:14px;
+}
+
+.item-sub{
+  color:#777;
+  font-size:12px;
+  margin-top:4px;
+}
+
+.empty{
+  color:#888;
+  background:#fafafa;
+  border:1px dashed #ddd;
+  padding:15px;
+  border-radius:10px;
+  text-align:center;
+  font-size:13px;
+}
+
+.check-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(150px,1fr));
+  gap:8px;
+  margin-top:8px;
+}
+
+.check{
+  border:1px solid #ddd;
+  border-radius:9px;
+  padding:9px;
+  display:flex;
+  gap:8px;
+  align-items:center;
+  cursor:pointer;
+}
+
+.check input{
+  width:auto;
+}
+
+.section-box{
+  border:1px solid #ddd;
+  border-radius:12px;
+  padding:14px;
+  margin-top:12px;
+}
+
+.section-title{
+  font-weight:bold;
+  margin-bottom:12px;
 }
 
 .actions{
@@ -126,164 +206,61 @@ button{
   margin-top:15px;
 }
 
-.list{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  margin-top:15px;
-}
-
-.item{
-  background:#f7f7f7;
-  border:1px solid #e4e4e4;
-  border-radius:12px;
-  padding:13px;
-}
-
-.item-top{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:10px;
-}
-
-.item-name{
-  font-weight:bold;
-}
-
-.item-details{
-  color:#666;
-  font-size:12px;
-  margin-top:5px;
-}
-
-.empty{
-  padding:18px;
-  background:#f7f7f7;
-  border-radius:10px;
-  color:#777;
-  text-align:center;
-  font-size:13px;
-}
-
-.subject-checkboxes{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:8px;
-  margin-top:8px;
-}
-
-.subject-option{
-  background:#f5f5f5;
-  border:1px solid #ddd;
-  border-radius:8px;
-  padding:9px;
-  font-size:13px;
-}
-
-.subject-option label{
-  display:flex;
-  align-items:center;
-  gap:7px;
-  margin:0;
-  cursor:pointer;
-}
-
-.subject-option input{
-  width:auto;
-}
-
-.section-subjects{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  margin-top:15px;
-}
-
-.section-box{
-  border:1px solid #ddd;
-  border-radius:11px;
-  padding:13px;
-  background:#fafafa;
-}
-
-.section-box h3{
-  font-size:14px;
-  margin-bottom:9px;
-}
-
-.schedule-row{
-  display:grid;
-  grid-template-columns:1fr 1fr 100px;
-  gap:10px;
-  margin-bottom:10px;
-}
-
-.remove-btn{
-  padding:8px 10px;
-  font-size:12px;
-}
-
 .status{
   display:none;
-  padding:13px;
+  padding:12px;
   border-radius:10px;
-  margin-top:15px;
+  margin-top:12px;
   font-size:13px;
+}
+
+.status.show{
+  display:block;
 }
 
 .status.success{
-  display:block;
-  background:#e8f8ed;
-  border:1px solid #b4dfbf;
-  color:#17652c;
+  background:#e8f7ed;
+  color:#176534;
 }
 
 .status.error{
-  display:block;
   background:#ffe8e8;
-  border:1px solid #edb0b0;
-  color:#9b1c1c;
+  color:#991b1b;
 }
 
 .summary{
   display:grid;
   grid-template-columns:repeat(5,1fr);
-  gap:10px;
-  margin-top:15px;
+  gap:8px;
 }
 
-.summary-box{
-  background:#f5f5f5;
+.stat{
+  background:#f7f7f7;
+  border-radius:11px;
   padding:13px;
-  border-radius:10px;
-  text-align:center;
 }
 
-.summary-box strong{
+.stat strong{
   display:block;
-  font-size:20px;
+  font-size:21px;
 }
 
-.summary-box span{
-  color:#777;
+.stat span{
   font-size:11px;
+  color:#777;
 }
 
-.notice{
-  background:#fff8df;
-  border:1px solid #ead58b;
-  border-radius:10px;
-  padding:13px;
-  font-size:13px;
-  line-height:1.5;
-}
+@media(max-width:650px){
 
-@media(max-width:700px){
+  body{
+    padding:10px;
+  }
 
-  .form-grid,
-  .form-grid.three,
-  .section-subjects{
+  .form-grid{
+    grid-template-columns:1fr;
+  }
+
+  .form-row{
     grid-template-columns:1fr;
   }
 
@@ -291,13 +268,6 @@ button{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .subject-checkboxes{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-  .schedule-row{
-    grid-template-columns:1fr;
-  }
 }
 </style>
 </head>
@@ -308,13 +278,13 @@ button{
 
 <header>
   <h1>Institute Setup</h1>
-  <p>Define the institute. The optimizer will use this information to build the timetable.</p>
+  <p>Configure the structure of your institute before generating the timetable.</p>
 </header>
 
 
-<!-- =====================================================
+<!-- =====================================
      BASIC INFORMATION
-===================================================== -->
+===================================== -->
 
 <div class="card">
 
@@ -328,7 +298,6 @@ button{
 
     <div>
       <label>Institute Name</label>
-
       <input
         id="instituteName"
         type="text"
@@ -338,7 +307,6 @@ button{
 
     <div>
       <label>Academic Year</label>
-
       <input
         id="academicYear"
         type="text"
@@ -351,19 +319,19 @@ button{
 </div>
 
 
-<!-- =====================================================
+<!-- =====================================
      BUILDINGS
-===================================================== -->
+===================================== -->
 
 <div class="card">
 
   <h2>2. Buildings</h2>
 
   <p class="description">
-    Add all buildings used by the institute.
+    Add every building where classes or teachers may be assigned.
   </p>
 
-  <div class="form-grid">
+  <div class="form-row">
 
     <div>
       <label>Building Name</label>
@@ -375,43 +343,33 @@ button{
       >
     </div>
 
-  </div>
-
-  <div class="actions">
-
     <button
       class="primary"
       onclick="addBuilding()"
     >
-      + Add Building
+      Add Building
     </button>
 
   </div>
 
-  <div id="buildingList" class="list">
-
-    <div class="empty">
-      No buildings added yet.
-    </div>
-
-  </div>
+  <div id="buildingList" class="list"></div>
 
 </div>
 
 
-<!-- =====================================================
+<!-- =====================================
      SUBJECTS
-===================================================== -->
+===================================== -->
 
 <div class="card">
 
   <h2>3. Subjects</h2>
 
   <p class="description">
-    Add every subject offered by the institute.
+    Add every subject taught anywhere in the institute.
   </p>
 
-  <div class="form-grid">
+  <div class="form-row">
 
     <div>
       <label>Subject Name</label>
@@ -419,63 +377,49 @@ button{
       <input
         id="subjectName"
         type="text"
-        placeholder="Example: Physics"
+        placeholder="Example: Mathematics"
       >
     </div>
-
-  </div>
-
-  <div class="actions">
 
     <button
       class="primary"
       onclick="addSubject()"
     >
-      + Add Subject
+      Add Subject
     </button>
 
   </div>
 
-  <div id="subjectList" class="list">
-
-    <div class="empty">
-      No subjects added yet.
-    </div>
-
-  </div>
+  <div id="subjectList" class="list"></div>
 
 </div>
 
 
-<!-- =====================================================
-     CLASSES AND SECTIONS
-===================================================== -->
+<!-- =====================================
+     SECTIONS
+===================================== -->
 
 <div class="card">
 
   <h2>4. Classes & Sections</h2>
 
   <p class="description">
-    Create each class/section and choose exactly which
-    subjects that section studies.
+    Create each section and choose which subjects that section actually studies.
   </p>
 
-  <div class="form-grid three">
+  <div class="form-grid">
 
     <div>
-
       <label>Class / Year</label>
 
       <input
-        id="className"
+        id="sectionClass"
         type="text"
-        placeholder="Example: 2nd Year"
+        placeholder="Example: 1st Year"
       >
-
     </div>
 
     <div>
-
       <label>Section</label>
 
       <input
@@ -483,43 +427,26 @@ button{
         type="text"
         placeholder="Example: A"
       >
-
-    </div>
-
-    <div>
-
-      <label>Building</label>
-
-      <select id="sectionBuilding">
-
-        <option value="">
-          Select building
-        </option>
-
-      </select>
-
     </div>
 
   </div>
 
-  <div style="margin-top:15px;">
+  <br>
 
-    <label>
-      Subjects studied by this section
-    </label>
+  <label>Building</label>
 
-    <div
-      id="sectionSubjects"
-      class="subject-checkboxes"
-    >
+  <select id="sectionBuilding">
+    <option value="">Select building</option>
+  </select>
 
-      <div class="empty">
-        Add subjects first.
-      </div>
+  <br><br>
 
-    </div>
+  <label>Subjects studied by this section</label>
 
-  </div>
+  <div
+    id="sectionSubjects"
+    class="check-grid"
+  ></div>
 
   <div class="actions">
 
@@ -527,52 +454,42 @@ button{
       class="primary"
       onclick="addSection()"
     >
-      + Add Section
+      Add Section
     </button>
 
   </div>
 
-  <div id="sectionList" class="list">
-
-    <div class="empty">
-      No sections added yet.
-    </div>
-
-  </div>
+  <div id="sectionList" class="list"></div>
 
 </div>
 
 
-<!-- =====================================================
+<!-- =====================================
      TEACHERS
-===================================================== -->
+===================================== -->
 
 <div class="card">
 
   <h2>5. Teachers</h2>
 
   <p class="description">
-    Add teachers and define which subjects they can teach.
-    A teacher can teach more than one subject.
+    Add teachers and select the subjects they are capable of teaching.
   </p>
 
-  <div class="form-grid three">
+  <div class="form-grid">
 
     <div>
-
       <label>Teacher Name</label>
 
       <input
         id="teacherName"
         type="text"
-        placeholder="Example: Rahul Sharma"
+        placeholder="Example: Teacher 1"
       >
-
     </div>
 
     <div>
-
-      <label>Maximum Lectures / Day</label>
+      <label>Maximum lectures per day</label>
 
       <input
         id="teacherMax"
@@ -580,40 +497,84 @@ button{
         min="1"
         value="5"
       >
-
-    </div>
-
-    <div>
-
-      <label>Primary Building</label>
-
-      <select id="teacherBuilding">
-
-        <option value="">
-          No fixed building
-        </option>
-
-      </select>
-
     </div>
 
   </div>
 
-  <div style="margin-top:15px;">
+  <br>
 
-    <label>
-      Subjects this teacher can teach
-    </label>
+  <label>Primary Building</label>
 
-    <div
-      id="teacherSubjects"
-      class="subject-checkboxes"
+  <select id="teacherBuilding">
+    <option value="">No fixed building</option>
+  </select>
+
+  <br><br>
+
+  <label>Subjects this teacher can teach</label>
+
+  <div
+    id="teacherSubjects"
+    class="check-grid"
+  ></div>
+
+  <div class="actions">
+
+    <button
+      class="primary"
+      onclick="addTeacher()"
     >
+      Add Teacher
+    </button>
 
-      <div class="empty">
-        Add subjects first.
-      </div>
+  </div>
 
+  <div id="teacherList" class="list"></div>
+
+</div>
+
+
+<!-- =====================================
+     PERIODS
+===================================== -->
+
+<div class="card">
+
+  <h2>6. Periods</h2>
+
+  <p class="description">
+    Define the institute's daily periods.
+  </p>
+
+  <div class="form-grid">
+
+    <div>
+      <label>Period Number</label>
+
+      <input
+        id="periodNumber"
+        type="number"
+        min="1"
+        placeholder="1"
+      >
+    </div>
+
+    <div>
+      <label>Start Time</label>
+
+      <input
+        id="periodStart"
+        type="time"
+      >
+    </div>
+
+    <div>
+      <label>End Time</label>
+
+      <input
+        id="periodEnd"
+        type="time"
+      >
     </div>
 
   </div>
@@ -622,87 +583,34 @@ button{
 
     <button
       class="primary"
-      onclick="addTeacher()"
-    >
-      + Add Teacher
-    </button>
-
-  </div>
-
-  <div id="teacherList" class="list">
-
-    <div class="empty">
-      No teachers added yet.
-    </div>
-
-  </div>
-
-</div>
-
-
-<!-- =====================================================
-     PERIODS
-===================================================== -->
-
-<div class="card">
-
-  <h2>6. Periods & Timings</h2>
-
-  <p class="description">
-    Define the actual daily schedule of the institute.
-  </p>
-
-  <div class="schedule-row">
-
-    <input
-      id="periodStart"
-      type="time"
-      value="09:40"
-    >
-
-    <input
-      id="periodEnd"
-      type="time"
-      value="10:25"
-    >
-
-    <button
-      class="secondary"
       onclick="addPeriod()"
     >
-      + Add Period
+      Add Period
     </button>
 
   </div>
 
-  <div id="periodList" class="list">
-
-    <div class="empty">
-      No periods added yet.
-    </div>
-
-  </div>
+  <div id="periodList" class="list"></div>
 
 </div>
 
 
-<!-- =====================================================
+<!-- =====================================
      RULES
-===================================================== -->
+===================================== -->
 
 <div class="card">
 
   <h2>7. Scheduling Rules</h2>
 
   <p class="description">
-    These rules guide the optimizer when creating the timetable.
+    These are default rules. The timetable engine will use them later.
   </p>
 
-  <div class="form-grid three">
+  <div class="form-grid">
 
     <div>
-
-      <label>Default Maximum Lectures</label>
+      <label>Default maximum lectures/day</label>
 
       <input
         id="defaultMaxLectures"
@@ -710,12 +618,10 @@ button{
         min="1"
         value="5"
       >
-
     </div>
 
     <div>
-
-      <label>Desired Free Lectures</label>
+      <label>Desired free lectures/day</label>
 
       <input
         id="desiredFreeLectures"
@@ -723,70 +629,56 @@ button{
         min="0"
         value="1"
       >
-
     </div>
 
     <div>
-
-      <label>Maximum Daily Absences</label>
+      <label>Maximum teacher absences/day</label>
 
       <input
         id="maxAbsences"
         type="number"
         min="0"
-        value="3"
+        value="5"
       >
-
     </div>
-
-  </div>
-
-  <br>
-
-  <div class="notice">
-
-    <b>Building movement:</b>
-    The optimizer will try to keep teachers in their
-    current/primary building and avoid unnecessary movement.
-    We will make this rule configurable in a later version.
 
   </div>
 
 </div>
 
 
-<!-- =====================================================
+<!-- =====================================
      SUMMARY
-===================================================== -->
+===================================== -->
 
 <div class="card">
 
-  <h2>Setup Summary</h2>
+  <h2>8. Setup Summary</h2>
 
-  <div id="summary" class="summary">
+  <div class="summary">
 
-    <div class="summary-box">
-      <strong>0</strong>
+    <div class="stat">
+      <strong id="countBuildings">0</strong>
       <span>Buildings</span>
     </div>
 
-    <div class="summary-box">
-      <strong>0</strong>
+    <div class="stat">
+      <strong id="countSubjects">0</strong>
       <span>Subjects</span>
     </div>
 
-    <div class="summary-box">
-      <strong>0</strong>
+    <div class="stat">
+      <strong id="countSections">0</strong>
       <span>Sections</span>
     </div>
 
-    <div class="summary-box">
-      <strong>0</strong>
+    <div class="stat">
+      <strong id="countTeachers">0</strong>
       <span>Teachers</span>
     </div>
 
-    <div class="summary-box">
-      <strong>0</strong>
+    <div class="stat">
+      <strong id="countPeriods">0</strong>
       <span>Periods</span>
     </div>
 
@@ -795,98 +687,115 @@ button{
 </div>
 
 
-<!-- =====================================================
+<!-- =====================================
      SAVE
-===================================================== -->
+===================================== -->
 
 <div class="card">
-
-  <h2>Save Institute</h2>
-
-  <p class="description">
-    This currently saves the institute configuration
-    inside this browser. Later this will be replaced
-    by the real backend.
-  </p>
 
   <div class="actions">
 
     <button
       class="primary"
-      onclick="saveInstitute()"
+      onclick="saveSetup()"
     >
       Save Institute
     </button>
 
     <button
       class="secondary"
-      onclick="loadSavedInstitute()"
+      onclick="loadSavedSetup()"
     >
-      Load Saved Setup
+      Reload Saved
     </button>
 
     <button
       class="danger"
       onclick="clearSetup()"
     >
-      Clear Setup
+      Clear Everything
     </button>
 
   </div>
 
-  <div id="status" class="status"></div>
+  <div
+    id="status"
+    class="status"
+  ></div>
 
 </div>
+
 
 </div>
 
 
 <script>
 
-/* =========================================================
+/* =========================================
+   STORAGE
+========================================= */
+
+const STORAGE_KEY =
+  "institute_optimizer_setup";
+
+
+/* =========================================
    DATA
-========================================================= */
+========================================= */
 
 let buildings = [];
-
 let subjects = [];
-
 let sections = [];
-
 let teachers = [];
-
 let periods = [];
 
+let rules = {
 
-/* =========================================================
-   UTILITY
-========================================================= */
+  defaultMaxLectures: 5,
+
+  desiredFreeLectures: 1,
+
+  maxAbsences: 5
+
+};
+
+
+/* =========================================
+   ID GENERATOR
+========================================= */
 
 function makeId(prefix){
 
-  return prefix + "_" +
+  return prefix +
+    "_" +
     Date.now().toString(36) +
-    Math.random().toString(36).slice(2,7);
+    "_" +
+    Math.random()
+      .toString(36)
+      .substring(2,8);
 
 }
 
 
-function showStatus(message,type){
+/* =========================================
+   ESCAPE
+========================================= */
 
-  const box =
-    document.getElementById("status");
+function escapeHtml(value){
 
-  box.className =
-    "status " + type;
-
-  box.innerHTML = message;
+  return String(value || "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 
 }
 
 
-/* =========================================================
+/* =========================================
    BUILDINGS
-========================================================= */
+========================================= */
 
 function addBuilding(){
 
@@ -896,27 +805,34 @@ function addBuilding(){
   const name =
     input.value.trim();
 
+
   if(!name){
 
-    alert("Enter a building name.");
+    showStatus(
+      "Enter a building name first.",
+      "error"
+    );
 
     return;
-
   }
 
 
-  if(
+  const exists =
     buildings.some(
-      b =>
-        b.name.toLowerCase() ===
+      building =>
+        building.name.toLowerCase() ===
         name.toLowerCase()
-    )
-  ){
+    );
 
-    alert("This building already exists.");
+
+  if(exists){
+
+    showStatus(
+      "This building already exists.",
+      "error"
+    );
 
     return;
-
   }
 
 
@@ -931,328 +847,69 @@ function addBuilding(){
 
   input.value = "";
 
-  renderAll();
+  renderBuildings();
+
+  renderBuildingSelects();
+
+  updateSummary();
+
+  showStatus(
+    "Building added.",
+    "success"
+  );
 
 }
 
 
-/* =========================================================
-   SUBJECTS
-========================================================= */
+function renderBuildings(){
 
-function addSubject(){
+  const list =
+    document.getElementById("buildingList");
 
-  const input =
-    document.getElementById("subjectName");
 
-  const name =
-    input.value.trim();
+  if(buildings.length === 0){
 
-  if(!name){
-
-    alert("Enter a subject name.");
+    list.innerHTML =
+      `<div class="empty">
+        No buildings added yet.
+      </div>`;
 
     return;
-
   }
 
 
-  if(
-    subjects.some(
-      s =>
-        s.name.toLowerCase() ===
-        name.toLowerCase()
-    )
-  ){
+  list.innerHTML =
+    buildings.map(building => `
 
-    alert("This subject already exists.");
+      <div class="item">
 
-    return;
+        <div class="item-main">
 
-  }
+          <div class="item-title">
+            ${escapeHtml(building.name)}
+          </div>
 
+          <div class="item-sub">
+            Building
+          </div>
 
-  subjects.push({
+        </div>
 
-    id: makeId("subject"),
+        <button
+          class="danger small"
+          onclick="deleteBuilding('${building.id}')"
+        >
+          Delete
+        </button>
 
-    name: name
+      </div>
 
-  });
-
-
-  input.value = "";
-
-  renderAll();
+    `).join("");
 
 }
 
 
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-function addSection(){
-
-  const className =
-    document
-      .getElementById("className")
-      .value
-      .trim();
-
-  const sectionName =
-    document
-      .getElementById("sectionName")
-      .value
-      .trim();
-
-  const buildingId =
-    document
-      .getElementById("sectionBuilding")
-      .value;
-
-
-  if(!className){
-
-    alert("Enter class/year.");
-
-    return;
-
-  }
-
-
-  if(!sectionName){
-
-    alert("Enter section name.");
-
-    return;
-
-  }
-
-
-  if(subjects.length === 0){
-
-    alert("Add subjects first.");
-
-    return;
-
-  }
-
-
-  const selectedSubjects =
-    [
-      ...document.querySelectorAll(
-        "#sectionSubjects input:checked"
-      )
-    ].map(
-      input => input.value
-    );
-
-
-  if(selectedSubjects.length === 0){
-
-    alert(
-      "Select at least one subject for this section."
-    );
-
-    return;
-
-  }
-
-
-  sections.push({
-
-    id: makeId("section"),
-
-    className: className,
-
-    name: sectionName,
-
-    buildingId: buildingId,
-
-    subjectIds: selectedSubjects
-
-  });
-
-
-  document.getElementById(
-    "className"
-  ).value = "";
-
-  document.getElementById(
-    "sectionName"
-  ).value = "";
-
-
-  document.getElementById(
-    "sectionBuilding"
-  ).value = "";
-
-
-  document
-    .querySelectorAll(
-      "#sectionSubjects input"
-    )
-    .forEach(
-      input => input.checked = false
-    );
-
-
-  renderAll();
-
-}
-
-
-/* =========================================================
-   TEACHERS
-========================================================= */
-
-function addTeacher(){
-
-  const name =
-    document
-      .getElementById("teacherName")
-      .value
-      .trim();
-
-  const maxLectures =
-    Number(
-      document.getElementById(
-        "teacherMax"
-      ).value
-    );
-
-  const buildingId =
-    document.getElementById(
-      "teacherBuilding"
-    ).value;
-
-
-  if(!name){
-
-    alert("Enter teacher name.");
-
-    return;
-
-  }
-
-
-  if(!maxLectures || maxLectures < 1){
-
-    alert("Enter a valid maximum lecture count.");
-
-    return;
-
-  }
-
-
-  const selectedSubjects =
-    [
-      ...document.querySelectorAll(
-        "#teacherSubjects input:checked"
-      )
-    ].map(
-      input => input.value
-    );
-
-
-  if(selectedSubjects.length === 0){
-
-    alert(
-      "Select at least one subject this teacher can teach."
-    );
-
-    return;
-
-  }
-
-
-  teachers.push({
-
-    id: makeId("teacher"),
-
-    name: name,
-
-    subjectIds: selectedSubjects,
-
-    maxLectures: maxLectures,
-
-    buildingId: buildingId,
-
-    type: "subject"
-
-  });
-
-
-  document.getElementById(
-    "teacherName"
-  ).value = "";
-
-  renderAll();
-
-}
-
-
-/* =========================================================
-   PERIODS
-========================================================= */
-
-function addPeriod(){
-
-  const start =
-    document.getElementById(
-      "periodStart"
-    ).value;
-
-  const end =
-    document.getElementById(
-      "periodEnd"
-    ).value;
-
-
-  if(!start || !end){
-
-    alert("Enter both start and end time.");
-
-    return;
-
-  }
-
-
-  if(start >= end){
-
-    alert(
-      "Period end time must be after start time."
-    );
-
-    return;
-
-  }
-
-
-  periods.push({
-
-    id: makeId("period"),
-
-    number: periods.length + 1,
-
-    start: start,
-
-    end: end
-
-  });
-
-
-  renderAll();
-
-}
-
-
-/* =========================================================
-   REMOVE FUNCTIONS
-========================================================= */
-
-function removeBuilding(id){
+function deleteBuilding(id){
 
   buildings =
     buildings.filter(
@@ -1260,10 +917,6 @@ function removeBuilding(id){
         building.id !== id
     );
 
-
-  /*
-    Remove building reference from sections/teachers.
-  */
 
   sections.forEach(section => {
 
@@ -1287,12 +940,137 @@ function removeBuilding(id){
   });
 
 
-  renderAll();
+  renderBuildings();
+
+  renderBuildingSelects();
+
+  renderSections();
+
+  renderTeachers();
+
+  updateSummary();
 
 }
 
 
-function removeSubject(id){
+/* =========================================
+   SUBJECTS
+========================================= */
+
+function addSubject(){
+
+  const input =
+    document.getElementById("subjectName");
+
+  const name =
+    input.value.trim();
+
+
+  if(!name){
+
+    showStatus(
+      "Enter a subject name first.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  const exists =
+    subjects.some(
+      subject =>
+        subject.name.toLowerCase() ===
+        name.toLowerCase()
+    );
+
+
+  if(exists){
+
+    showStatus(
+      "This subject already exists.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  subjects.push({
+
+    id: makeId("subject"),
+
+    name: name
+
+  });
+
+
+  input.value = "";
+
+  renderSubjects();
+
+  updateSummary();
+
+  showStatus(
+    "Subject added.",
+    "success"
+  );
+
+}
+
+
+function renderSubjects(){
+
+  const list =
+    document.getElementById("subjectList");
+
+
+  if(subjects.length === 0){
+
+    list.innerHTML =
+      `<div class="empty">
+        No subjects added yet.
+      </div>`;
+
+  }else{
+
+    list.innerHTML =
+      subjects.map(subject => `
+
+        <div class="item">
+
+          <div class="item-main">
+
+            <div class="item-title">
+              ${escapeHtml(subject.name)}
+            </div>
+
+            <div class="item-sub">
+              Subject
+            </div>
+
+          </div>
+
+          <button
+            class="danger small"
+            onclick="deleteSubject('${subject.id}')"
+          >
+            Delete
+          </button>
+
+        </div>
+
+      `).join("");
+
+  }
+
+
+  renderSubjectCheckboxes();
+
+}
+
+
+function deleteSubject(id){
 
   subjects =
     subjects.filter(
@@ -1304,10 +1082,11 @@ function removeSubject(id){
   sections.forEach(section => {
 
     section.subjectIds =
-      section.subjectIds.filter(
-        subjectId =>
-          subjectId !== id
-      );
+      (section.subjectIds || [])
+        .filter(
+          subjectId =>
+            subjectId !== id
+        );
 
   });
 
@@ -1315,135 +1094,37 @@ function removeSubject(id){
   teachers.forEach(teacher => {
 
     teacher.subjectIds =
-      teacher.subjectIds.filter(
-        subjectId =>
-          subjectId !== id
-      );
+      (teacher.subjectIds || [])
+        .filter(
+          subjectId =>
+            subjectId !== id
+        );
 
   });
 
 
-  renderAll();
+  renderSubjects();
+
+  renderSections();
+
+  renderTeachers();
+
+  updateSummary();
 
 }
 
 
-function removeSection(id){
-
-  sections =
-    sections.filter(
-      section =>
-        section.id !== id
-    );
-
-
-  renderAll();
-
-}
-
-
-function removeTeacher(id){
-
-  teachers =
-    teachers.filter(
-      teacher =>
-        teacher.id !== id
-    );
-
-
-  renderAll();
-
-}
-
-
-function removePeriod(id){
-
-  periods =
-    periods.filter(
-      period =>
-        period.id !== id
-    );
-
-
-  /*
-    Renumber periods after removal.
-  */
-
-  periods.forEach(
-    (period,index) =>
-      period.number = index + 1
-  );
-
-
-  renderAll();
-
-}
-
-
-/* =========================================================
-   RENDER BUILDINGS
-========================================================= */
-
-function renderBuildings(){
-
-  const list =
-    document.getElementById(
-      "buildingList"
-    );
-
-
-  if(buildings.length === 0){
-
-    list.innerHTML =
-      `<div class="empty">
-        No buildings added yet.
-      </div>`;
-
-  }else{
-
-    list.innerHTML =
-      buildings.map(building => `
-
-        <div class="item">
-
-          <div class="item-top">
-
-            <div class="item-name">
-              ${escapeHtml(building.name)}
-            </div>
-
-            <button
-              class="danger remove-btn"
-              onclick="removeBuilding('${building.id}')"
-            >
-              Remove
-            </button>
-
-          </div>
-
-        </div>
-
-      `).join("");
-
-  }
-
-}
-
-
-/* ==========   SUBJECT CHECKBOXES
-========================================================= */
+/* =========================================
+   SUBJECT CHECKBOXES
+========================================= */
 
 function renderSubjectCheckboxes(){
 
   const sectionBox =
-    document.getElementById(
-      "sectionSubjects"
-    );
+    document.getElementById("sectionSubjects");
 
   const teacherBox =
-    document.getElementById(
-      "teacherSubjects"
-    );
+    document.getElementById("teacherSubjects");
 
 
   if(subjects.length === 0){
@@ -1459,137 +1140,220 @@ function renderSubjectCheckboxes(){
       </div>`;
 
     return;
-
   }
 
 
   const html =
     subjects.map(subject => `
 
-      <div class="subject-option">
+      <label class="check">
 
-        <label>
+        <input
+          type="checkbox"
+          value="${subject.id}"
+          class="section-subject-checkbox"
+        >
 
-          <input
-            type="checkbox"
-            value="${subject.id}"
-          >
-
+        <span>
           ${escapeHtml(subject.name)}
+        </span>
 
-        </label>
-
-      </div>
+      </label>
 
     `).join("");
 
 
   sectionBox.innerHTML = html;
 
-  teacherBox.innerHTML = html;
+
+  teacherBox.innerHTML =
+    subjects.map(subject => `
+
+      <label class="check">
+
+        <input
+          type="checkbox"
+          value="${subject.id}"
+          class="teacher-subject-checkbox"
+        >
+
+        <span>
+          ${escapeHtml(subject.name)}
+        </span>
+
+      </label>
+
+    `).join("");
 
 }
 
 
-/* =========================================================
-   RENDER BUILDING SELECTS
-========================================================= */
+/* =========================================
+   BUILDING SELECTS
+========================================= */
 
 function renderBuildingSelects(){
 
   const sectionSelect =
-    document.getElementById(
-      "sectionBuilding"
-    );
+    document.getElementById("sectionBuilding");
 
   const teacherSelect =
-    document.getElementById(
-      "teacherBuilding"
-    );
+    document.getElementById("teacherBuilding");
 
 
-  const currentSection =
-    sectionSelect.value;
-
-  const currentTeacher =
-    teacherSelect.value;
-
-
-  sectionSelect.innerHTML = `
-    <option value="">
-      No building selected
-    </option>
-  `;
+  sectionSelect.innerHTML =
+    `<option value="">
+      Select building
+    </option>`;
 
 
-  teacherSelect.innerHTML = `
-    <option value="">
+  teacherSelect.innerHTML =
+    `<option value="">
       No fixed building
-    </option>
-  `;
+    </option>`;
 
 
   buildings.forEach(building => {
 
-    const option =
-      document.createElement("option");
-
-    option.value =
-      building.id;
-
-    option.textContent =
-      building.name;
+    sectionSelect.innerHTML += `
+      <option value="${building.id}">
+        ${escapeHtml(building.name)}
+      </option>
+    `;
 
 
-    sectionSelect.appendChild(
-      option.cloneNode(true)
-    );
-
-    teacherSelect.appendChild(
-      option
-    );
+    teacherSelect.innerHTML += `
+      <option value="${building.id}">
+        ${escapeHtml(building.name)}
+      </option>
+    `;
 
   });
-
-
-  if(
-    buildings.some(
-      building =>
-        building.id === currentSection
-    )
-  ){
-
-    sectionSelect.value =
-      currentSection;
-
-  }
-
-
-  if(
-    buildings.some(
-      building =>
-        building.id === currentTeacher
-    )
-  ){
-
-    teacherSelect.value =
-      currentTeacher;
-
-  }
 
 }
 
 
-/* =========================================================
-   RENDER SECTIONS
-========================================================= */
+/* =========================================
+   SECTIONS
+========================================= */
+
+function addSection(){
+
+  const classInput =
+    document.getElementById("sectionClass");
+
+  const nameInput =
+    document.getElementById("sectionName");
+
+  const buildingSelect =
+    document.getElementById("sectionBuilding");
+
+
+  const className =
+    classInput.value.trim();
+
+  const name =
+    nameInput.value.trim();
+
+  const buildingId =
+    buildingSelect.value;
+
+
+  if(!className || !name){
+
+    showStatus(
+      "Enter class/year and section.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  const subjectIds =
+    Array.from(
+      document.querySelectorAll(
+        ".section-subject-checkbox:checked"
+      )
+    ).map(
+      checkbox =>
+        checkbox.value
+    );
+
+
+  if(subjectIds.length === 0){
+
+    showStatus(
+      "Select at least one subject for this section.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  const duplicate =
+    sections.some(section =>
+
+      section.className.toLowerCase() ===
+      className.toLowerCase() &&
+
+      section.name.toLowerCase() ===
+      name.toLowerCase()
+
+    );
+
+
+  if(duplicate){
+
+    showStatus(
+      "This class and section already exists.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  sections.push({
+
+    id: makeId("section"),
+
+    className: className,
+
+    name: name,
+
+    buildingId: buildingId,
+
+    subjectIds: subjectIds
+
+  });
+
+
+  classInput.value = "";
+
+  nameInput.value = "";
+
+  buildingSelect.value = "";
+
+  renderSubjectCheckboxes();
+
+  renderSections();
+
+  updateSummary();
+
+  showStatus(
+    "Section added.",
+    "success"
+  );
+
+}
+
 
 function renderSections(){
 
   const list =
-    document.getElementById(
-      "sectionList"
-    );
+    document.getElementById("sectionList");
 
 
   if(sections.length === 0){
@@ -1600,7 +1364,6 @@ function renderSections(){
       </div>`;
 
     return;
-
   }
 
 
@@ -1614,74 +1377,61 @@ function renderSections(){
         );
 
 
-      const sectionSubjects =
-        section.subjectIds.map(
-          subjectId => {
+      const subjectNames =
+        (section.subjectIds || [])
+          .map(id => {
 
             const subject =
               subjects.find(
-                s =>
-                  s.id === subjectId
+                s => s.id === id
               );
 
             return subject
               ? subject.name
-              : "Unknown";
+              : "";
 
-          }
-        );
+          })
+          .filter(Boolean);
 
 
       return `
 
         <div class="item">
 
-          <div class="item-top">
+          <div class="item-main">
 
-            <div>
+            <div class="item-title">
 
-              <div class="item-name">
-
-                ${escapeHtml(section.className)}
-                —
-                ${escapeHtml(section.name)}
-
-              </div>
-
-              <div class="item-details">
-
-                Building:
-                ${
-                  building
-                    ? escapeHtml(building.name)
-                    : "Not assigned"
-                }
-
-                <br>
-
-                Subjects:
-                ${
-                  sectionSubjects.length
-                    ? sectionSubjects
-                        .map(
-                          escapeHtml
-                        )
-                        .join(", ")
-                    : "None"
-                }
-
-              </div>
+              ${escapeHtml(section.className)}
+              ${escapeHtml(section.className)}
+              -
+              ${escapeHtml(section.name)}
 
             </div>
 
-            <button
-              class="danger remove-btn"
-              onclick="removeSection('${section.id}')"
-            >
-              Remove
-            </button>
+            <div class="item-sub">
+
+              ${escapeHtml(
+                building
+                  ? building.name
+                  : "No building"
+              )}
+
+              •
+
+              ${subjectNames.length}
+              subjects
+
+            </div>
 
           </div>
+
+          <button
+            class="danger small"
+            onclick="deleteSection('${section.id}')"
+          >
+            Delete
+          </button>
 
         </div>
 
@@ -1692,16 +1442,141 @@ function renderSections(){
 }
 
 
-/* =========================================================
-   RENDER TEACHERS
-========================================================= */
+function deleteSection(id){
+
+  sections =
+    sections.filter(
+      section =>
+        section.id !== id
+    );
+
+
+  renderSections();
+
+  updateSummary();
+
+}
+
+
+/* =========================================
+   TEACHERS
+========================================= */
+
+function addTeacher(){
+
+  const nameInput =
+    document.getElementById("teacherName");
+
+  const maxInput =
+    document.getElementById("teacherMax");
+
+  const buildingSelect =
+    document.getElementById("teacherBuilding");
+
+
+  const name =
+    nameInput.value.trim();
+
+
+  let maxLectures =
+    parseInt(
+      maxInput.value,
+      10
+    );
+
+
+  const buildingId =
+    buildingSelect.value;
+
+
+  if(!name){
+
+    showStatus(
+      "Enter teacher name.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  if(
+    isNaN(maxLectures) ||
+    maxLectures < 1
+  ){
+
+    showStatus(
+      "Maximum lectures must be at least 1.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  const subjectIds =
+    Array.from(
+      document.querySelectorAll(
+        ".teacher-subject-checkbox:checked"
+      )
+    ).map(
+      checkbox =>
+        checkbox.value
+    );
+
+
+  if(subjectIds.length === 0){
+
+    showStatus(
+      "Select at least one subject this teacher can teach.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  teachers.push({
+
+    id: makeId("teacher"),
+
+    name: name,
+
+    subjectIds: subjectIds,
+
+    maxLectures: maxLectures,
+
+    buildingId: buildingId,
+
+    type: "subject"
+
+  });
+
+
+  nameInput.value = "";
+
+  maxInput.value = "5";
+
+  buildingSelect.value = "";
+
+  renderSubjectCheckboxes();
+
+  renderTeachers();
+
+  updateSummary();
+
+  showStatus(
+    "Teacher added.",
+    "success"
+  );
+
+}
+
 
 function renderTeachers(){
 
   const list =
-    document.getElementById(
-      "teacherList"
-    );
+    document.getElementById("teacherList");
 
 
   if(teachers.length === 0){
@@ -1712,7 +1587,6 @@ function renderTeachers(){
       </div>`;
 
     return;
-
   }
 
 
@@ -1726,74 +1600,63 @@ function renderTeachers(){
         );
 
 
-      const teacherSubjects =
-        teacher.subjectIds.map(
-          subjectId => {
+      const subjectNames =
+        (teacher.subjectIds || [])
+          .map(id => {
 
             const subject =
               subjects.find(
-                s =>
-                  s.id === subjectId
+                s => s.id === id
               );
 
             return subject
               ? subject.name
-              : "Unknown";
+              : "";
 
-          }
-        );
+          })
+          .filter(Boolean);
 
 
       return `
 
         <div class="item">
 
-          <div class="item-top">
+          <div class="item-main">
 
-            <div>
+            <div class="item-title">
 
-              <div class="item-name">
-                ${escapeHtml(teacher.name)}
-              </div>
-
-              <div class="item-details">
-
-                Can teach:
-                ${
-                  teacherSubjects
-                    .map(
-                      escapeHtml
-                    )
-                    .join(", ")
-                }
-
-                <br>
-
-                Maximum:
-                ${teacher.maxLectures}
-                lectures/day
-
-                <br>
-
-                Building:
-                ${
-                  building
-                    ? escapeHtml(building.name)
-                    : "No fixed building"
-                }
-
-              </div>
+              ${escapeHtml(teacher.name)}
 
             </div>
 
-            <button
-              class="danger remove-btn"
-              onclick="removeTeacher('${teacher.id}')"
-            >
-              Remove
-            </button>
+            <div class="item-sub">
+
+              Max ${teacher.maxLectures}
+              lectures/day
+
+              •
+              
+              ${subjectNames.length}
+              subjects
+
+              •
+
+              ${escapeHtml(
+                building
+                  ? building.name
+                  : "No fixed building"
+              )}
+
+            </div>
 
           </div>
+
+          <button
+            class="danger small"
+            onclick="deleteTeacher('${teacher.id}')"
+          >
+            Delete
+          </button>
 
         </div>
 
@@ -1804,16 +1667,136 @@ function renderTeachers(){
 }
 
 
-/* =========================================================
-   RENDER PERIODS
-========================================================= */
+function deleteTeacher(id){
+
+  teachers =
+    teachers.filter(
+      teacher =>
+        teacher.id !== id
+    );
+
+
+  renderTeachers();
+
+  updateSummary();
+
+}
+
+
+/* =========================================
+   PERIODS
+========================================= */
+
+function addPeriod(){
+
+  const numberInput =
+    document.getElementById("periodNumber");
+
+  const startInput =
+    document.getElementById("periodStart");
+
+  const endInput =
+    document.getElementById("periodEnd");
+
+
+  const number =
+    parseInt(
+      numberInput.value,
+      10
+    );
+
+  const start =
+    startInput.value;
+
+  const end =
+    endInput.value;
+
+
+  if(
+    isNaN(number) ||
+    !start ||
+    !end
+  ){
+
+    showStatus(
+      "Enter period number, start time and end time.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  if(end <= start){
+
+    showStatus(
+      "End time must be after start time.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  const duplicate =
+    periods.some(
+      period =>
+        period.number === number
+    );
+
+
+  if(duplicate){
+
+    showStatus(
+      "This period number already exists.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  periods.push({
+
+    id: makeId("period"),
+
+    number: number,
+
+    start: start,
+
+    end: end
+
+  });
+
+
+  periods.sort(
+    (a,b) =>
+      a.number - b.number
+  );
+
+
+  numberInput.value = "";
+
+  startInput.value = "";
+
+  endInput.value = "";
+
+  renderPeriods();
+
+  updateSummary();
+
+  showStatus(
+    "Period added.",
+    "success"
+  );
+
+}
+
 
 function renderPeriods(){
 
   const list =
-    document.getElementById(
-      "periodList"
-    );
+    document.getElementById("periodList");
 
 
   if(periods.length === 0){
@@ -1824,7 +1807,6 @@ function renderPeriods(){
       </div>`;
 
     return;
-
   }
 
 
@@ -1833,32 +1815,30 @@ function renderPeriods(){
 
       <div class="item">
 
-        <div class="item-top">
+        <div class="item-main">
 
-          <div>
+          <div class="item-title">
 
-            <div class="item-name">
-              Period ${period.number}
-            </div>
-
-            <div class="item-details">
-
-              ${period.start}
-              —
-              ${period.end}
-
-            </div>
+            Period ${period.number}
 
           </div>
 
-          <button
-            class="danger remove-btn"
-            onclick="removePeriod('${period.id}')"
-          >
-            Remove
-          </button>
+          <div class="item-sub">
+
+            ${escapeHtml(period.start)}
+            -
+            ${escapeHtml(period.end)}
+
+          </div>
 
         </div>
+
+        <button
+          class="danger small"
+          onclick="deletePeriod('${period.id}')"
+        >
+          Delete
+        </button>
 
       </div>
 
@@ -1867,290 +1847,184 @@ function renderPeriods(){
 }
 
 
-/* =========================================================
-   SUMMARY
-========================================================= */
+function deletePeriod(id){
 
-function renderSummary(){
+  periods =
+    periods.filter(
+      period =>
+        period.id !== id
+    );
 
-  document.getElementById(
-    "summary"
-  ).innerHTML = `
-
-    <div class="summary-box">
-
-      <strong>${buildings.length}</strong>
-
-      <span>Buildings</span>
-
-    </div>
-
-    <div class="summary-box">
-
-      <strong>${subjects.length}</strong>
-
-      <span>Subjects</span>
-
-    </div>
-
-    <div class="summary-box">
-
-      <strong>${sections.length}</strong>
-
-      <span>Sections</span>
-
-    </div>
-
-    <div class="summary-box">
-
-      <strong>${teachers.length}</strong>
-
-      <span>Teachers</span>
-
-    </div>
-
-    <div class="summary-box">
-
-      <strong>${periods.length}</strong>
-
-      <span>Periods</span>
-
-    </div>
-
-  `;
-
-}
-
-
-/* =========================================================
-   RENDER EVERYTHING
-========================================================= */
-
-function renderAll(){
-
-  renderBuildings();
-
-  renderSubjects();
-
-  renderBuildingSelects();
-
-  renderSections();
-
-  renderTeachers();
 
   renderPeriods();
 
-  renderSummary();
+  updateSummary();
 
 }
 
 
-/* =========================================================
-   BUILD DATA OBJECT
-========================================================= */
+/* =========================================
+   SAVE SETUP
+========================================= */
 
-function collectInstituteData(){
+function saveSetup(){
 
-  return {
+  const instituteName =
+    document
+      .getElementById("instituteName")
+      .value
+      .trim();
 
-    version: 1,
 
-    institute: {
+  const academicYear =
+    document
+      .getElementById("academicYear")
+      .value
+      .trim();
 
-      name:
-        document
-          .getElementById(
-            "instituteName"
-          )
-          .value
-          .trim(),
 
-      academicYear:
-        document
-          .getElementById(
-            "academicYear"
-          )
-          .value
-          .trim()
-
-    },
-
-    buildings: buildings,
-
-    subjects: subjects,
-
-    sections: sections,
-
-    teachers: teachers,
-
-    periods: periods,
-
-    rules: {
-
-      defaultMaxLectures:
-        Number(
-          document.getElementById(
-            "defaultMaxLectures"
-          ).value
-        ),
-
-      desiredFreeLectures:
-        Number(
-          document.getElementById(
-            "desiredFreeLectures"
-          ).value
-        ),
-
-      maxAbsences:
-        Number(
-          document.getElementById(
-            "maxAbsences"
-          ).value
-        )
-
-    }
-
-  };
-
-}
-
-
-/* =========================================================
-   VALIDATE SETUP
-========================================================= */
-
-function validateSetup(data){
-
-  if(!data.institute.name){
-
-    return "Enter the institute name.";
-
-  }
-
-
-  if(data.buildings.length === 0){
-
-    return "Add at least one building.";
-
-  }
-
-
-  if(data.subjects.length === 0){
-
-    return "Add at least one subject.";
-
-  }
-
-
-  if(data.sections.length === 0){
-
-    return "Add at least one section.";
-
-  }
-
-
-  if(data.teachers.length === 0){
-
-    return "Add at least one teacher.";
-
-  }
-
-
-  if(data.periods.length === 0){
-
-    return "Add at least one period.";
-
-  }
-
-
-  for(const section of data.sections){
-
-    if(section.subjectIds.length === 0){
-
-      return `
-        ${section.className} ${section.name}
-        has no subjects.
-      `;
-
-    }
-
-  }
-
-
-  for(const teacher of data.teachers){
-
-    if(teacher.subjectIds.length === 0){
-
-      return `
-        ${teacher.name}
-        has no teachable subjects.
-      `;
-
-    }
-
-  }
-
-
-  return null;
-
-}
-
-
-/* =========================================================
-   SAVE
-========================================================= */
-
-function saveInstitute(){
-
-  const data =
-    collectInstituteData();
-
-
-  const error =
-    validateSetup(data);
-
-
-  if(error){
+  if(!instituteName){
 
     showStatus(
-      "❌ " + error,
+      "Enter the institute name.",
       "error"
     );
 
     return;
-
   }
 
 
+  if(buildings.length === 0){
+
+    showStatus(
+      "Add at least one building.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  if(subjects.length === 0){
+
+    showStatus(
+      "Add at least one subject.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  if(sections.length === 0){
+
+    showStatus(
+      "Add at least one section.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  if(teachers.length === 0){
+
+    showStatus(
+      "Add at least one teacher.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  if(periods.length === 0){
+
+    showStatus(
+      "Add at least one period.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  rules = {
+
+    defaultMaxLectures:
+      parseInt(
+        document.getElementById(
+          "defaultMaxLectures"
+        ).value,
+        10
+      ) || 5,
+
+    desiredFreeLectures:
+      parseInt(
+        document.getElementById(
+          "desiredFreeLectures"
+        ).value,
+        10
+      ) || 0,
+
+    maxAbsences:
+      parseInt(
+        document.getElementById(
+          "maxAbsences"
+        ).value,
+        10
+      ) || 0
+
+  };
+
+
+  const data = {
+
+    instituteName,
+
+    academicYear,
+
+    buildings,
+
+    subjects,
+
+    sections,
+
+    teachers,
+
+    periods,
+
+    rules,
+
+    savedAt:
+      new Date().toISOString()
+
+  };
+
+
   localStorage.setItem(
-    "institute_optimizer_setup",
+    STORAGE_KEY,
     JSON.stringify(data)
   );
 
 
   showStatus(
-    "✓ Institute setup saved successfully.",
+    "Institute setup saved successfully.",
     "success"
-  );
-
-
-  console.log(
-    "Saved institute:",
-    data
   );
 
 }
 
 
-/* =========================================================
+/* =========================================
    LOAD
-========================================================= */
+========================================= */
 
-function loadSavedInstitute(){
+function loadSavedSetup(){
 
   const saved =
     localStorage.getItem(
-      "institute_optimizer_setup"
+      STORAGE_KEY
     );
 
 
@@ -2162,7 +2036,6 @@ function loadSavedInstitute(){
     );
 
     return;
-
   }
 
 
@@ -2175,58 +2048,80 @@ function loadSavedInstitute(){
     document.getElementById(
       "instituteName"
     ).value =
-      data.institute.name || "";
+      data.instituteName || "";
 
 
     document.getElementById(
       "academicYear"
     ).value =
-      data.institute.academicYear || "";
+      data.academicYear || "";
 
 
     buildings =
-      data.buildings || [];
+      Array.isArray(data.buildings)
+        ? data.buildings
+        : [];
+
 
     subjects =
-      data.subjects || [];
+      Array.isArray(data.subjects)
+        ? data.subjects
+        : [];
+
 
     sections =
-      data.sections || [];
+      Array.isArray(data.sections)
+        ? data.sections
+        : [];
+
 
     teachers =
-      data.teachers || [];
+      Array.isArray(data.teachers)
+        ? data.teachers
+        : [];
+
 
     periods =
-      data.periods || [];
+      Array.isArray(data.periods)
+        ? data.periods
+        : [];
 
 
-    if(data.rules){
+    rules =
+      data.rules || {
 
-      document.getElementById(
-        "defaultMaxLectures"
-      ).value =
-        data.rules.defaultMaxLectures ?? 5;
+        defaultMaxLectures:5,
 
+        desiredFreeLectures:1,
 
-      document.getElementById(
-        "desiredFreeLectures"
-      ).value =
-        data.rules.desiredFreeLectures ?? 1;
+        maxAbsences:5
+
+      };
 
 
-      document.getElementById(
-        "maxAbsences"
-      ).value =
-        data.rules.maxAbsences ?? 3;
+    document.getElementById(
+      "defaultMaxLectures"
+    ).value =
+      rules.defaultMaxLectures;
 
-    }
+
+    document.getElementById(
+      "desiredFreeLectures"
+    ).value =
+      rules.desiredFreeLectures;
+
+
+    document.getElementById(
+      "maxAbsences"
+    ).value =
+      rules.maxAbsences;
 
 
     renderAll();
 
 
     showStatus(
-      "✓ Saved institute setup loaded.",
+      "Saved institute loaded.",
       "success"
     );
 
@@ -2235,7 +2130,7 @@ function loadSavedInstitute(){
     console.error(error);
 
     showStatus(
-      "Could not load the saved setup.",
+      "Could not load saved institute data.",
       "error"
     );
 
@@ -2244,27 +2139,23 @@ function loadSavedInstitute(){
 }
 
 
-/* =========================================================
+/* =========================================
    CLEAR
-========================================================= */
+========================================= */
 
 function clearSetup(){
 
   const confirmed =
     confirm(
-      "Clear the entire institute setup?"
+      "This will delete the saved institute setup. Continue?"
     );
 
 
-  if(!confirmed){
-
-    return;
-
-  }
+  if(!confirmed) return;
 
 
   localStorage.removeItem(
-    "institute_optimizer_setup"
+    STORAGE_KEY
   );
 
 
@@ -2283,6 +2174,7 @@ function clearSetup(){
     "instituteName"
   ).value = "";
 
+
   document.getElementById(
     "academicYear"
   ).value = "";
@@ -2292,32 +2184,113 @@ function clearSetup(){
 
 
   showStatus(
-    "Setup cleared.",
+    "Institute setup cleared.",
     "success"
   );
 
 }
 
 
-/* =========================================================
-   HTML SAFETY
-========================================================= */
+/* =========================================
+   SUMMARY
+========================================= */
 
-function escapeHtml(value){
+function updateSummary(){
 
-  return String(value)
-    .replaceAll("&","&amp;")
-    .replaceAll("<","&lt;")
-    .replaceAll(">","&gt;")
-    .replaceAll('"',"&quot;")
-    .replaceAll("'","&#039;");
+  document.getElementById(
+    "countBuildings"
+  ).textContent =
+    buildings.length;
+
+
+  document.getElementById(
+    "countSubjects"
+  ).textContent =
+    subjects.length;
+
+
+  document.getElementById(
+    "countSections"
+  ).textContent =
+    sections.length;
+
+
+  document.getElementById(
+    "countTeachers"
+  ).textContent =
+    teachers.length;
+
+
+  document.getElementById(
+    "countPeriods"
+  ).textContent =
+    periods.length;
 
 }
 
 
-/* =========================================================
+/* =========================================
+   STATUS
+========================================= */
+
+function showStatus(message,type){
+
+  const box =
+    document.getElementById("status");
+
+
+  box.textContent =
+    message;
+
+
+  box.className =
+    "status show " + type;
+
+
+  clearTimeout(
+    window.statusTimer
+  );
+
+
+  window.statusTimer =
+    setTimeout(() => {
+
+      box.className =
+        "status";
+
+    },3000);
+
+}
+
+
+/* =========================================
+   RENDER EVERYTHING
+========================================= */
+
+function renderAll(){
+
+  renderBuildings();
+
+  renderSubjects();
+
+  renderBuildingSelects();
+
+  renderSections();
+
+  renderTeachers();
+
+  renderPeriods();
+
+  renderSubjectCheckboxes();
+
+  updateSummary();
+
+}
+
+
+/* =========================================
    START
-========================================================= */
+========================================= */
 
 renderAll();
 
@@ -2325,3 +2298,4 @@ renderAll();
 
 </body>
 </html>
+      
