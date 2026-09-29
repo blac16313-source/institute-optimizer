@@ -3,7 +3,11 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
 
 <title>Institute Optimizer</title>
 
@@ -15,28 +19,16 @@
   padding:0;
 }
 
-:root{
-  --bg:#f5f6f8;
-  --card:#ffffff;
-  --text:#17191d;
-  --muted:#737983;
-  --line:#e5e7eb;
-  --primary:#17191d;
-  --soft:#f0f1f3;
-  --green:#18864b;
-  --green-bg:#e8f7ef;
-  --orange:#b76b00;
-  --orange-bg:#fff3df;
-  --red:#c83b3b;
-  --red-bg:#fdeaea;
-  --shadow:0 10px 30px rgba(20,25,35,.06);
-}
-
 body{
-  font-family:Inter,Arial,sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.5;
+  font-family:
+    Inter,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  background:#f5f6f8;
+  color:#17191d;
 }
 
 button,
@@ -49,556 +41,693 @@ button{
   cursor:pointer;
 }
 
+
+/* ================================
+   APP
+================================ */
+
 .app{
   min-height:100vh;
 }
 
-.topbar{
-  position:sticky;
-  top:0;
-  z-index:100;
-  height:72px;
-  background:rgba(255,255,255,.94);
-  backdrop-filter:blur(15px);
-  border-bottom:1px solid var(--line);
+
+/* ================================
+   HEADER
+================================ */
+
+.header{
+  background:#fff;
+  border-bottom:1px solid #e5e7eb;
+  padding:18px 24px;
+
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 28px;
+
+  position:sticky;
+  top:0;
+  z-index:20;
 }
 
-.brand{
+.logo{
   display:flex;
   align-items:center;
   gap:12px;
 }
 
-.brand-mark{
-  width:38px;
-  height:38px;
-  border-radius:11px;
+.logo-mark{
+  width:42px;
+  height:42px;
+
   background:#17191d;
-  color:white;
-  display:grid;
-  place-items:center;
+  color:#fff;
+
+  border-radius:12px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
   font-weight:800;
+  font-size:18px;
 }
 
-.brand h1{
-  font-size:17px;
-}
-
-.brand span{
+.logo-text strong{
   display:block;
-  color:var(--muted);
-  font-size:11px;
+  font-size:16px;
 }
 
-.top-actions{
+.logo-text span{
+  color:#858a93;
+  font-size:12px;
+}
+
+.header-actions{
   display:flex;
-  gap:9px;
+  gap:10px;
 }
 
-.layout{
-  display:flex;
-  min-height:calc(100vh - 72px);
-}
 
-.sidebar{
-  width:235px;
-  background:#fff;
-  border-right:1px solid var(--line);
-  padding:20px 13px;
-  flex-shrink:0;
-}
-
-.nav-title{
-  font-size:10px;
-  text-transform:uppercase;
-  letter-spacing:1px;
-  color:#9ca1a9;
-  margin:10px 11px 8px;
-}
-
-.nav-btn{
-  width:100%;
-  border:0;
-  background:transparent;
-  padding:11px 12px;
-  border-radius:9px;
-  text-align:left;
-  color:#5f646c;
-  margin-bottom:3px;
-}
-
-.nav-btn:hover,
-.nav-btn.active{
-  background:#f0f1f3;
-  color:#17191d;
-  font-weight:600;
-}
-
-.main{
-  flex:1;
-  min-width:0;
-  padding:28px;
-}
-
-.section{
-  display:none;
-}
-
-.section.active{
-  display:block;
-}
-
-.page-head{
-  display:flex;
-  align-items:flex-start;
-  justify-content:space-between;
-  gap:20px;
-  margin-bottom:22px;
-}
-
-.page-head h2{
-  font-size:27px;
-  letter-spacing:-.7px;
-}
-
-.page-head p{
-  color:var(--muted);
-  margin-top:5px;
-  font-size:14px;
-}
-
-.actions{
-  display:flex;
-  gap:9px;
-  flex-wrap:wrap;
-}
+/* ================================
+   BUTTONS
+================================ */
 
 .btn{
-  border:1px solid var(--line);
+  border:1px solid #dfe2e7;
   background:#fff;
-  color:var(--text);
+  color:#17191d;
+
   padding:10px 15px;
-  border-radius:9px;
+
+  border-radius:10px;
+
   font-weight:600;
 }
 
 .btn:hover{
-  transform:translateY(-1px);
+  background:#f5f6f8;
 }
 
-.btn.primary{
+.btn-primary{
   background:#17191d;
+  color:#fff;
   border-color:#17191d;
-  color:#fff;
 }
 
-.btn.danger{
-  background:var(--red);
-  border-color:var(--red);
-  color:#fff;
+.btn-primary:hover{
+  background:#292c32;
 }
 
-.btn.small{
-  padding:7px 10px;
-  font-size:12px;
-}
-
-.stats{
-  display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:14px;
-  margin-bottom:20px;
-}
-
-.stat{
+.btn-danger{
   background:#fff;
-  border:1px solid var(--line);
-  border-radius:13px;
-  padding:18px;
-  box-shadow:var(--shadow);
+  color:#c73535;
+  border-color:#f0caca;
 }
 
-.stat-label{
-  color:var(--muted);
-  font-size:12px;
+.btn-danger:hover{
+  background:#fff2f2;
 }
 
-.stat-value{
-  font-size:28px;
-  font-weight:750;
-  margin-top:5px;
+.btn-success{
+  background:#e9f8ef;
+  color:#187b45;
+  border-color:#ccebd9;
 }
 
-.grid{
+.btn-small{
+  padding:7px 11px;
+  font-size:13px;
+}
+
+
+/* ================================
+   MAIN
+================================ */
+
+.main{
+  width:min(1200px, calc(100% - 32px));
+  margin:0 auto;
+  padding:30px 0 60px;
+}
+
+
+/* ================================
+   PAGE TITLE
+================================ */
+
+.page-title{
+  margin-bottom:24px;
+}
+
+.page-title h1{
+  font-size:30px;
+  letter-spacing:-.7px;
+}
+
+.page-title p{
+  margin-top:6px;
+  color:#737983;
+}
+
+
+/* ================================
+   QUICK ACTIONS
+================================ */
+
+.quick-actions{
   display:grid;
-  gap:16px;
+  grid-template-columns:
+    repeat(3,1fr);
+
+  gap:14px;
+
+  margin-bottom:24px;
 }
 
-.grid-2{
-  grid-template-columns:repeat(2,minmax(0,1fr));
-}
+.action-card{
+  background:#fff;
+  border:1px solid #e5e7eb;
+  border-radius:16px;
 
-.grid-3{
-  grid-template-columns:repeat(3,minmax(0,1fr));
-}
-
-.card{
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:14px;
   padding:20px;
-  box-shadow:var(--shadow);
+
+  cursor:pointer;
+
+  transition:.18s;
 }
 
-.card h3{
+.action-card:hover{
+  transform:translateY(-2px);
+  box-shadow:
+    0 10px 25px
+    rgba(20,25,35,.06);
+}
+
+.action-icon{
+  width:42px;
+  height:42px;
+
+  border-radius:11px;
+
+  background:#f0f1f3;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-weight:800;
+
+  margin-bottom:14px;
+}
+
+.action-card h3{
   font-size:16px;
   margin-bottom:5px;
 }
 
-.card-desc{
-  color:var(--muted);
+.action-card p{
+  color:#737983;
   font-size:13px;
-  margin-bottom:16px;
+  line-height:1.5;
 }
+
+
+/* ================================
+   CARD
+================================ */
+
+.card{
+  background:#fff;
+
+  border:1px solid #e5e7eb;
+
+  border-radius:16px;
+
+  padding:22px;
+
+  margin-bottom:20px;
+}
+
+.card-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  gap:15px;
+
+  margin-bottom:18px;
+}
+
+.card-header h2{
+  font-size:18px;
+}
+
+.card-header p{
+  color:#737983;
+  font-size:13px;
+  margin-top:4px;
+}
+
+
+/* ================================
+   STATS
+================================ */
+
+.stats{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:12px;
+
+  margin-bottom:24px;
+}
+
+.stat{
+  background:#fff;
+
+  border:1px solid #e5e7eb;
+
+  border-radius:14px;
+
+  padding:17px;
+}
+
+.stat span{
+  display:block;
+
+  color:#737983;
+
+  font-size:12px;
+
+  margin-bottom:6px;
+}
+
+.stat strong{
+  font-size:24px;
+}
+
+
+/* ================================
+   ATTENDANCE
+================================ */
+
+.attendance-list{
+  display:flex;
+  flex-direction:column;
+
+  border:1px solid #e5e7eb;
+
+  border-radius:12px;
+
+  overflow:hidden;
+}
+
+.teacher-row{
+  display:grid;
+
+  grid-template-columns:
+    1fr 160px 190px;
+
+  align-items:center;
+
+  gap:15px;
+
+  padding:14px 16px;
+
+  border-bottom:1px solid #edf0f2;
+}
+
+.teacher-row:last-child{
+  border-bottom:0;
+}
+
+.teacher-info{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.teacher-avatar{
+  width:38px;
+  height:38px;
+
+  border-radius:10px;
+
+  background:#f0f1f3;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-size:12px;
+  font-weight:800;
+
+  flex-shrink:0;
+}
+
+.teacher-name{
+  font-weight:700;
+  font-size:14px;
+}
+
+.teacher-meta{
+  color:#858a93;
+  font-size:12px;
+  margin-top:3px;
+}
+
+.subjects{
+  display:flex;
+  flex-wrap:wrap;
+  gap:5px;
+}
+
+.subject{
+  background:#f2f3f5;
+
+  border-radius:6px;
+
+  padding:4px 7px;
+
+  font-size:10px;
+
+  font-weight:700;
+}
+
+.attendance-buttons{
+  display:flex;
+  justify-content:flex-end;
+  gap:7px;
+}
+
+.present-btn,
+.absent-btn{
+  border:1px solid #dfe2e7;
+
+  padding:8px 11px;
+
+  border-radius:8px;
+
+  font-size:12px;
+
+  font-weight:700;
+
+  background:#fff;
+}
+
+.present-btn.active{
+  background:#e9f8ef;
+  color:#187b45;
+  border-color:#bfe4cf;
+}
+
+.absent-btn.active{
+  background:#fff0f0;
+  color:#c73535;
+  border-color:#efc3c3;
+}
+
+
+/* ================================
+   SEARCH / FILTER
+================================ */
+
+.toolbar{
+  display:flex;
+
+  gap:10px;
+
+  margin-bottom:15px;
+}
+
+.search{
+  flex:1;
+
+  border:1px solid #dfe2e7;
+
+  border-radius:10px;
+
+  padding:11px 13px;
+
+  outline:none;
+
+  background:#fff;
+}
+
+.search:focus{
+  border-color:#17191d;
+}
+
+.select{
+  border:1px solid #dfe2e7;
+
+  border-radius:10px;
+
+  padding:10px 12px;
+
+  background:#fff;
+
+  outline:none;
+}
+
+
+/* ================================
+   ABSENCE BAR
+================================ */
+
+.absence-bar{
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:15px;
+
+  padding:14px 16px;
+
+  border-radius:12px;
+
+  background:#fff7e8;
+
+  border:1px solid #f0dfb9;
+
+  margin-bottom:18px;
+}
+
+.absence-bar strong{
+  color:#9b6100;
+}
+
+.absence-bar span{
+  color:#8b744f;
+  font-size:13px;
+}
+
+
+/* ================================
+   SECTIONS
+================================ */
+
+.page{
+  display:none;
+}
+
+.page.active{
+  display:block;
+}
+
+
+/* ================================
+   TABLE
+================================ */
 
 .table-wrap{
   overflow-x:auto;
-  border:1px solid var(--line);
-  border-radius:10px;
 }
 
 table{
   width:100%;
   border-collapse:collapse;
-  min-width:850px;
 }
 
 th{
-  background:#f8f9fa;
-  color:#666c75;
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:.5px;
   text-align:left;
-  padding:12px 11px;
-  border-bottom:1px solid var(--line);
-  white-space:nowrap;
+
+  background:#f7f8f9;
+
+  color:#6d727b;
+
+  font-size:11px;
+
+  text-transform:uppercase;
+
+  letter-spacing:.5px;
+
+  padding:12px;
+
+  border-bottom:1px solid #e5e7eb;
 }
 
 td{
-  padding:10px 11px;
+  padding:13px 12px;
+
   border-bottom:1px solid #edf0f2;
+
   font-size:13px;
-  vertical-align:middle;
 }
 
 tr:last-child td{
   border-bottom:0;
 }
 
-input,
-select{
-  width:100%;
-  border:1px solid #dfe2e6;
-  background:#fff;
-  border-radius:7px;
-  padding:8px 9px;
-  outline:none;
-  color:#20242a;
-}
 
-input:focus,
-select:focus{
-  border-color:#8d939c;
-}
-
-.toolbar{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  margin-bottom:15px;
-  flex-wrap:wrap;
-}
-
-.toolbar-left,
-.toolbar-right{
-  display:flex;
-  gap:8px;
-  align-items:center;
-  flex-wrap:wrap;
-}
+/* ================================
+   STATUS
+================================ */
 
 .badge{
   display:inline-flex;
-  padding:4px 8px;
-  border-radius:99px;
+
+  padding:5px 8px;
+
+  border-radius:6px;
+
   font-size:11px;
+
   font-weight:700;
 }
 
-.badge.green{
-  color:var(--green);
-  background:var(--green-bg);
+.badge-green{
+  background:#e9f8ef;
+  color:#187b45;
 }
 
-.badge.orange{
-  color:var(--orange);
-  background:var(--orange-bg);
+.badge-red{
+  background:#fff0f0;
+  color:#c73535;
 }
 
-.badge.red{
-  color:var(--red);
-  background:var(--red-bg);
+.badge-orange{
+  background:#fff3df;
+  color:#9b6100;
 }
 
-.info-box{
-  padding:13px 15px;
-  border-radius:10px;
-  background:#f5f7fa;
-  color:#626871;
-  font-size:13px;
-  margin-bottom:16px;
-}
 
-.warning-box{
-  background:var(--orange-bg);
-  color:#8a590e;
-}
-
-.success-box{
-  background:var(--green-bg);
-  color:#187044;
-}
-
-.danger-box{
-  background:var(--red-bg);
-  color:#9e2f2f;
-}
+/* ================================
+   EMPTY
+================================ */
 
 .empty{
   text-align:center;
-  color:#9a9fa7;
-  padding:35px !important;
+
+  padding:40px 20px;
+
+  color:#858a93;
 }
 
-.building-card{
-  position:relative;
-  overflow:hidden;
-}
 
-.building-number{
-  font-size:30px;
-  font-weight:800;
-}
-
-.building-meta{
-  color:var(--muted);
-  font-size:13px;
-  margin-top:5px;
-}
-
-.progress{
-  height:6px;
-  background:#eceef1;
-  border-radius:99px;
-  overflow:hidden;
-  margin-top:14px;
-}
-
-.progress span{
-  display:block;
-  height:100%;
-  background:#17191d;
-  width:0%;
-}
-
-.absence-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:12px;
-}
-
-.teacher-check{
-  border:1px solid var(--line);
-  border-radius:11px;
-  padding:12px;
-  display:flex;
-  gap:10px;
-  align-items:flex-start;
-  background:#fff;
-}
-
-.teacher-check input{
-  width:auto;
-  margin-top:4px;
-}
-
-.teacher-check strong{
-  display:block;
-  font-size:13px;
-}
-
-.teacher-check span{
-  color:var(--muted);
-  display:block;
-  font-size:11px;
-  margin-top:2px;
-}
-
-.schedule-grid{
-  overflow:auto;
-}
-
-.schedule-table{
-  min-width:1250px;
-}
-
-.schedule-cell{
-  min-width:140px;
-  height:85px;
-  vertical-align:top;
-}
-
-.lesson{
-  border-radius:8px;
-  background:#f2f3f5;
-  padding:8px;
-}
-
-.lesson strong{
-  display:block;
-  font-size:12px;
-}
-
-.lesson span{
-  display:block;
-  color:#6f747c;
-  font-size:10px;
-  margin-top:3px;
-}
-
-.lesson small{
-  display:block;
-  margin-top:4px;
-  color:#979ca3;
-  font-size:9px;
-}
-
-.form-grid{
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:13px;
-}
-
-.form-field label{
-  display:block;
-  font-size:12px;
-  font-weight:650;
-  margin-bottom:6px;
-}
-
-.setup-number{
-  font-size:25px;
-  font-weight:800;
-}
-
-.setup-label{
-  color:var(--muted);
-  font-size:12px;
-}
-
-.footer{
-  padding:30px;
-  border-top:1px solid var(--line);
-  margin-top:25px;
-  display:flex;
-  justify-content:space-between;
-  color:var(--muted);
-  font-size:12px;
-}
+/* ================================
+   TOAST
+================================ */
 
 .toast{
   position:fixed;
+
+  left:50%;
   bottom:25px;
-  right:25px;
+
+  transform:
+    translate(-50%, 100px);
+
   background:#17191d;
+
   color:#fff;
-  padding:12px 17px;
-  border-radius:9px;
-  box-shadow:0 10px 30px rgba(0,0,0,.2);
-  transform:translateY(100px);
-  opacity:0;
-  transition:.25s;
-  z-index:500;
+
+  padding:12px 18px;
+
+  border-radius:10px;
+
   font-size:13px;
+
+  box-shadow:
+    0 10px 30px
+    rgba(0,0,0,.2);
+
+  transition:.25s;
+
+  z-index:100;
 }
 
 .toast.show{
-  transform:translateY(0);
-  opacity:1;
+  transform:
+    translate(-50%, 0);
 }
 
-@media(max-width:1100px){
 
-  .stats{
-    grid-template-columns:repeat(3,1fr);
-  }
-
-  .absence-grid{
-    grid-template-columns:repeat(2,1fr);
-  }
-
-}
+/* ================================
+   RESPONSIVE
+================================ */
 
 @media(max-width:800px){
 
-  .sidebar{
-    width:72px;
-    padding:12px 7px;
-  }
-
-  .nav-title{
-    display:none;
-  }
-
-  .nav-btn{
-    font-size:0;
-    text-align:center;
-  }
-
-  .nav-btn::first-letter{
-    font-size:17px;
-  }
-
-  .main{
-    padding:17px;
+  .quick-actions{
+    grid-template-columns:1fr;
   }
 
   .stats{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+      repeat(2,1fr);
   }
 
-  .grid-2,
-  .grid-3,
-  .form-grid{
+  .teacher-row{
     grid-template-columns:1fr;
   }
 
-  .absence-grid{
-    grid-template-columns:1fr;
+  .attendance-buttons{
+    justify-content:flex-start;
   }
 
-  .topbar{
-    padding:0 15px;
+  .toolbar{
+    flex-direction:column;
   }
 
-  .top-actions .btn:first-child{
+  .header-actions .btn{
     display:none;
+  }
+
+}
+
+@media(max-width:500px){
+
+  .main{
+    width:
+      calc(100% - 20px);
+
+    padding-top:20px;
+  }
+
+  .header{
+    padding:
+      14px 12px;
+  }
+
+  .page-title h1{
+    font-size:25px;
+  }
+
+  .stats{
+    gap:8px;
+  }
+
+  .stat{
+    padding:13px;
+  }
+
+  .stat strong{
+    font-size:20px;
   }
 
 }
@@ -607,26 +736,40 @@ select:focus{
 
 </head>
 
+
 <body>
 
 <div class="app">
 
-<header class="topbar">
 
-  <div class="brand">
+<!-- ================================
+     HEADER
+================================ -->
 
-    <div class="brand-mark">
+<header class="header">
+
+  <div class="logo">
+
+    <div class="logo-mark">
       IO
     </div>
 
-    <div>
-      <h1>Institute Optimizer</h1>
-      <span>First-Year Scheduling System</span>
+    <div class="logo-text">
+
+      <strong>
+        Institute Optimizer
+      </strong>
+
+      <span>
+        Smart timetable & replacement system
+      </span>
+
     </div>
 
   </div>
 
-  <div class="top-actions">
+
+  <div class="header-actions">
 
     <button
       class="btn"
@@ -636,8 +779,8 @@ select:focus{
     </button>
 
     <button
-      class="btn primary"
-      onclick="runOptimizer()"
+      class="btn btn-primary"
+      onclick="generatePlan()"
     >
       Generate Plan
     </button>
@@ -647,618 +790,365 @@ select:focus{
 </header>
 
 
-<div class="layout">
-
-
-<aside class="sidebar">
-
-  <div class="nav-title">
-    Main
-  </div>
-
-  <button
-    class="nav-btn active"
-    onclick="showSection('dashboard',this)"
-  >
-    ◉ Dashboard
-  </button>
-
-  <button
-    class="nav-btn"
-    onclick="showSection('teachers',this)"
-  >
-    ◇ Teachers
-  </button>
-
-  <button
-    class="nav-btn"
-    onclick="showSection('classes',this)"
-  >
-    □ Classes
-  </button>
-
-  <button
-    class="nav-btn"
-    onclick="showSection('timetable',this)"
-  >
-    ▦ Timetable
-  </button>
-
-  <button
-    class="nav-btn"
-    onclick="showSection('absences',this)"
-  >
-    ! Absences
-  </button>
-
-  <button
-    class="nav-btn"
-    onclick="showSection('generated',this)"
-  >
-    ✓ Generated Plan
-  </button>
-
-
-  <div class="nav-title">
-    Institute
-  </div>
-
-  <button
-    class="nav-btn"
-    onclick="showSection('buildings',this)"
-  >
-    ▤ Buildings
-  </button>
-
-  <button
-    class="nav-btn"
-    onclick="showSection('settings',this)"
-  >
-    ⚙ Settings
-  </button>
-
-
-  <div class="nav-title">
-    Data
-  </div>
-
-  <button
-    class="nav-btn"
-    onclick="saveData()"
-  >
-    ↓ Save Data
-  </button>
-
-  <button
-    class="nav-btn"
-    onclick="resetData()"
-  >
-    ↻ Reset
-  </button>
-
-</aside>
-
-
 <main class="main">
 
 
-<!-- DASHBOARD -->
+<!-- ================================
+     HOME
+================================ -->
 
 <section
-  id="dashboard"
-  class="section active"
+  id="homePage"
+  class="page active"
 >
 
-  <div class="page-head">
+  <div class="page-title">
 
-    <div>
-      <h2>Dashboard</h2>
+    <h1>
+      Good morning 👋
+    </h1>
+
+    <p>
+      Manage today's attendance and generate
+      the replacement plan.
+    </p>
+
+  </div>
+
+
+  <!-- QUICK ACTIONS -->
+
+  <div class="quick-actions">
+
+    <div
+      class="action-card"
+      onclick="showPage('attendancePage')"
+    >
+
+      <div class="action-icon">
+        ✓
+      </div>
+
+      <h3>
+        Mark Attendance
+      </h3>
+
       <p>
-        Overview of today's institute scheduling system.
+        Mark teachers present or absent
+        for today's schedule.
       </p>
-    </div>
-
-    <div class="actions">
-
-      <button
-        class="btn"
-        onclick="randomizeSubjects()"
-      >
-        Randomize Subjects
-      </button>
-
-      <button
-        class="btn primary"
-        onclick="runOptimizer()"
-      >
-        Generate Plan
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="stats">
-
-    <div class="stat">
-      <div class="stat-label">
-        Buildings
-      </div>
-      <div
-        class="stat-value"
-        id="statBuildings"
-      >
-        3
-      </div>
-    </div>
-
-    <div class="stat">
-      <div class="stat-label">
-        Classes
-      </div>
-      <div
-        class="stat-value"
-        id="statClasses"
-      >
-        60
-      </div>
-    </div>
-
-    <div class="stat">
-      <div class="stat-label">
-        Teachers
-      </div>
-      <div
-        class="stat-value"
-        id="statTeachers"
-      >
-        75
-      </div>
-    </div>
-
-    <div class="stat">
-      <div class="stat-label">
-        Absent Today
-      </div>
-      <div
-        class="stat-value"
-        id="statAbsent"
-      >
-        0
-      </div>
-    </div>
-
-    <div class="stat">
-      <div class="stat-label">
-        Unassigned
-      </div>
-      <div
-        class="stat-value"
-        id="statUnassigned"
-      >
-        0
-      </div>
-    </div>
-
-  </div>
-
-
-  <div class="grid grid-2">
-
-    <div class="card">
-
-      <h3>Institute Structure</h3>
-
-      <p class="card-desc">
-        Current first-year scheduling structure.
-      </p>
-
-      <div class="grid grid-3">
-
-        <div>
-          <div
-            class="setup-number"
-          >
-            3
-          </div>
-          <div class="setup-label">
-            Buildings
-          </div>
-        </div>
-
-        <div>
-          <div
-            class="setup-number"
-          >
-            60
-          </div>
-          <div class="setup-label">
-            Classes
-          </div>
-        </div>
-
-        <div>
-          <div
-            class="setup-number"
-          >
-            75
-          </div>
-          <div class="setup-label">
-            Teachers
-          </div>
-        </div>
-
-      </div>
-
-    </div>
-
-
-    <div class="card">
-
-      <h3>Workload Capacity</h3>
-
-      <p class="card-desc">
-        Teacher workload available for the day.
-      </p>
-
-      <div id="capacityInfo"></div>
-
-    </div>
-
-  </div>
-
-
-  <div class="card" style="margin-top:16px">
-
-    <div class="toolbar">
-
-      <div>
-        <h3>Today's Changes</h3>
-        <p class="card-desc" style="margin:3px 0 0">
-          Replacement assignments created by the optimizer.
-        </p>
-      </div>
-
-      <span
-        class="badge green"
-        id="planStatus"
-      >
-        No plan generated
-      </span>
-
-    </div>
-
-    <div class="table-wrap">
-
-      <table>
-
-        <thead>
-
-          <tr>
-            <th>Period</th>
-            <th>Building</th>
-            <th>Class</th>
-            <th>Subject</th>
-            <th>Absent</th>
-            <th>Replacement</th>
-            <th>Status</th>
-          </tr>
-
-        </thead>
-
-        <tbody id="dashboardChanges">
-
-          <tr>
-            <td
-              colspan="7"
-              class="empty"
-            >
-              No changes yet.
-            </td>
-          </tr>
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- TEACHERS -->
-
-<section
-  id="teachers"
-  class="section"
->
-
-  <div class="page-head">
-
-    <div>
-      <h2>Teachers</h2>
-      <p>
-        25 teachers are assigned to each building.
-      </p>
-    </div>
-
-    <div class="actions">
-
-      <button
-        class="btn"
-        onclick="randomizeSubjects()"
-      >
-        Random Subjects
-      </button>
-
-      <button
-        class="btn"
-        onclick="saveData()"
-      >
-        Save
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="info-box">
-
-    Each teacher can have multiple subjects.
-    The optimizer uses subject qualification,
-    building, current workload and period availability
-    before assigning a replacement.
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="table-wrap">
-
-      <table>
-
-        <thead>
-
-          <tr>
-
-            <th>#</th>
-            <th>Teacher</th>
-            <th>Subject 1</th>
-            <th>Subject 2</th>
-            <th>Subject 3</th>
-            <th>Building</th>
-            <th>Max Lectures</th>
-            <th>Today</th>
-
-          </tr>
-
-        </thead>
-
-        <tbody id="teacherTable"></tbody>
-
-      </table>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- CLASSES -->
-
-<section
-  id="classes"
-  class="section"
->
-
-  <div class="page-head">
-
-    <div>
-      <h2>Classes</h2>
-      <p>
-        20 first-year classes are assigned to each building.
-      </p>
-    </div>
-
-  </div>
-
-
-  <div class="info-box">
-
-    Total structure:
-    <strong>3 buildings × 20 classes = 60 classes.</strong>
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="table-wrap">
-
-      <table>
-
-        <thead>
-
-          <tr>
-            <th>#</th>
-            <th>Class</th>
-            <th>Building</th>
-            <th>Room</th>
-            <th>Students</th>
-          </tr>
-
-        </thead>
-
-        <tbody id="classTable"></tbody>
-
-      </table>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- TIMETABLE -->
-
-<section
-  id="timetable"
-  class="section"
->
-
-  <div class="page-head">
-
-    <div>
-      <h2>Timetable</h2>
-      <p>
-        Weekly base timetable used by the replacement engine.
-      </p>
-    </div>
-
-    <div class="actions">
-
-      <button
-        class="btn primary"
-        onclick="generateBaseTimetable()"
-      >
-        Generate Base Timetable
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div class="info-box">
-
-    Institute time:
-    <strong>9:40 AM – 4:20 PM</strong>.
-    The prototype uses 7 teaching periods.
-    Workload limits can be changed per teacher.
-
-  </div>
-
-
-  <div class="card">
-
-    <div class="schedule-grid">
-
-      <table class="schedule-table">
-
-        <thead>
-
-          <tr>
-
-            <th>Class</th>
-
-            <th>P1<br>9:40</th>
-            <th>P2<br>10:30</th>
-            <th>P3<br>11:20</th>
-            <th>P4<br>12:10</th>
-            <th>P5<br>1:00</th>
-            <th>P6<br>1:50</th>
-            <th>P7<br>2:40</th>
-
-          </tr>
-
-        </thead>
-
-        <tbody
-          id="timetableTable"
-        ></tbody>
-
-      </table>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ABSENCES -->
-
-<section
-  id="absences"
-  class="section"
->
-
-  <div class="page-head">
-
-    <div>
-      <h2>Today's Absences</h2>
-      <p>
-        Select teachers who are absent today.
-      </p>
-    </div>
-
-    <div class="actions">
-
-      <button
-        class="btn"
-        onclick="clearAbsences()"
-      >
-        Clear All
-      </button>
-
-      <button
-        class="btn primary"
-        onclick="runOptimizer()"
-      >
-        Generate Replacement Plan
-      </button>
-
-    </div>
-
-  </div>
-
-
-  <div
-    id="absenceWarning"
-    class="info-box"
-  >
-    No teachers are absent today.
-  </div>
-
-
-  <div class="card">
-
-    <div class="toolbar">
-
-      <div>
-
-        <h3>Select Absent Teachers</h3>
-
-        <p
-          class="card-desc"
-          style="margin:3px 0 0"
-        >
-          You can select up to 5 absent teachers
-          in this prototype.
-        </p>
-
-      </div>
-
-      <span
-        id="absenceCounter"
-        class="badge green"
-      >
-        0 / 5 absent
-      </span>
 
     </div>
 
 
     <div
-      id="absenceList"
-      class="absence-grid"
+      class="action-card"
+      onclick="generatePlan()"
+    >
+
+      <div class="action-icon">
+        ⚡
+      </div>
+
+      <h3>
+        Generate Plan
+      </h3>
+
+      <p>
+        Automatically assign suitable
+        replacement teachers.
+      </p>
+
+    </div>
+
+
+    <div
+      class="action-card"
+      onclick="showPage('timetablePage')"
+    >
+
+      <div class="action-icon">
+        ▦
+      </div>
+
+      <h3>
+        View Timetable
+      </h3>
+
+      <p>
+        See classes, teachers, subjects
+        and free periods.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- STATS -->
+
+  <div class="stats">
+
+    <div class="stat">
+
+      <span>
+        Buildings
+      </span>
+
+      <strong id="statBuildings">
+        3
+      </strong>
+
+    </div>
+
+
+    <div class="stat">
+
+      <span>
+        Classes
+      </span>
+
+      <strong id="statClasses">
+        60
+      </strong>
+
+    </div>
+
+
+    <div class="stat">
+
+      <span>
+        Teachers
+      </span>
+
+      <strong id="statTeachers">
+        75
+      </strong>
+
+    </div>
+
+
+    <div class="stat">
+
+      <span>
+        Absent Today
+      </span>
+
+      <strong id="statAbsent">
+        0
+      </strong>
+
+    </div>
+
+  </div>
+
+
+  <!-- TODAY STATUS -->
+
+  <div class="card">
+
+    <div class="card-header">
+
+      <div>
+
+        <h2>
+          Today's status
+        </h2>
+
+        <p>
+          Current attendance and plan status.
+        </p>
+
+      </div>
+
+      <div id="planStatus">
+        <span class="badge badge-orange">
+          No plan yet
+        </span>
+      </div>
+
+    </div>
+
+
+    <div
+      id="dashboardChanges"
+    >
+
+      <div class="empty">
+        Mark attendance to begin.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ================================
+     ATTENDANCE
+================================ -->
+
+<section
+  id="attendancePage"
+  class="page"
+>
+
+  <div class="page-title">
+
+    <h1>
+      Teacher Attendance
+    </h1>
+
+    <p>
+      Tap ABSENT for teachers who are
+      unavailable today.
+    </p>
+
+  </div>
+
+
+  <div class="absence-bar">
+
+    <div>
+
+      <strong>
+        <span id="absenceCounter">
+          0
+        </span>
+        / 5 absent
+      </strong>
+
+      <span>
+        &nbsp; Maximum absences for today
+      </span>
+
+    </div>
+
+
+    <button
+      class="btn btn-small"
+      onclick="clearAbsences()"
+    >
+      Clear All
+    </button>
+
+  </div>
+
+
+  <div class="toolbar">
+
+    <input
+      id="attendanceSearch"
+      class="search"
+      placeholder="Search teacher..."
+    >
+
+
+    <select
+      id="attendanceBuilding"
+      class="select"
+    >
+
+      <option value="ALL">
+        All Buildings
+      </option>
+
+      <option value="Building 1">
+        Building 1
+      </option>
+
+      <option value="Building 2">
+        Building 2
+      </option>
+
+      <option value="Building 3">
+        Building 3
+      </option>
+
+    </select>
+
+  </div>
+
+
+  <div class="card">
+
+    <div
+      id="attendanceList"
+      class="attendance-list"
+    ></div>
+
+  </div>
+
+
+  <button
+    class="btn btn-primary"
+    style="
+      width:100%;
+      padding:14px;
+      font-size:15px;
+    "
+    onclick="generatePlan()"
+  >
+    Generate Today's Replacement Plan
+  </button>
+
+</section>
+
+
+<!-- ================================
+     TIMETABLE
+================================ -->
+
+<section
+  id="timetablePage"
+  class="page"
+>
+
+  <div class="page-title">
+
+    <h1>
+      Timetable
+    </h1>
+
+    <p>
+      Base timetable for all 60 classes.
+    </p>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-header">
+
+      <div>
+
+        <h2>
+          Weekly / Daily Schedule
+        </h2>
+
+        <p>
+          Teachers are assigned according
+          to subject and workload.
+        </p>
+
+      </div>
+
+
+      <button
+        class="btn btn-primary btn-small"
+        onclick="generateBaseTimetable()"
+      >
+        Regenerate
+      </button>
+
+    </div>
+
+
+    <div
+      id="timetableTable"
+      class="table-wrap"
     ></div>
 
   </div>
@@ -1266,396 +1156,360 @@ select:focus{
 </section>
 
 
-<!-- GENERATED PLAN -->
+<!-- ================================
+     PLAN
+================================ -->
 
 <section
-  id="generated"
-  class="section"
+  id="planPage"
+  class="page"
 >
 
-  <div class="page-head">
+  <div class="page-title">
 
-    <div>
-      <h2>Generated Plan</h2>
-      <p>
-        Replacement plan generated from the current timetable.
-      </p>
-    </div>
+    <h1>
+      Today's Replacement Plan
+    </h1>
 
-    <div class="actions">
-
-      <button
-        class="btn primary"
-        onclick="runOptimizer()"
-      >
-        Generate Again
-      </button>
-
-    </div>
+    <p>
+      Teachers automatically selected for
+      absent-teacher duties.
+    </p>
 
   </div>
 
 
   <div
     id="optimizerSummary"
-    class="info-box"
-  >
-    No plan generated yet.
-  </div>
-
-
-  <div class="card">
-
-    <div class="table-wrap">
-
-      <table>
-
-        <thead>
-
-          <tr>
-            <th>Period</th>
-            <th>Building</th>
-            <th>Class</th>
-            <th>Room</th>
-            <th>Subject</th>
-            <th>Absent Teacher</th>
-            <th>Replacement</th>
-            <th>Movement</th>
-            <th>Status</th>
-          </tr>
-
-        </thead>
-
-        <tbody
-          id="replacementTable"
-        ></tbody>
-
-      </table>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- BUILDINGS -->
-
-<section
-  id="buildings"
-  class="section"
->
-
-  <div class="page-head">
-
-    <div>
-      <h2>Buildings</h2>
-      <p>
-        20 classes and 25 teachers are assigned to each building.
-      </p>
-    </div>
-
-  </div>
-
-
-  <div
-    id="buildingCards"
-    class="grid grid-3"
+    class="stats"
   ></div>
 
 
-  <div class="card" style="margin-top:16px">
+  <div class="card">
 
-    <h3>Building Rules</h3>
-
-    <p class="card-desc">
-      The optimizer prefers same-building replacements.
-    </p>
-
-    <div class="grid grid-3">
-
-      <div class="info-box">
-        <strong>Building 1</strong><br>
-        20 classes · 25 teachers
-      </div>
-
-      <div class="info-box">
-        <strong>Building 2</strong><br>
-        20 classes · 25 teachers
-      </div>
-
-      <div class="info-box">
-        <strong>Building 3</strong><br>
-        20 classes · 25 teachers
-      </div>
-
-    </div>
+    <div
+      id="replacementTable"
+      class="table-wrap"
+    ></div>
 
   </div>
 
 </section>
 
 
-<!-- SETTINGS -->
+<!-- ================================
+     TEACHERS
+================================ -->
 
 <section
-  id="settings"
-  class="section"
+  id="teachersPage"
+  class="page"
 >
 
-  <div class="page-head">
+  <div class="page-title">
 
-    <div>
-      <h2>Institute Settings</h2>
-      <p>
-        Basic scheduling rules for the prototype.
-      </p>
-    </div>
+    <h1>
+      Teachers
+    </h1>
+
+    <p>
+      Manage subjects, buildings and
+      maximum lecture limits.
+    </p>
+
+  </div>
+
+
+  <div class="toolbar">
+
+    <input
+      id="teacherSearch"
+      class="search"
+      placeholder="Search teacher..."
+    >
+
+    <select
+      id="teacherBuildingFilter"
+      class="select"
+      onchange="renderTeachers()"
+    >
+
+      <option value="ALL">
+        All Buildings
+      </option>
+
+    </select>
 
   </div>
 
 
   <div class="card">
 
-    <div class="form-grid">
+    <div
+      id="teachersList"
+    ></div>
 
-      <div class="form-field">
+  </div>
 
-        <label>
-          Buildings
-        </label>
+</section>
 
-        <input
-          id="settingBuildings"
-          type="number"
-          value="3"
-          min="1"
-          disabled
-        >
+
+<!-- ================================
+     CLASSES
+================================ -->
+
+<section
+  id="classesPage"
+  class="page"
+>
+
+  <div class="page-title">
+
+    <h1>
+      Classes
+    </h1>
+
+    <p>
+      Manage your institute's classes
+      and rooms.
+    </p>
+
+  </div>
+
+
+  <div class="toolbar">
+
+    <input
+      id="classSearch"
+      class="search"
+      placeholder="Search class..."
+    >
+
+    <select
+      id="classBuildingFilter"
+      class="select"
+      onchange="renderClasses()"
+    >
+
+      <option value="ALL">
+        All Buildings
+      </option>
+
+    </select>
+
+  </div>
+
+
+  <div class="card">
+
+    <div
+      id="classesList"
+    ></div>
+
+  </div>
+
+</section>
+
+
+<!-- ================================
+     SETTINGS
+================================ -->
+
+<section
+  id="settingsPage"
+  class="page"
+>
+
+  <div class="page-title">
+
+    <h1>
+      Settings
+    </h1>
+
+    <p>
+      Configure the optimizer.
+    </p>
+
+  </div>
+
+
+  <div class="card">
+
+    <div class="card-header">
+
+      <div>
+
+        <h2>
+          Scheduling Settings
+        </h2>
+
+        <p>
+          Basic rules used by the optimizer.
+        </p>
 
       </div>
 
+    </div>
 
-      <div class="form-field">
 
-        <label>
-          Classes per Building
-        </label>
+    <div class="toolbar">
+
+      <label>
+        Max absences
 
         <input
-   type="number"
-id="settingClasses"
-value="20"
-min="1"
-disabled
->
+          id="settingAbsences"
+          class="search"
+          type="number"
+          min="1"
+          max="75"
+          value="5"
+          onchange="
+            changeMaxAbsences(this.value)
+          "
+        >
 
-</div>
-
-
-<div class="form-field">
-
-  <label>
-    Teachers per Building
-  </label>
-
-  <input
-    id="settingTeachers"
-    type="number"
-    value="25"
-    min="1"
-    disabled
-  >
-
-</div>
+      </label>
 
 
-<div class="form-field">
+      <label>
+        Default max lectures
 
-  <label>
-    Periods per Day
-  </label>
+        <input
+          id="settingMaxLectures"
+          class="search"
+          type="number"
+          min="1"
+          max="7"
+          value="5"
+          onchange="
+            changeDefaultMax(this.value)
+          "
+        >
 
-  <input
-    id="settingPeriods"
-    type="number"
-    value="7"
-    min="1"
-    max="10"
-    onchange="changePeriodCount(this.value)"
-  >
+      </label>
 
-</div>
-
-
-<div class="form-field">
-
-  <label>
-    Maximum Absences
-  </label>
-
-  <input
-    id="settingAbsences"
-    type="number"
-    value="5"
-    min="1"
-    max="20"
-    onchange="changeMaxAbsences(this.value)"
-  >
-
-</div>
-
-
-<div class="form-field">
-
-  <label>
-    Default Max Lectures
-  </label>
-
-  <input
-    id="settingMaxLectures"
-    type="number"
-    value="5"
-    min="1"
-    max="10"
-    onchange="changeDefaultMax(this.value)"
-  >
-
-</div>
-
-</div>
-
-
-</div>
-
-
-<div class="card" style="margin-top:16px">
-
-  <h3>How the replacement engine works</h3>
-
-  <p class="card-desc">
-    Candidates are checked in this order.
-  </p>
-
-  <div class="grid grid-2">
-
-    <div class="info-box">
-      <strong>1. Subject</strong><br>
-      Teacher must be qualified for the required subject.
     </div>
 
-    <div class="info-box">
-      <strong>2. Availability</strong><br>
-      Teacher must not already have a class in that period.
-    </div>
-
-    <div class="info-box">
-      <strong>3. Workload</strong><br>
-      Teacher should remain within the maximum lecture limit.
-    </div>
-
-    <div class="info-box">
-      <strong>4. Building</strong><br>
-      Same-building teachers are preferred.
-    </div>
-
-    <div class="info-box">
-      <strong>5. Movement</strong><br>
-      Cross-building teachers are allowed when necessary.
-    </div>
-
-    <div class="info-box">
-      <strong>6. Failure</strong><br>
-      If nobody qualifies, the period remains unassigned.
-    </div>
-
-  </div>
-
-</div>
-
-
-<div class="card" style="margin-top:16px">
-
-  <h3>Data</h3>
-
-  <p class="card-desc">
-    Your prototype data is saved in this browser.
-  </p>
-
-  <div class="actions">
 
     <button
       class="btn"
-      onclick="saveData()"
+      onclick="exportData()"
     >
-      Save Data
-    </button>
-
-    <button
-      class="btn danger"
-      onclick="resetData()"
-    >
-      Reset Everything
+      Export Data
     </button>
 
   </div>
 
-</div>
-
 </section>
-<!-- MAIN END -->
+
 
 </main>
 
-</div>
+
+<!-- ================================
+     SIMPLE NAV
+================================ -->
+
+<nav
+  style="
+    position:fixed;
+    bottom:14px;
+    left:50%;
+    transform:translateX(-50%);
+    background:#17191d;
+    padding:7px;
+    border-radius:14px;
+    display:flex;
+    gap:4px;
+    z-index:50;
+    box-shadow:0 12px 30px rgba(0,0,0,.18);
+  "
+>
+
+  <button
+    class="nav-btn"
+    onclick="showPage('homePage')"
+  >
+    Home
+  </button>
+
+  <button
+    class="nav-btn"
+    onclick="showPage('attendancePage')"
+  >
+    Attendance
+  </button>
+
+  <button
+    class="nav-btn"
+    onclick="showPage('planPage')"
+  >
+    Plan
+  </button>
+
+  <button
+    class="nav-btn"
+    onclick="showPage('timetablePage')"
+  >
+    Timetable
+  </button>
+
+</nav>
 
 
-<!-- FOOTER -->
-
-<footer class="footer">
-
-  <div>
-    <strong>Institute Optimizer</strong>
-    · First-Year Scheduling Prototype
-  </div>
-
-  <div>
-    3 Buildings · 60 Classes · 75 Teachers
-  </div>
-
-</footer>
-
-
-<!-- TOAST -->
+<!-- ================================
+     TOAST
+================================ -->
 
 <div
   id="toast"
   class="toast"
-></div>
+>
+  Saved
+</div>
+
+
+</div>
+
+
+<style>
+
+.nav-btn{
+  border:0;
+  background:transparent;
+  color:#fff;
+
+  padding:9px 12px;
+
+  border-radius:9px;
+
+  font-size:12px;
+  font-weight:700;
+}
+
+.nav-btn:hover{
+  background:#30333a;
+}
+
+</style>
 
 
 <script>
 
-/* =========================================
-   CORE CONFIGURATION
-========================================= */
+/* =================================
+   CORE DATA
+================================= */
 
 const STORAGE_KEY =
-  "institute_optimizer_v04";
+  "institute_optimizer_v05";
 
-const BUILDING_COUNT = 3;
 
-const CLASSES_PER_BUILDING = 20;
-
-const TEACHERS_PER_BUILDING = 25;
-
-const TOTAL_CLASSES =
-  BUILDING_COUNT *
-  CLASSES_PER_BUILDING;
-
-const TOTAL_TEACHERS =
-  BUILDING_COUNT *
-  TEACHERS_PER_BUILDING;
+const BUILDINGS = [
+  "Building 1",
+  "Building 2",
+  "Building 3"
+];
 
 
 const SUBJECTS = [
@@ -1669,13 +1523,6 @@ const SUBJECTS = [
   "M1",
   "M2",
   "ENGLISH"
-];
-
-
-const BUILDINGS = [
-  "Building 1",
-  "Building 2",
-  "Building 3"
 ];
 
 
@@ -1694,11 +1541,6 @@ let MAX_ABSENCES = 5;
 
 let DEFAULT_MAX_LECTURES = 5;
 
-
-/* =========================================
-   DATA
-========================================= */
-
 let teachers = [];
 
 let classes = [];
@@ -1708,9 +1550,9 @@ let timetable = [];
 let replacementPlan = [];
 
 
-/* =========================================
+/* =================================
    INITIAL DATA
-========================================= */
+================================= */
 
 function createInitialData(){
 
@@ -1723,1046 +1565,523 @@ function createInitialData(){
   replacementPlan = [];
 
 
-  /* 75 TEACHERS
-     25 PER BUILDING
-  */
+  let teacherId = 1;
+
 
   for(
     let buildingIndex = 0;
-    buildingIndex < BUILDING_COUNT;
+    buildingIndex < 3;
     buildingIndex++
   ){
 
-    for(
-      let localIndex = 1;
-      localIndex <= TEACHERS_PER_BUILDING;
-      localIndex++
-    ){
+    const building =
+      BUILDINGS[buildingIndex];
 
-      const id =
-        buildingIndex *
-        TEACHERS_PER_BUILDING +
-        localIndex;
-
-
-      const start =
-        (
-          buildingIndex * 7 +
-          localIndex - 1
-        ) % SUBJECTS.length;
-
-
-      teachers.push({
-
-        id:id,
-
-        name:
-          `Teacher ${id}`,
-
-        building:
-          BUILDINGS[buildingIndex],
-
-        subjects:[
-          SUBJECTS[start],
-
-          SUBJECTS[
-            (start + 3) %
-            SUBJECTS.length
-          ],
-
-          SUBJECTS[
-            (start + 6) %
-            SUBJECTS.length
-          ]
-        ],
-
-        maxLectures:
-          DEFAULT_MAX_LECTURES,
-
-        absent:false,
-
-        assignedPeriods:0
-
-      });
-
-    }
-
-  }
-
-
-  /* 60 CLASSES
-     20 PER BUILDING
-  */
-
-  for(
-    let buildingIndex = 0;
-    buildingIndex < BUILDING_COUNT;
-    buildingIndex++
-  ){
 
     for(
-      let localIndex = 1;
-      localIndex <= CLASSES_PER_BUILDING;
-      localIndex++
+      let i = 0;
+      i < 25;
+      i++
     ){
-
-      const id =
-        buildingIndex *
-        CLASSES_PER_BUILDING +
-        localIndex;
-
-
-      classes.push({
-
-        id:id,
-
-        name:
-          `Class ${id}`,
-
-        building:
-          BUILDINGS[buildingIndex],
-
-        room:localIndex,
-
-        students:60
-
-      });
-
-    }
-
-  }
-
-}
-
-
-/* =========================================
-   LOAD SAVED DATA
-========================================= */
-
-function loadData(){
-
-  const saved =
-    localStorage.getItem(
-      STORAGE_KEY
-    );
-
-
-  if(!saved){
-
-    createInitialData();
-
-    return;
-
-  }
-
-
-  try{
-
-    const data =
-      JSON.parse(saved);
-
-
-    teachers =
-      data.teachers || [];
-
-    classes =
-      data.classes || [];
-
-    timetable =
-      data.timetable || [];
-
-    replacementPlan =
-      data.replacementPlan || [];
-
-
-    if(
-      Array.isArray(data.periods) &&
-      data.periods.length
-    ){
-
-      PERIODS =
-        data.periods;
-
-    }
-
-
-    MAX_ABSENCES =
-      Number(
-        data.maxAbsences
-      ) || 5;
-
-
-    DEFAULT_MAX_LECTURES =
-      Number(
-        data.defaultMaxLectures
-      ) || 5;
-
-
-    /*
-      If old prototype data is found,
-      rebuild it using the new
-      75-teacher / 60-class structure.
-    */
-
-    if(
-      teachers.length !== TOTAL_TEACHERS ||
-      classes.length !== TOTAL_CLASSES
-    ){
-
-      createInitialData();
-
-    }
-
-  }
-  catch(error){
-
-    console.error(error);
-
-    createInitialData();
-
-  }
-
-}
-
-
-/* =========================================
-   SAVE DATA
-========================================= */
-
-function saveData(){
-
-  const data = {
-
-    teachers:teachers,
-
-    classes:classes,
-
-    timetable:timetable,
-
-    replacementPlan:
-      replacementPlan,
-
-    periods:PERIODS,
-
-    maxAbsences:
-      MAX_ABSENCES,
-
-    defaultMaxLectures:
-      DEFAULT_MAX_LECTURES
-
-  };
-
-
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(data)
-  );
-
-
-  showToast(
-    "Institute data saved"
-  );
-
-}
-
-
-function saveDataSilent(){
-
-  const data = {
-
-    teachers:teachers,
-
-    classes:classes,
-
-    timetable:timetable,
-
-    replacementPlan:
-      replacementPlan,
-
-    periods:PERIODS,
-
-    maxAbsences:
-      MAX_ABSENCES,
-
-    defaultMaxLectures:
-      DEFAULT_MAX_LECTURES
-
-  };
-
-
-  localStorage.setItem(
-    STORAGE_KEY,
-    JSON.stringify(data)
-  );
-
-}
-
-
-/* =========================================
-   RESET
-========================================= */
-
-function resetData(){
-
-  if(
-    !confirm(
-      "Reset the entire institute prototype?"
-    )
-  ){
-
-    return;
-
-  }
-
-
-  localStorage.removeItem(
-    STORAGE_KEY
-  );
-
-
-  createInitialData();
-
-  renderAll();
-
-  showToast(
-    "Prototype reset"
-  );
-
-}
-
-
-/* =========================================
-   NAVIGATION
-========================================= */
-
-function showSection(
-  id,
-  button
-){
-
-  document
-    .querySelectorAll(".section")
-    .forEach(section => {
-
-      section.classList.remove(
-        "active"
-      );
-
-    });
-
-
-  const target =
-    document.getElementById(id);
-
-
-  if(target){
-
-    target.classList.add(
-      "active"
-    );
-
-  }
-
-
-  document
-    .querySelectorAll(".nav-btn")
-    .forEach(btn => {
-
-      btn.classList.remove(
-        "active"
-      );
-
-    });
-
-
-  if(button){
-
-    button.classList.add(
-      "active"
-    );
-
-  }
-
-}
-
-
-/* =========================================
-   TOAST
-========================================= */
-
-function showToast(message){
-
-  const toast =
-    document.getElementById(
-      "toast"
-    );
-
-
-  if(!toast) return;
-
-
-  toast.textContent =
-    message;
-
-
-  toast.classList.add(
-    "show"
-  );
-
-
-  setTimeout(() => {
-
-    toast.classList.remove(
-      "show"
-    );
-
-  },2200);
-
-}
-
-
-/* =========================================
-   HELPER
-========================================= */
-
-function getTeacher(id){
-
-  return teachers.find(
-    teacher =>
-      teacher.id === Number(id)
-  );
-
-}
-
-
-function getClass(id){
-
-  return classes.find(
-    cls =>
-      cls.id === Number(id)
-  );
-
-}
-
-
-function escapeHtml(value){
-
-  return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
-}
-/* =========================================
-   TEACHER MANAGEMENT
-========================================= */
-
-function renderTeachers(){
-
-  const container =
-    document.getElementById(
-      "teachersList"
-    );
-
-  if(!container) return;
-
-
-  const searchInput =
-    document.getElementById(
-      "teacherSearch"
-    );
-
-  const search =
-    searchInput
-      ? searchInput.value
-          .toLowerCase()
-          .trim()
-      : "";
-
-
-  const buildingFilter =
-    document.getElementById(
-      "teacherBuildingFilter"
-    );
-
-
-  const selectedBuilding =
-    buildingFilter
-      ? buildingFilter.value
-      : "ALL";
-
-
-  let filtered =
-    teachers.filter(teacher => {
-
-      const matchesSearch =
-        !search ||
-        teacher.name
-          .toLowerCase()
-          .includes(search) ||
-        teacher.subjects
-          .join(" ")
-          .toLowerCase()
-          .includes(search);
-
-
-      const matchesBuilding =
-        selectedBuilding === "ALL" ||
-        teacher.building ===
-          selectedBuilding;
-
-
-      return (
-        matchesSearch &&
-        matchesBuilding
-      );
-
-    });
-
-
-  if(!filtered.length){
-
-    container.innerHTML = `
-      <div class="empty-state">
-        No teachers found.
-      </div>
-    `;
-
-    return;
-
-  }
-
-
-  container.innerHTML =
-    filtered.map(teacher => `
-
-      <div class="teacher-row">
-
-        <div class="teacher-main">
-
-          <div class="avatar">
-            ${teacher.id}
-          </div>
-
-          <div>
-
-            <strong>
-              ${escapeHtml(
-                teacher.name
-              )}
-            </strong>
-
-            <div class="muted">
-              ${escapeHtml(
-                teacher.building
-              )}
-            </div>
-
-          </div>
-
-        </div>
-
-
-        <div class="teacher-subjects">
-
-          ${teacher.subjects
-            .map(subject => `
-              <span class="tag">
-                ${escapeHtml(subject)}
-              </span>
-            `)
-            .join("")}
-
-        </div>
-
-
-        <div>
-
-          <span class="tag">
-            Max ${teacher.maxLectures}
-          </span>
-
-        </div>
-
-
-        <button
-          class="btn small"
-          onclick="editTeacher(${teacher.id})"
-        >
-          Edit
-        </button>
-
-      </div>
-
-    `).join("");
-
-}
-
-
-/* =========================================
-   EDIT TEACHER
-========================================= */
-
-function editTeacher(id){
-
-  const teacher =
-    getTeacher(id);
-
-  if(!teacher) return;
-
-
-  const name =
-    prompt(
-      "Teacher name:",
-      teacher.name
-    );
-
-
-  if(name === null)
-    return;
-
-
-  const subjectText =
-    prompt(
-      "Subjects separated by commas:",
-      teacher.subjects.join(", ")
-    );
-
-
-  if(subjectText === null)
-    return;
-
-
-  const maxText =
-    prompt(
-      "Maximum lectures:",
-      teacher.maxLectures
-    );
-
-
-  if(maxText === null)
-    return;
-
-
-  const building =
-    prompt(
-      "Building (Building 1, Building 2 or Building 3):",
-      teacher.building
-    );
-
-
-  if(building === null)
-    return;
-
-
-  const subjects =
-    subjectText
-      .split(",")
-      .map(s =>
-        s.trim().toUpperCase()
-      )
-      .filter(Boolean);
-
-
-  teacher.name =
-    name.trim() ||
-    `Teacher ${teacher.id}`;
-
-
-  teacher.subjects =
-    subjects.length
-      ? subjects
-      : ["ENGLISH"];
-
-
-  teacher.maxLectures =
-    Math.max(
-      1,
-      Number(maxText) || 5
-    );
-
-
-  if(
-    BUILDINGS.includes(
-      building.trim()
-    )
-  ){
-
-    teacher.building =
-      building.trim();
-
-  }
-
-
-  saveDataSilent();
-
-  renderAll();
-
-  showToast(
-    "Teacher updated"
-  );
-
-}
-
-
-/* =========================================
-   CLASS MANAGEMENT
-========================================= */
-
-function renderClasses(){
-
-  const container =
-    document.getElementById(
-      "classesList"
-    );
-
-  if(!container) return;
-
-
-  const searchInput =
-    document.getElementById(
-      "classSearch"
-    );
-
-
-  const search =
-    searchInput
-      ? searchInput.value
-          .toLowerCase()
-          .trim()
-      : "";
-
-
-  const buildingFilter =
-    document.getElementById(
-      "classBuildingFilter"
-    );
-
-
-  const selectedBuilding =
-    buildingFilter
-      ? buildingFilter.value
-      : "ALL";
-
-
-  const filtered =
-    classes.filter(cls => {
-
-      const matchesSearch =
-        !search ||
-        cls.name
-          .toLowerCase()
-          .includes(search);
-
-
-      const matchesBuilding =
-        selectedBuilding === "ALL" ||
-        cls.building ===
-          selectedBuilding;
-
-
-      return (
-        matchesSearch &&
-        matchesBuilding
-      );
-
-    });
-
-
-  if(!filtered.length){
-
-    container.innerHTML = `
-      <div class="empty-state">
-        No classes found.
-      </div>
-    `;
-
-    return;
-
-  }
-
-
-  container.innerHTML =
-    filtered.map(cls => `
-
-      <div class="class-row">
-
-        <div>
-
-          <strong>
-            ${escapeHtml(
-              cls.name
-            )}
-          </strong>
-
-          <div class="muted">
-            ${escapeHtml(
-              cls.building
-            )}
-          </div>
-
-        </div>
-
-
-        <div>
-          Room ${cls.room}
-        </div>
-
-
-        <div>
-          ${cls.students}
-          students
-        </div>
-
-
-        <button
-          class="btn small"
-          onclick="editClass(${cls.id})"
-        >
-          Edit
-        </button>
-
-      </div>
-
-    `).join("");
-
-}
-
-
-/* =========================================
-   EDIT CLASS
-========================================= */
-
-function editClass(id){
-
-  const cls =
-    getClass(id);
-
-  if(!cls) return;
-
-
-  const name =
-    prompt(
-      "Class name:",
-      cls.name
-    );
-
-
-  if(name === null)
-    return;
-
-
-  const room =
-    prompt(
-      "Room number:",
-      cls.room
-    );
-
-
-  if(room === null)
-    return;
-
-
-  const students =
-    prompt(
-      "Number of students:",
-      cls.students
-    );
-
-
-  if(students === null)
-    return;
-
-
-  const building =
-    prompt(
-      "Building (Building 1, Building 2 or Building 3):",
-      cls.building
-    );
-
-
-  if(building === null)
-    return;
-
-
-  cls.name =
-    name.trim() ||
-    `Class ${cls.id}`;
-
-
-  cls.room =
-    Math.max(
-      1,
-      Number(room) || 1
-    );
-
-
-  cls.students =
-    Math.max(
-      1,
-      Number(students) || 1
-    );
-
-
-  if(
-    BUILDINGS.includes(
-      building.trim()
-    )
-  ){
-
-    cls.building =
-      building.trim();
-
-  }
-
-
-  saveDataSilent();
-
-  renderAll();
-
-  showToast(
-    "Class updated"
-  );
-
-}
-
-
-/* =========================================
-   FILTERS
-========================================= */
-
-function populateFilters(){
-
-  const teacherFilter =
-    document.getElementById(
-      "teacherBuildingFilter"
-    );
-
-
-  const classFilter =
-    document.getElementById(
-      "classBuildingFilter"
-    );
-
-
-  if(teacherFilter){
-
-    teacherFilter.innerHTML = `
-      <option value="ALL">
-        All Buildings
-      </option>
-
-      ${BUILDINGS.map(
-        building => `
-          <option value="${building}">
-            ${building}
-          </option>
-        `
-      ).join("")}
-    `;
-
-  }
-
-
-  if(classFilter){
-
-    classFilter.innerHTML = `
-      <option value="ALL">
-        All Buildings
-      </option>
-
-      ${BUILDINGS.map(
-        building => `
-          <option value="${building}">
-            ${building}
-          </option>
-        `
-      ).join("")}
-    `;
-
-  }
-
-}
-
-
-/* =========================================
-   RANDOM SUBJECTS
-========================================= */
-
-function randomizeSubjects(){
-
-  teachers.forEach(
-    teacher => {
 
       const shuffled =
         [...SUBJECTS]
           .sort(
             () =>
-              Math.random() - 0.5
+              Math.random() - .5
           );
 
 
-      teacher.subjects =
-        shuffled.slice(0,3);
+      teachers.push({
+
+        id:
+          teacherId,
+
+        name:
+          `Teacher ${teacherId}`,
+
+        building,
+
+        subjects:
+          shuffled.slice(0,3),
+
+        maxLectures:
+          5,
+
+        absent:
+          false
+
+      });
+
+
+      teacherId++;
 
     }
-  );
-
-
-  saveDataSilent();
-
-  renderTeachers();
-
-  showToast(
-    "Teacher subjects randomized"
-  );
-
-}
-
-
-/* =========================================
-   ABSENCE MANAGEMENT
-========================================= */
-
-function renderAbsences(){
-
-  const container =
-    document.getElementById(
-      "absenceList"
-    );
-
-  if(!container) return;
-
-
-  const absentTeachers =
-    teachers.filter(
-      teacher =>
-        teacher.absent
-    );
-
-
-  if(!absentTeachers.length){
-
-    container.innerHTML = `
-      <div class="empty-state">
-        No teachers are absent today.
-      </div>
-    `;
-
-    return;
 
   }
 
 
-  container.innerHTML =
-    absentTeachers.map(
-      teacher => `
+  let classId = 1;
 
-        <div class="absence-row">
 
-          <div>
+  for(
+    let buildingIndex = 0;
+    buildingIndex < 3;
+    buildingIndex++
+  ){
+
+    const building =
+      BUILDINGS[buildingIndex];
+
+
+    for(
+      let i = 0;
+      i < 20;
+      i++
+    ){
+
+      classes.push({
+
+        id:
+          classId,
+
+        name:
+          `Class ${classId}`,
+
+        building,
+
+        room:
+          i + 1,
+            students:
+              60
+            });
+          }
+        }
+      }
+    }
+
+    saveDataSilent();
+  }
+
+  function loadData(){
+
+    const saved =
+      localStorage.getItem(
+        STORAGE_KEY
+      );
+
+    if(saved){
+
+      try{
+
+        const data =
+          JSON.parse(saved);
+
+        teachers =
+          data.teachers || [];
+
+        classes =
+          data.classes || [];
+
+        timetable =
+          data.timetable || [];
+
+        replacementPlan =
+          data.replacementPlan || [];
+
+        if(data.periods){
+          PERIODS = data.periods;
+        }
+
+        if(data.maxAbsences){
+          MAX_ABSENCES =
+            data.maxAbsences;
+        }
+
+        if(data.defaultMaxLectures){
+          DEFAULT_MAX_LECTURES =
+            data.defaultMaxLectures;
+        }
+
+      }catch(error){
+
+        console.log(
+          "Saved data could not be loaded."
+        );
+
+        createInitialData();
+      }
+
+    }else{
+
+      createInitialData();
+    }
+  }
+
+  function saveData(){
+
+    const data = {
+
+      teachers,
+
+      classes,
+
+      timetable,
+
+      replacementPlan,
+
+      periods:
+        PERIODS,
+
+      maxAbsences:
+        MAX_ABSENCES,
+
+      defaultMaxLectures:
+        DEFAULT_MAX_LECTURES
+
+    };
+
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(data)
+    );
+
+    showToast(
+      "Data saved successfully"
+    );
+  }
+
+  function saveDataSilent(){
+
+    const data = {
+
+      teachers,
+
+      classes,
+
+      timetable,
+
+      replacementPlan,
+
+      periods:
+        PERIODS,
+
+      maxAbsences:
+        MAX_ABSENCES,
+
+      defaultMaxLectures:
+        DEFAULT_MAX_LECTURES
+
+    };
+
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify(data)
+    );
+  }
+
+  function getTeacher(id){
+
+    return teachers.find(
+      teacher =>
+        teacher.id === id
+    );
+  }
+
+  function getClass(id){
+
+    return classes.find(
+      item =>
+        item.id === id
+    );
+  }
+
+  function escapeHtml(value){
+
+    return String(value)
+      .replace(/&/g,"&amp;")
+      .replace(/</g,"&lt;")
+      .replace(/>/g,"&gt;")
+      .replace(/"/g,"&quot;")
+      .replace(/'/g,"&#039;");
+  }
+
+  function showPage(pageId){
+
+    document
+      .querySelectorAll(".page")
+      .forEach(page => {
+
+        page.classList.remove(
+          "active"
+        );
+
+      });
+
+    const page =
+      document.getElementById(
+        pageId
+      );
+
+    if(page){
+
+      page.classList.add(
+        "active"
+      );
+
+    }
+
+    document
+      .querySelectorAll(".nav-btn")
+      .forEach(button => {
+
+        button.classList.remove(
+          "active"
+        );
+
+      });
+
+    const matching =
+      document.querySelector(
+        `[data-page="${pageId}"]`
+      );
+
+    if(matching){
+
+      matching.classList.add(
+        "active"
+      );
+
+    }
+
+    if(pageId === "homePage"){
+
+      updateDashboard();
+
+    }
+
+    if(pageId === "attendancePage"){
+
+      renderAttendance();
+
+    }
+
+    if(pageId === "planPage"){
+
+      renderReplacementPlan();
+
+    }
+
+    if(pageId === "timetablePage"){
+
+      renderTimetable();
+
+    }
+
+    if(pageId === "teachersPage"){
+
+      renderTeachers();
+
+    }
+
+    if(pageId === "classesPage"){
+
+      renderClasses();
+
+    }
+
+    if(pageId === "settingsPage"){
+
+      renderSettings();
+
+    }
+  }
+
+  function showToast(message){
+
+    const toast =
+      document.getElementById(
+        "toast"
+      );
+
+    if(!toast) return;
+
+    toast.textContent =
+      message;
+
+    toast.classList.add(
+      "show"
+    );
+
+    clearTimeout(
+      window.toastTimer
+    );
+
+    window.toastTimer =
+      setTimeout(() => {
+
+        toast.classList.remove(
+          "show"
+        );
+
+      },2500);
+  }
+
+  function updateDashboard(){
+
+    const total =
+      teachers.length;
+
+    const absent =
+      teachers.filter(
+        teacher =>
+          teacher.absent
+      ).length;
+
+    const buildingCount =
+      new Set(
+        teachers.map(
+          teacher =>
+            teacher.building
+        )
+      ).size;
+
+    const stats = {
+
+      buildings:
+        document.getElementById(
+          "statBuildings"
+        ),
+
+      classes:
+        document.getElementById(
+          "statClasses"
+        ),
+
+      teachers:
+        document.getElementById(
+          "statTeachers"
+        ),
+
+      absent:
+        document.getElementById(
+          "statAbsent"
+        )
+
+    };
+
+    if(stats.buildings){
+
+      stats.buildings.textContent =
+        buildingCount;
+
+    }
+
+    if(stats.classes){
+
+      stats.classes.textContent =
+        classes.length;
+
+    }
+
+    if(stats.teachers){
+
+      stats.teachers.textContent =
+        total;
+
+    }
+
+    if(stats.absent){
+
+      stats.absent.textContent =
+        absent;
+
+    }
+
+    const homeAbsent =
+      document.getElementById(
+        "homeAbsentCount"
+      );
+
+    if(homeAbsent){
+
+      homeAbsent.textContent =
+        absent;
+
+    }
+
+    const homeTeachers =
+      document.getElementById(
+        "homeTeacherCount"
+      );
+
+    if(homeTeachers){
+
+      homeTeachers.textContent =
+        total;
+
+    }
+  }
+
+  function renderAttendance(){
+
+    const container =
+      document.getElementById(
+        "attendanceList"
+      );
+
+    if(!container) return;
+
+    const searchInput =
+      document.getElementById(
+        "attendanceSearch"
+      );
+
+    const search =
+      searchInput
+        ? searchInput.value
+            .toLowerCase()
+            .trim()
+        : "";
+
+    const filtered =
+      teachers.filter(
+        teacher => {
+
+          if(!search){
+            return true;
+          }
+
+          const text =
+            `${teacher.name}
+              ${teacher.building}
+              ${teacher.subjects.join(" ")}`;
+
+          return text
+            .toLowerCase()
+            .includes(search);
+        }
+      );
+
+    if(!filtered.length){
+
+      container.innerHTML = `
+        <div class="empty-state">
+          <strong>No teachers found</strong>
+          <span>Try another search.</span>
+        </div>
+      `;
+
+      return;
+    }
+
+    container.innerHTML =
+      filtered.map(
+        teacher => `
+
+        <div class="teacher-row">
+
+          <div class="teacher-info">
 
             <strong>
               ${escapeHtml(
@@ -2770,1746 +2089,1127 @@ function renderAbsences(){
               )}
             </strong>
 
-            <div class="muted">
+            <span>
               ${escapeHtml(
                 teacher.building
               )}
-            </div>
+              •
+              ${escapeHtml(
+                teacher.subjects.join(
+                  ", "
+                )
+              )}
+            </span>
 
           </div>
 
+          <div class="attendance-actions">
 
-          <button
-            class="btn small"
-            onclick="toggleAbsence(${teacher.id})"
-          >
-            Mark Present
-          </button>
+            <button
+              class="${
+                !teacher.absent
+                  ? "present active"
+                  : "present"
+              }"
+              onclick="
+                setAttendance(
+                  ${teacher.id},
+                  false
+                )
+              "
+            >
+              Present
+            </button>
+
+            <button
+              class="${
+                teacher.absent
+                  ? "absent active"
+                  : "absent"
+              }"
+              onclick="
+                setAttendance(
+                  ${teacher.id},
+                  true
+                )
+              "
+            >
+              Absent
+            </button>
+
+          </div>
 
         </div>
 
       `
-    ).join("");
+      ).join("");
 
-}
-
-
-/* =========================================
-   TOGGLE ABSENCE
-========================================= */
-
-function toggleAbsence(id){
-
-  const teacher =
-    getTeacher(id);
-
-  if(!teacher) return;
-
-
-  teacher.absent =
-    !teacher.absent;
-
-
-  const totalAbsent =
-    teachers.filter(
-      t => t.absent
-    ).length;
-
-
-  if(
-    totalAbsent > MAX_ABSENCES
-  ){
-
-    teacher.absent = false;
-
-    showToast(
-      `Maximum ${MAX_ABSENCES} absences allowed`
-    );
-
-    return;
-
+    updateAbsenceCounter();
   }
 
-
-  saveDataSilent();
-
-  renderAll();
-
-}
-
-
-/* =========================================
-   ABSENCE QUICK SELECT
-========================================= */
-
-function markTeacherAbsent(id){
-
-  const teacher =
-    getTeacher(id);
-
-  if(!teacher) return;
-
-
-  if(teacher.absent)
-    return;
-
-
-  const totalAbsent =
-    teachers.filter(
-      t => t.absent
-    ).length;
-
-
-  if(
-    totalAbsent >=
-    MAX_ABSENCES
+  function setAttendance(
+    teacherId,
+    absent
   ){
 
-    showToast(
-      `Maximum ${MAX_ABSENCES} absences allowed`
-    );
-
-    return;
-
-  }
-
-
-  teacher.absent = true;
-
-
-  saveDataSilent();
-
-  renderAll();
-
-  showToast(
-    `${teacher.name} marked absent`
-  );
-
-}
-/* =========================================
-   TIMETABLE ENGINE
-========================================= */
-
-function generateBaseTimetable(){
-
-  timetable = [];
-
-  const teacherLoad = {};
-  const teacherPeriods = {};
-
-  teachers.forEach(teacher => {
-
-    teacherLoad[teacher.id] = 0;
-    teacherPeriods[teacher.id] = {};
-
-  });
-
-
-  /*
-    We process each period separately.
-
-    This guarantees:
-    - One teacher cannot teach two classes
-      in the same period.
-    - Teacher max workload is respected.
-    - Subject qualification is checked.
-    - Same-building teachers are preferred.
-  */
-
-  for(let period = 0; period < PERIODS.length; period++){
-
-    const usedTeachers = new Set();
-
-
-    /*
-      Randomize class order slightly so that
-      the same classes don't always receive
-      priority.
-    */
-
-    const periodClasses =
-      [...classes].sort(
-        () => Math.random() - 0.5
+    const teacher =
+      getTeacher(
+        teacherId
       );
 
+    if(!teacher) return;
 
-    periodClasses.forEach(cls => {
+    if(absent &&
+       !teacher.absent){
 
-      /*
-        Select a subject for this class.
+      const currentAbsent =
+        teachers.filter(
+          item =>
+            item.absent
+        ).length;
 
-        We rotate through the available subjects
-        instead of completely randomizing them.
-      */
+      if(
+        currentAbsent >=
+        MAX_ABSENCES
+      ){
 
-      const subject =
-        SUBJECTS[
-          (cls.id + period) %
-          SUBJECTS.length
-        ];
+        showToast(
+          `Maximum ${MAX_ABSENCES} absences allowed`
+        );
 
+        return;
+      }
+    }
 
-      /*
-        Find teachers qualified for this subject.
-      */
+    teacher.absent =
+      absent;
 
-      const candidates =
-        teachers.filter(teacher => {
+    saveDataSilent();
 
-          if(teacher.absent)
-            return false;
+    renderAttendance();
 
-          if(
-            usedTeachers.has(
-              teacher.id
-            )
-          )
-            return false;
+    updateDashboard();
 
-          if(
-            teacherLoad[teacher.id] >=
-            teacher.maxLectures
-          )
-            return false;
+    if(absent){
 
-          return teacher.subjects
-            .includes(subject);
+      showToast(
+        `${teacher.name} marked absent`
+      );
 
-        });
+    }else{
 
+      showToast(
+        `${teacher.name} marked present`
+      );
 
-      /*
-        If nobody can teach this slot,
-        leave it unassigned.
-      */
+    }
+  }
 
-      if(!candidates.length){
+  function updateAbsenceCounter(){
+
+    const count =
+      teachers.filter(
+        teacher =>
+          teacher.absent
+      ).length;
+
+    const counter =
+      document.getElementById(
+        "absenceCounter"
+      );
+
+    if(counter){
+
+      counter.textContent =
+        `${count} / ${MAX_ABSENCES} absent`;
+
+    }
+
+    const badge =
+      document.getElementById(
+        "absenceBadge"
+      );
+
+    if(badge){
+
+      badge.textContent =
+        count;
+
+    }
+  }
+
+  function clearAbsences(){
+
+    teachers.forEach(
+      teacher => {
+
+        teacher.absent =
+          false;
+
+      }
+    );
+
+    saveDataSilent();
+
+    renderAttendance();
+
+    updateDashboard();
+
+    showToast(
+      "All teachers marked present"
+    );
+  }
+
+  function generateBaseTimetable(){
+
+    timetable = [];
+
+    const teacherLoad =
+      {};
+
+    const busy =
+      {};
+
+    teachers.forEach(
+      teacher => {
+
+        teacherLoad[
+          teacher.id
+        ] = 0;
+
+        busy[
+          teacher.id
+        ] = {};
+
+      }
+    );
+
+    for(
+      let periodIndex = 0;
+      periodIndex <
+      PERIODS.length;
+      periodIndex++
+    ){
+
+      const usedThisPeriod =
+        new Set();
+
+      for(
+        let classIndex = 0;
+        classIndex <
+        classes.length;
+        classIndex++
+      ){
+
+        const currentClass =
+          classes[
+            classIndex
+          ];
+
+        const subject =
+          SUBJECTS[
+            (
+              classIndex +
+              periodIndex
+            ) %
+            SUBJECTS.length
+          ];
+
+        const candidates =
+          teachers.filter(
+            teacher => {
+
+              if(
+                teacher.absent
+              ){
+
+                return false;
+
+              }
+
+              if(
+                !teacher.subjects
+                  .includes(
+                    subject
+                  )
+              ){
+
+                return false;
+
+              }
+
+              if(
+                usedThisPeriod
+                  .has(
+                    teacher.id
+                  )
+              ){
+
+                return false;
+
+              }
+
+              const max =
+                teacher.maxLectures ||
+                DEFAULT_MAX_LECTURES;
+
+              if(
+                teacherLoad[
+                  teacher.id
+                ] >= max
+              ){
+
+                return false;
+
+              }
+
+              return true;
+
+            }
+          );
+
+        if(
+          !candidates.length
+        ){
+
+          timetable.push({
+
+            id:
+              `${currentClass.id}-${periodIndex}`,
+
+            classId:
+              currentClass.id,
+
+            periodIndex,
+
+            subject,
+
+            teacherId:
+              null
+
+          });
+
+          continue;
+
+        }
+
+        candidates.sort(
+          (
+            a,
+            b
+          ) => {
+
+            const scoreA =
+              getTeacherScore(
+                a,
+                currentClass,
+                teacherLoad
+              );
+
+            const scoreB =
+              getTeacherScore(
+                b,
+                currentClass,
+                teacherLoad
+              );
+
+            return scoreB - scoreA;
+
+          }
+        );
+
+        const selected =
+          candidates[0];
+
+        teacherLoad[
+          selected.id
+        ]++;
+
+        usedThisPeriod.add(
+          selected.id
+        );
+
+        busy[
+          selected.id
+        ][periodIndex] =
+          true;
 
         timetable.push({
 
           id:
-            timetable.length + 1,
-
-          period,
-
-          periodLabel:
-            PERIODS[period],
+            `${currentClass.id}-${periodIndex}`,
 
           classId:
-            cls.id,
+            currentClass.id,
 
-          className:
-            cls.name,
-
-          building:
-            cls.building,
+          periodIndex,
 
           subject,
 
           teacherId:
-            null,
-
-          teacherName:
-            "Unassigned",
-
-          teacherBuilding:
-            null,
-
-          status:
-            "unassigned"
+            selected.id
 
         });
 
-        return;
-
       }
+    }
 
-
-      /*
-        Score candidates.
-
-        Lower score = better candidate.
-      */
-
-      candidates.sort(
-        (a,b) => {
-
-          const scoreA =
-            getTeacherScore(
-              a,
-              cls,
-              teacherLoad,
-              period
-            );
-
-          const scoreB =
-            getTeacherScore(
-              b,
-              cls,
-              teacherLoad,
-              period
-            );
-
-          return scoreA - scoreB;
-
-        }
-      );
-
-
-      const selected =
-        candidates[0];
-
-
-      teacherLoad[
-        selected.id
-      ]++;
-
-
-      teacherPeriods[
-        selected.id
-      ][period] = true;
-
-
-      usedTeachers.add(
-        selected.id
-      );
-
-
-      timetable.push({
-
-        id:
-          timetable.length + 1,
-
-        period,
-
-        periodLabel:
-          PERIODS[period],
-
-        classId:
-          cls.id,
-
-        className:
-          cls.name,
-
-        building:
-          cls.building,
-
-        subject,
-
-        teacherId:
-          selected.id,
-
-        teacherName:
-          selected.name,
-
-        teacherBuilding:
-          selected.building,
-
-        status:
-          "assigned"
-
-      });
-
-    });
-
+    saveDataSilent();
   }
 
-
-  saveDataSilent();
-
-  renderTimetable();
-
-  updateDashboard();
-
-  showToast(
-    "Base timetable generated"
-  );
-
-}
-
-
-/* =========================================
-   TEACHER SCORING
-========================================= */
-
-function getTeacherScore(
-  teacher,
-  cls,
-  teacherLoad,
-  period
-){
-
-  let score = 0;
-
-
-  /*
-    Same building gets a strong advantage.
-  */
-
-  if(
-    teacher.building ===
-    cls.building
+  function getTeacherScore(
+    teacher,
+    currentClass,
+    teacherLoad
   ){
 
-    score -= 100;
-
-  }else{
-
-    score += 100;
-
-  }
-
-
-  /*
-    Prefer teachers with lower workload.
-  */
-
-  score +=
-    teacherLoad[teacher.id] *
-    15;
-
-
-  /*
-    Slightly discourage unnecessary
-    building movement.
-  */
-
-  const previous =
-    timetable.find(
-      entry =>
-        entry.teacherId ===
-          teacher.id &&
-        entry.period ===
-          period - 1
-    );
-
-
-  if(previous){
+    let score = 100;
 
     if(
-      previous.building !==
-      cls.building
+      teacher.building ===
+      currentClass.building
     ){
 
-      score += 40;
+      score += 50;
+
+    }else{
+
+      score -= 30;
 
     }
 
+    const load =
+      teacherLoad[
+        teacher.id
+      ] || 0;
+
+    score -=
+      load * 8;
+
+    return score;
   }
 
-
-  return score;
-
-}
-
-
-/* =========================================
-   RENDER TIMETABLE
-========================================= */
-
-function renderTimetable(){
-
-  const container =
-    document.getElementById(
-      "timetableTable"
-    );
-
-  if(!container) return;
-
-
-  if(!timetable.length){
-
-    container.innerHTML = `
-      <div class="empty-state">
-        Generate the timetable first.
-      </div>
-    `;
-
-    return;
-
-  }
-
-
-  let html = `
-
-    <div class="schedule-wrapper">
-
-      <table class="schedule-table">
-
-        <thead>
-
-          <tr>
-
-            <th>Period</th>
-
-  `;
-
-
-  classes.forEach(cls => {
-
-    html += `
-      <th>
-        ${escapeHtml(cls.name)}
-      </th>
-    `;
-
-  });
-
-
-  html += `
-          </tr>
-        </thead>
-
-        <tbody>
-  `;
-
-
-  for(
-    let period = 0;
-    period < PERIODS.length;
-    period++
+  function teacherLoadForDay(
+    teacherId
   ){
 
-    html += `
-
-      <tr>
-
-        <td class="period-cell">
-
-          <strong>
-            P${period + 1}
-          </strong>
-
-          <span>
-            ${PERIODS[period]}
-          </span>
-
-        </td>
-
-    `;
-
-
-    classes.forEach(cls => {
-
-      const entry =
-        timetable.find(
-          item =>
-            item.period === period &&
-            item.classId === cls.id
-        );
-
-
-      if(!entry){
-
-        html += `
-          <td>
-            <div class="schedule-empty">
-              Free
-            </div>
-          </td>
-        `;
-
-        return;
-
-      }
-
-
-      if(
-        entry.status ===
-        "unassigned"
-      ){
-
-        html += `
-
-          <td>
-
-            <div class="schedule-card unassigned">
-
-              <strong>
-                ${escapeHtml(
-                  entry.subject
-                )}
-              </strong>
-
-              <span>
-                No teacher
-              </span>
-
-            </div>
-
-          </td>
-
-        `;
-
-        return;
-
-      }
-
-
-      html += `
-
-        <td>
-
-          <div class="schedule-card">
-
-            <strong>
-              ${escapeHtml(
-                entry.subject
-              )}
-            </strong>
-
-            <span>
-              ${escapeHtml(
-                entry.teacherName
-              )}
-            </span>
-
-            <small>
-              ${escapeHtml(
-                entry.teacherBuilding
-              )}
-            </small>
-
-          </div>
-
-        </td>
-
-      `;
-
-    });
-
-
-    html += `
-      </tr>
-    `;
-
+    return timetable.filter(
+      item =>
+        item.teacherId ===
+        teacherId
+    ).length;
   }
 
+  function getBusyPeriods(
+    teacherId
+  ){
 
-  html += `
+    const busy =
+      new Set();
 
-        </tbody>
+    timetable.forEach(
+      item => {
 
-      </table>
+        if(
+          item.teacherId ===
+          teacherId
+        ){
 
-    </div>
+          busy.add(
+            item.periodIndex
+          );
 
-  `;
+        }
+      }
+    );
 
+    return busy;
+  }
 
-  container.innerHTML =
-    html;
+  function runOptimizer(){
 
-}
+    replacementPlan = [];
 
+    const absentTeachers =
+      teachers.filter(
+        teacher =>
+          teacher.absent
+      );
 
-/* =========================================
-   OPTIMIZER
-========================================= */
+    if(
+      !absentTeachers.length
+    ){
 
-function runOptimizer(){
+      saveDataSilent();
 
-  if(!timetable.length){
+      return;
+
+    }
+
+    const replacementLoad =
+      {};
+
+    const replacementBusy =
+      {};
+
+    teachers.forEach(
+      teacher => {
+
+        replacementLoad[
+          teacher.id
+        ] = 0;
+
+        replacementBusy[
+          teacher.id
+        ] =
+          getBusyPeriods(
+            teacher.id
+          );
+
+      }
+    );
+
+    timetable.forEach(
+      item => {
+
+        if(
+          !item.teacherId
+        ){
+
+          return;
+
+        }
+
+        const original =
+          getTeacher(
+            item.teacherId
+          );
+
+        if(
+          !original
+        ){
+
+          return;
+
+        }
+
+        if(
+          !original.absent
+        ){
+
+          replacementLoad[
+            original.id
+          ]++;
+
+        }
+
+      }
+    );
+
+    timetable.forEach(
+      item => {
+
+        if(
+          !item.teacherId
+        ){
+
+          return;
+
+        }
+
+        const original =
+          getTeacher(
+            item.teacherId
+          );
+
+        if(
+          !original ||
+          !original.absent
+        ){
+
+          return;
+
+        }
+
+        const currentClass =
+          getClass(
+            item.classId
+          );
+
+        if(
+          !currentClass
+        ){
+
+          return;
+
+        }
+
+        const candidates =
+          teachers.filter(
+            teacher => {
+
+              if(
+                teacher.absent
+              ){
+
+                return false;
+
+              }
+
+              if(
+                !teacher.subjects
+                  .includes(
+                    item.subject
+                  )
+              ){
+
+                return false;
+
+              }
+
+              if(
+                replacementBusy[
+                  teacher.id
+                ].has(
+                  item.periodIndex
+                )
+              ){
+
+                return false;
+
+              }
+
+              const max =
+                teacher.maxLectures ||
+                DEFAULT_MAX_LECTURES;
+
+              if(
+                replacementLoad[
+                  teacher.id
+                ] >= max
+              ){
+
+                return false;
+
+              }
+
+              return true;
+
+            }
+          );
+
+        candidates.sort(
+          (
+            a,
+            b
+          ) => {
+
+            return (
+              getReplacementScore(
+                b,
+                currentClass,
+                replacementLoad
+              ) -
+              getReplacementScore(
+                a,
+                currentClass,
+                replacementLoad
+              )
+            );
+
+          }
+        );
+
+        const replacement =
+          candidates[0] || null;
+
+        if(
+          replacement
+        ){
+
+          replacementLoad[
+            replacement.id
+          ]++;
+
+          replacementBusy[
+            replacement.id
+          ].add(
+            item.periodIndex
+          );
+
+          replacementPlan.push({
+
+            classId:
+              item.classId,
+
+            periodIndex:
+              item.periodIndex,
+
+            subject:
+              item.subject,
+
+            originalTeacherId:
+              original.id,
+
+            replacementTeacherId:
+              replacement.id,
+
+            status:
+              "assigned"
+
+          });
+
+        }else{
+
+          replacementPlan.push({
+
+            classId:
+              item.classId,
+
+            periodIndex:
+              item.periodIndex,
+
+            subject:
+              item.subject,
+
+            originalTeacherId:
+              original.id,
+
+            replacementTeacherId:
+              null,
+
+            status:
+              "unassigned"
+
+          });
+
+        }
+
+      }
+    );
+
+    saveDataSilent();
+  }
+  function getReplacementScore(
+    teacher,
+    currentClass,
+    replacementLoad
+  ){
+
+    let score = 100;
+
+    if(
+      teacher.building ===
+      currentClass.building
+    ){
+
+      score += 100;
+
+    }else{
+
+      score -= 50;
+
+    }
+
+    const load =
+      replacementLoad[
+        teacher.id
+      ] || 0;
+
+    score -=
+      load * 12;
+
+    return score;
+  }
+
+  function generatePlan(){
 
     generateBaseTimetable();
 
-  }
-
-
-  /*
-    Start fresh every time the optimizer runs.
-  */
-
-  replacementPlan = [];
-
-
-  const absentIds =
-    new Set(
-      teachers
-        .filter(
-          teacher =>
-            teacher.absent
-        )
-        .map(
-          teacher =>
-            teacher.id
-        )
-    );
-
-
-  if(!absentIds.size){
-
-    showToast(
-      "No absent teachers today"
-    );
+    runOptimizer();
 
     renderReplacementPlan();
 
     updateDashboard();
 
-    return;
+    showPage(
+      "planPage"
+    );
 
+    showToast(
+      "Plan generated"
+    );
   }
 
+  function renderReplacementPlan(){
 
-  /*
-    Track replacement workload.
-  */
-
-  const replacementLoad = {};
-
-  teachers.forEach(
-    teacher => {
-
-      replacementLoad[
-        teacher.id
-      ] = 0;
-
-    }
-  );
-
-
-  /*
-    Track which teacher is already
-    teaching during each period.
-  */
-
-  const busyPeriods = {};
-
-
-  teachers.forEach(
-    teacher => {
-
-      busyPeriods[
-        teacher.id
-      ] = new Set();
-
-    }
-  );
-
-
-  /*
-    Add normal timetable assignments
-    to the busy-period map.
-
-    Absent teachers are ignored because
-    their classes need replacement.
-  */
-
-  timetable.forEach(entry => {
-
-    if(
-      !entry.teacherId ||
-      absentIds.has(
-        entry.teacherId
-      )
-    ){
-
-      return;
-
-    }
-
-
-    busyPeriods[
-      entry.teacherId
-    ].add(
-      entry.period
-    );
-
-  });
-
-
-  /*
-    Find all classes whose original
-    teacher is absent.
-  */
-
-  const affected =
-    timetable.filter(
-      entry =>
-        entry.teacherId &&
-        absentIds.has(
-          entry.teacherId
-        )
-    );
-
-
-  affected.forEach(entry => {
-
-    const absentTeacher =
-      getTeacher(
-        entry.teacherId
+    const table =
+      document.getElementById(
+        "replacementTable"
       );
 
-
-    const candidates =
-      teachers.filter(
-        teacher => {
-
-          /*
-            Cannot replace yourself.
-          */
-
-          if(
-            teacher.id ===
-            entry.teacherId
-          )
-            return false;
-
-
-          /*
-            Cannot be absent.
-          */
-
-          if(teacher.absent)
-            return false;
-
-
-          /*
-            Must be qualified.
-          */
-
-          if(
-            !teacher.subjects
-              .includes(
-                entry.subject
-              )
-          )
-            return false;
-
-
-          /*
-            Cannot teach another
-            class at the same time.
-          */
-
-          if(
-            busyPeriods[
-              teacher.id
-            ].has(
-              entry.period
-            )
-          )
-            return false;
-
-
-          /*
-            Respect maximum workload.
-          */
-
-          if(
-            teacherLoadForDay(
-              teacher.id,
-              replacementLoad
-            ) >=
-            teacher.maxLectures
-          )
-            return false;
-
-
-          return true;
-
-        }
+    const summary =
+      document.getElementById(
+        "optimizerSummary"
       );
 
+    if(!table) return;
 
-    if(!candidates.length){
+    const total =
+      replacementPlan.length;
 
-      replacementPlan.push({
-
-        period:
-          entry.period,
-
-        periodLabel:
-          entry.periodLabel,
-
-        classId:
-          entry.classId,
-
-        className:
-          entry.className,
-
-        classBuilding:
-          entry.building,
-
-        subject:
-          entry.subject,
-
-        absentTeacher:
-          absentTeacher
-            ? absentTeacher.name
-            : "Unknown",
-
-        replacementTeacher:
-          null,
-
-        replacementBuilding:
-          null,
-
-        movement:
-          null,
-
-        status:
-          "unassigned"
-
-      });
-
-      return;
-
-    }
-
-
-    candidates.sort(
-      (a,b) => {
-
-        const scoreA =
-          getReplacementScore(
-            a,
-            entry,
-            replacementLoad,
-            busyPeriods
-          );
-
-
-        const scoreB =
-          getReplacementScore(
-            b,
-            entry,
-            replacementLoad,
-            busyPeriods
-          );
-
-
-        return scoreA - scoreB;
-
-      }
-    );
-
-
-    const replacement =
-      candidates[0];
-
-
-    replacementLoad[
-      replacement.id
-    ]++;
-
-
-    busyPeriods[
-      replacement.id
-    ].add(
-      entry.period
-    );
-
-
-    const movement =
-      replacement.building ===
-      entry.building
-        ? "Same building"
-        : "Cross building";
-
-
-    replacementPlan.push({
-
-      period:
-        entry.period,
-
-      periodLabel:
-        entry.periodLabel,
-
-      classId:
-        entry.classId,
-
-      className:
-        entry.className,
-
-      classBuilding:
-        entry.building,
-
-      subject:
-        entry.subject,
-
-      absentTeacher:
-        absentTeacher
-          ? absentTeacher.name
-          : "Unknown",
-
-      replacementTeacher:
-        replacement.name,
-
-      replacementBuilding:
-        replacement.building,
-
-      movement,
-
-      status:
-        "assigned"
-
-    });
-
-  });
-
-
-  saveDataSilent();
-
-  renderReplacementPlan();
-
-  updateDashboard();
-
-  showToast(
-    "Replacement plan generated"
-  );
-
-}
-
-
-/* =========================================
-   REPLACEMENT SCORE
-========================================= */
-
-function getReplacementScore(
-  teacher,
-  entry,
-  replacementLoad,
-  busyPeriods
-){
-
-  let score = 0;
-
-
-  /*
-    Same building is strongly preferred.
-  */
-
-  if(
-    teacher.building ===
-    entry.building
-  ){
-
-    score -= 200;
-
-  }else{
-
-    score += 200;
-
-  }
-
-
-  /*
-    Lower replacement workload first.
-  */
-
-  score +=
-    replacementLoad[
-      teacher.id
-    ] * 50;
-
-
-  /*
-    Avoid unnecessary movement.
-  */
-
-  const previousPeriod =
-    entry.period - 1;
-
-
-  if(
-    previousPeriod >= 0
-  ){
-
-    /*
-      Check whether this teacher has
-      a timetable assignment immediately
-      before the replacement.
-    */
-
-    const previous =
-      timetable.find(
+    const assigned =
+      replacementPlan.filter(
         item =>
-          item.teacherId ===
-            teacher.id &&
-          item.period ===
-            previousPeriod
-      );
+          item.status ===
+          "assigned"
+      ).length;
 
+    const unassigned =
+      total - assigned;
 
-    if(previous){
+    if(summary){
 
-      if(
-        previous.building !==
-        entry.building
-      ){
+      summary.innerHTML = `
 
-        score += 80;
+        <div class="summary-card">
 
-      }
+          <strong>
+            ${total}
+          </strong>
 
-    }
+          <span>
+            Classes needing replacement
+          </span>
 
-  }
+        </div>
 
+        <div class="summary-card">
 
-  return score;
+          <strong>
+            ${assigned}
+          </strong>
 
-}
+          <span>
+            Replacements assigned
+          </span>
 
+        </div>
 
-/* =========================================
-   DAILY TEACHER LOAD
-========================================= */
+        <div class="summary-card">
 
-function teacherLoadForDay(
-  teacherId,
-  replacementLoad
-){
+          <strong>
+            ${unassigned}
+          </strong>
 
-  let normalLoad = 0;
+          <span>
+            Still unassigned
+          </span>
 
+        </div>
 
-  timetable.forEach(
-    entry => {
-
-      if(
-        entry.teacherId ===
-        teacherId
-      ){
-
-        normalLoad++;
-
-      }
-
-    }
-  );
-
-
-  return (
-    normalLoad +
-    (
-      replacementLoad[
-        teacherId
-      ] || 0
-    )
-  );
-
-}
-
-
-/* =========================================
-   REPLACEMENT PLAN RENDER
-========================================= */
-
-function renderReplacementPlan(){
-
-  const container =
-    document.getElementById(
-      "replacementTable"
-    );
-
-  if(!container) return;
-
-
-  if(!replacementPlan.length){
-
-    container.innerHTML = `
-      <div class="empty-state">
-        No replacement duties required.
-      </div>
-    `;
-
-    return;
-
-  }
-
-
-  const assigned =
-    replacementPlan.filter(
-      item =>
-        item.status ===
-        "assigned"
-    ).length;
-
-
-  const unassigned =
-    replacementPlan.filter(
-      item =>
-        item.status ===
-        "unassigned"
-    ).length;
-
-
-  const summary =
-    document.getElementById(
-      "optimizerSummary"
-    );
-
-
-  if(summary){
-
-    summary.innerHTML = `
-
-      <div class="summary-card">
-
-        <strong>
-          ${assigned}
-        </strong>
-
-        <span>
-          Replacements assigned
-        </span>
-
-      </div>
-
-
-      <div class="summary-card">
-
-        <strong>
-          ${unassigned}
-        </strong>
-
-        <span>
-          Unassigned duties
-        </span>
-
-      </div>
-
-    `;
-
-  }
-
-
-  container.innerHTML = `
-
-    <div class="table-scroll">
-
-      <table>
-
-        <thead>
-
-          <tr>
-
-            <th>Period</th>
-            <th>Class</th>
-            <th>Subject</th>
-            <th>Absent Teacher</th>
-            <th>Replacement</th>
-            <th>Location</th>
-            <th>Status</th>
-
-          </tr>
-
-        </thead>
-
-        <tbody>
-
-          ${
-            replacementPlan
-              .map(item => `
-
-                <tr>
-
-                  <td>
-                    P${item.period + 1}
-                    <br>
-                    <small>
-                      ${item.periodLabel}
-                    </small>
-                  </td>
-
-
-                  <td>
-                    ${escapeHtml(
-                      item.className
-                    )}
-                  </td>
-
-
-                  <td>
-                    <span class="tag">
-                      ${escapeHtml(
-                        item.subject
-                      )}
-                    </span>
-                  </td>
-
-
-                  <td>
-                    ${escapeHtml(
-                      item.absentTeacher
-                    )}
-                  </td>
-
-
-                  <td>
-
-                    ${
-                      item.replacementTeacher
-                        ? escapeHtml(
-                            item.replacementTeacher
-                          )
-                        : "—"
-                    }
-
-                  </td>
-
-
-                  <td>
-
-                    ${
-                      item.movement
-                        ? escapeHtml(
-                            item.movement
-                          )
-                        : "—"
-                    }
-
-                  </td>
-
-
-                  <td>
-
-                    ${
-                      item.status ===
-                      "assigned"
-
-                        ? `
-                          <span class="badge success">
-                            Assigned
-                          </span>
-                        `
-
-                        : `
-                          <span class="badge danger">
-                            Unassigned
-                          </span>
-                        `
-                    }
-
-                  </td>
-
-                </tr>
-
-              `)
-              .join("")
-          }
-
-        </tbody>
-
-      </table>
-
-    </div>
-
-  `;
-
-}
-/* =========================================
-   DASHBOARD
-========================================= */
-
-function updateDashboard(){
-
-  const absentCount =
-    teachers.filter(
-      teacher => teacher.absent
-    ).length;
-
-
-  const assignedSlots =
-    timetable.filter(
-      entry =>
-        entry.status ===
-        "assigned"
-    ).length;
-
-
-  const unassignedSlots =
-    timetable.filter(
-      entry =>
-        entry.status ===
-        "unassigned"
-    ).length;
-
-
-  const replacementAssigned =
-    replacementPlan.filter(
-      item =>
-        item.status ===
-        "assigned"
-    ).length;
-
-
-  const replacementUnassigned =
-    replacementPlan.filter(
-      item =>
-        item.status ===
-        "unassigned"
-    ).length;
-
-
-  const statBuildings =
-    document.getElementById(
-      "statBuildings"
-    );
-
-  const statClasses =
-    document.getElementById(
-      "statClasses"
-    );
-
-  const statTeachers =
-    document.getElementById(
-      "statTeachers"
-    );
-
-  const statAbsent =
-    document.getElementById(
-      "statAbsent"
-    );
-
-  const statUnassigned =
-    document.getElementById(
-      "statUnassigned"
-    );
-
-
-  if(statBuildings)
-    statBuildings.textContent =
-      BUILDING_COUNT;
-
-
-  if(statClasses)
-    statClasses.textContent =
-      classes.length;
-
-
-  if(statTeachers)
-    statTeachers.textContent =
-      teachers.length;
-
-
-  if(statAbsent)
-    statAbsent.textContent =
-      absentCount;
-
-
-  if(statUnassigned)
-    statUnassigned.textContent =
-      replacementUnassigned;
-
-
-  const capacityInfo =
-    document.getElementById(
-      "capacityInfo"
-    );
-
-
-  if(capacityInfo){
-
-    const totalTeacherCapacity =
-      teachers.reduce(
-        (sum, teacher) =>
-          sum +
-          Number(
-            teacher.maxLectures ||
-            DEFAULT_MAX_LECTURES
-          ),
-        0
-      );
-
-
-    const totalClassSlots =
-      classes.length *
-      PERIODS.length;
-
-
-    capacityInfo.innerHTML = `
-
-      <div>
-        <strong>
-          ${totalTeacherCapacity}
-        </strong>
-        <span>
-          teacher lecture capacity
-        </span>
-      </div>
-
-      <div>
-        <strong>
-          ${totalClassSlots}
-        </strong>
-        <span>
-          class-period slots
-        </span>
-      </div>
-
-      <div>
-        <strong>
-          ${assignedSlots}
-        </strong>
-        <span>
-          timetable assignments
-        </span>
-      </div>
-
-    `;
-
-  }
-
-
-  const planStatus =
-    document.getElementById(
-      "planStatus"
-    );
-
-
-  if(planStatus){
-
-    if(!timetable.length){
-
-      planStatus.innerHTML = `
-        <span class="badge warning">
-          Timetable not generated
-        </span>
-      `;
-
-    }else if(
-      replacementPlan.length &&
-      replacementUnassigned === 0
-    ){
-
-      planStatus.innerHTML = `
-        <span class="badge success">
-          Replacement plan complete
-        </span>
-      `;
-
-    }else if(
-      replacementPlan.length
-    ){
-
-      planStatus.innerHTML = `
-        <span class="badge warning">
-          Some duties need attention
-        </span>
-      `;
-
-    }else{
-
-      planStatus.innerHTML = `
-        <span class="badge success">
-          Base timetable ready
-        </span>
       `;
 
     }
 
-  }
+    if(!total){
 
+      table.innerHTML = `
 
-  const dashboardChanges =
-    document.getElementById(
-      "dashboardChanges"
-    );
+        <div class="empty-state">
 
+          <strong>
+            No replacement required
+          </strong>
 
-  if(dashboardChanges){
+          <span>
+            Mark absent teachers first,
+            then generate the plan.
+          </span>
 
-    dashboardChanges.innerHTML = `
+        </div>
 
-      <div class="change-line">
+      `;
 
-        <span>
-          Absent teachers
-        </span>
+      return;
 
-        <strong>
-          ${absentCount}
-        </strong>
+    }
 
-      </div>
+    table.innerHTML =
+      replacementPlan.map(
+        item => {
 
+          const currentClass =
+            getClass(
+              item.classId
+            );
 
-      <div class="change-line">
+          const original =
+            getTeacher(
+              item.originalTeacherId
+            );
 
-        <span>
-          Replacement duties
-        </span>
+          const replacement =
+            item.replacementTeacherId
+              ? getTeacher(
+                  item.replacementTeacherId
+                )
+              : null;
 
-        <strong>
-          ${replacementAssigned}
-        </strong>
+          const period =
+            PERIODS[
+              item.periodIndex
+            ] ||
+            `Period ${
+              item.periodIndex + 1
+            }`;
 
-      </div>
+          return `
 
+            <div class="plan-row">
 
-      <div class="change-line">
+              <div class="plan-main">
 
-        <span>
-          Unassigned duties
-        </span>
+                <strong>
+                  ${
+                    currentClass
+                      ? escapeHtml(
+                          currentClass.name
+                        )
+                      : "Unknown class"
+                  }
+                </strong>
 
-        <strong>
-          ${replacementUnassigned}
-        </strong>
-
-      </div>
-
-    `;
-
-  }
-
-}
-
-
-/* =========================================
-   BUILDING VIEW
-========================================= */
-
-function renderBuildings(){
-
-  const container =
-    document.getElementById(
-      "buildingCards"
-    );
-
-  if(!container) return;
-
-
-  container.innerHTML =
-    BUILDINGS.map(
-      building => {
-
-        const buildingTeachers =
-          teachers.filter(
-            teacher =>
-              teacher.building ===
-              building
-          );
-
-
-        const buildingClasses =
-          classes.filter(
-            cls =>
-              cls.building ===
-              building
-          );
-
-
-        const absent =
-          buildingTeachers.filter(
-            teacher =>
-              teacher.absent
-          ).length;
-
-
-        return `
-
-          <div class="building-card">
-
-            <div class="building-card-head">
-
-              <div>
-
-                <span class="eyebrow">
-                  Institute block
+                <span>
+                  ${
+                    currentClass
+                      ? escapeHtml(
+                          currentClass.building
+                        )
+                      : ""
+                  }
+                  •
+                  ${escapeHtml(
+                    item.subject
+                  )}
+                  •
+                  ${escapeHtml(
+                    period
+                  )}
                 </span>
-
-                <h3>
-                  ${building}
-                </h3>
 
               </div>
 
-              <span class="building-icon">
-                ${building.replace(
-                  "Building ",
-                  "B"
+              <div class="plan-teachers">
+
+                <span>
+                  Absent:
+                  ${
+                    original
+                      ? escapeHtml(
+                          original.name
+                        )
+                      : "Unknown"
+                  }
+                </span>
+
+                <span class="${
+                  replacement
+                    ? "assigned"
+                    : "unassigned"
+                }">
+
+                  ${
+                    replacement
+                      ? `Replacement:
+                          ${escapeHtml(
+                            replacement.name
+                          )}`
+                      : "No suitable replacement"
+
+                  }
+
+                </span>
+
+              </div>
+
+            </div>
+
+          `;
+
+        }
+      ).join("");
+  }
+
+  function renderTimetable(){
+
+    const table =
+      document.getElementById(
+        "timetableTable"
+      );
+
+    if(!table) return;
+
+    if(!timetable.length){
+
+      table.innerHTML = `
+
+        <div class="empty-state">
+
+          <strong>
+            No timetable yet
+          </strong>
+
+          <span>
+            Generate a plan to create
+            the timetable.
+          </span>
+
+        </div>
+
+      `;
+
+      return;
+
+    }
+
+    const selectedBuilding =
+      document.getElementById(
+        "timetableBuilding"
+      )?.value ||
+      "all";
+
+    const selectedPeriod =
+      document.getElementById(
+        "timetablePeriod"
+      )?.value;
+
+    let visibleClasses =
+      classes;
+
+    if(
+      selectedBuilding !==
+      "all"
+    ){
+
+      visibleClasses =
+        classes.filter(
+          item =>
+            item.building ===
+            selectedBuilding
+        );
+
+    }
+
+    let rows = "";
+
+    visibleClasses.forEach(
+      currentClass => {
+
+        let cells = "";
+
+        PERIODS.forEach(
+          (
+            period,
+            periodIndex
+          ) => {
+
+            if(
+              selectedPeriod !==
+              undefined &&
+              selectedPeriod !==
+              "all" &&
+              String(
+                periodIndex
+              ) !==
+              String(
+                selectedPeriod
+              )
+            ){
+
+              return;
+
+            }
+
+            const item =
+              timetable.find(
+                entry =>
+                  entry.classId ===
+                    currentClass.id &&
+                  entry.periodIndex ===
+                    periodIndex
+              );
+
+            if(!item){
+
+              cells += `
+                <div class="tt-cell">
+                  —
+                </div>
+              `;
+
+              return;
+
+            }
+
+            const teacher =
+              item.teacherId
+                ? getTeacher(
+                    item.teacherId
+                  )
+                : null;
+
+            cells += `
+
+              <div class="tt-cell">
+
+                <strong>
+                  ${escapeHtml(
+                    item.subject
+                  )}
+                </strong>
+
+                <span>
+                  ${
+                    teacher
+                      ? escapeHtml(
+                          teacher.name
+                        )
+                      : "Unassigned"
+                  }
+                </span>
+
+              </div>
+
+            `;
+
+          }
+        );
+
+        rows += `
+
+          <div class="tt-row">
+
+            <div class="tt-class">
+
+              <strong>
+                ${escapeHtml(
+                  currentClass.name
                 )}
+              </strong>
+
+              <span>
+                ${escapeHtml(
+                  currentClass.building
+                )}
+                • Room
+                ${currentClass.room}
               </span>
 
             </div>
 
-
-            <div class="building-stats">
-
-              <div>
-
-                <strong>
-                  ${buildingTeachers.length}
-                </strong>
-
-                <span>
-                  Teachers
-                </span>
-
-              </div>
-
-
-              <div>
-
-                <strong>
-                  ${buildingClasses.length}
-                </strong>
-
-                <span>
-                  Classes
-                </span>
-
-              </div>
-
-
-              <div>
-
-                <strong>
-                  ${absent}
-                </strong>
-
-                <span>
-                  Absent
-                </span>
-
-              </div>
-
-            </div>
-
-
-            <div class="building-teachers">
-
-              ${buildingTeachers
-                .slice(0,5)
-                .map(
-                  teacher => `
-
-                    <span class="mini-person
-                      ${
-                        teacher.absent
-                          ? "is-absent"
-                          : ""
-                      }
-                    ">
-
-                      ${escapeHtml(
-                        teacher.name
-                      )}
-
-                    </span>
-
-                  `
-                )
-                .join("")}
-
-
-              ${
-                buildingTeachers.length > 5
-                  ? `
-                    <span class="mini-person">
-                      +${
-                        buildingTeachers.length - 5
-                      } more
-                    </span>
-                  `
-                  : ""
-              }
-
+            <div class="tt-periods">
+              ${cells}
             </div>
 
           </div>
@@ -4517,502 +3217,740 @@ function renderBuildings(){
         `;
 
       }
-    ).join("");
-
-}
-
-
-/* =========================================
-   SETTINGS
-========================================= */
-
-function updateSettingsUI(){
-
-  const settingBuildings =
-    document.getElementById(
-      "settingBuildings"
     );
 
-  const settingClasses =
-    document.getElementById(
-      "settingClasses"
-    );
+    table.innerHTML = `
 
-  const settingTeachers =
-    document.getElementById(
-      "settingTeachers"
-    );
+      <div class="tt-head">
 
-  const settingPeriods =
-    document.getElementById(
-      "settingPeriods"
-    );
+        <div>
+          Class
+        </div>
 
-  const settingAbsences =
-    document.getElementById(
-      "settingAbsences"
-    );
+        <div class="tt-period-labels">
 
-  const settingMaxLectures =
-    document.getElementById(
-      "settingMaxLectures"
-    );
+          ${
+            PERIODS.map(
+              period =>
+                `<span>
+                  ${escapeHtml(
+                    period
+                  )}
+                </span>`
+            ).join("")
+          }
 
+        </div>
 
-  if(settingBuildings)
-    settingBuildings.value =
-      BUILDING_COUNT;
+      </div>
 
+      ${rows}
 
-  if(settingClasses)
-    settingClasses.value =
-      CLASSES_PER_BUILDING;
+    `;
+  }
 
+  function populateTimetableFilters(){
 
-  if(settingTeachers)
-    settingTeachers.value =
-      TEACHERS_PER_BUILDING;
+    const buildingSelect =
+      document.getElementById(
+        "timetableBuilding"
+      );
 
+    const periodSelect =
+      document.getElementById(
+        "timetablePeriod"
+      );
 
-  if(settingPeriods)
-    settingPeriods.value =
-      PERIODS.length;
+    if(buildingSelect){
 
-
-  if(settingAbsences)
-    settingAbsences.value =
-      MAX_ABSENCES;
-
-
-  if(settingMaxLectures)
-    settingMaxLectures.value =
-      DEFAULT_MAX_LECTURES;
-
-}
-
-
-/* =========================================
-   PERIOD SETTINGS
-========================================= */
-
-function changePeriodCount(value){
-
-  const count =
-    Math.max(
-      1,
-      Math.min(
-        12,
-        Number(value) || 7
-      )
-    );
-
-
-  const defaultPeriods = [
-
-    "9:40 - 10:30",
-    "10:30 - 11:20",
-    "11:20 - 12:10",
-    "12:10 - 1:00",
-    "1:00 - 1:50",
-    "1:50 - 2:40",
-    "2:40 - 3:30",
-    "3:30 - 4:20",
-    "4:20 - 5:10",
-    "5:10 - 6:00",
-    "6:00 - 6:50",
-    "6:50 - 7:40"
-
-  ];
-
-
-  PERIODS =
-    defaultPeriods.slice(
-      0,
-      count
-    );
-
-
-  timetable = [];
-  replacementPlan = [];
-
-
-  saveDataSilent();
-
-  renderAll();
-
-  showToast(
-    `${count} periods configured`
-  );
-
-}
-
-
-/* =========================================
-   ABSENCE LIMIT
-========================================= */
-
-function changeMaxAbsences(value){
-
-  MAX_ABSENCES =
-    Math.max(
-      1,
-      Math.min(
-        teachers.length,
-        Number(value) || 5
-      )
-    );
-
-
-  /*
-    If the new limit is lower than
-    the current absences, keep only
-    the first allowed absences.
-  */
-
-  const absentTeachers =
-    teachers.filter(
-      teacher =>
-        teacher.absent
-    );
-
-
-  absentTeachers
-    .slice(MAX_ABSENCES)
-    .forEach(
-      teacher =>
-        teacher.absent = false
-    );
-
-
-  saveDataSilent();
-
-  renderAll();
-
-  showToast(
-    `Maximum absences: ${MAX_ABSENCES}`
-  );
-
-}
-
-
-/* =========================================
-   DEFAULT MAX LECTURES
-========================================= */
-
-function changeDefaultMax(value){
-
-  DEFAULT_MAX_LECTURES =
-    Math.max(
-      1,
-      Math.min(
-        PERIODS.length,
-        Number(value) || 5
-      )
-    );
-
-
-  /*
-    Only update teachers that still
-    use the old/default value.
-  */
-
-  teachers.forEach(
-    teacher => {
-
-      if(
-        !teacher.maxLectures ||
-        teacher.maxLectures === 5
-      ){
-
-        teacher.maxLectures =
-          DEFAULT_MAX_LECTURES;
-
-      }
+      buildingSelect.innerHTML =
+        `
+        <option value="all">
+          All Buildings
+        </option>
+        ${
+          BUILDINGS.map(
+            building =>
+              `<option value="${
+                escapeHtml(
+                  building
+                )
+              }">
+                ${
+                  escapeHtml(
+                    building
+                  )
+                }
+              </option>`
+          ).join("")
+        }
+        `;
 
     }
-  );
 
+    if(periodSelect){
 
-  timetable = [];
-  replacementPlan = [];
+      periodSelect.innerHTML =
+        `
+        <option value="all">
+          All Periods
+        </option>
+        ${
+          PERIODS.map(
+            (
+              period,
+              index
+            ) =>
+              `<option value="${
+                index
+              }">
+                Period ${
+                  index + 1
+                }
+                •
+                ${
+                  escapeHtml(
+                    period
+                  )
+                }
+              </option>`
+          ).join("")
+        }
+        `;
 
+    }
+  }
 
-  saveDataSilent();
+  function renderTeachers(){
 
-  renderAll();
+    const container =
+      document.getElementById(
+        "teachersList"
+      );
 
-  showToast(
-    `Default max lectures: ${DEFAULT_MAX_LECTURES}`
-  );
+    if(!container) return;
 
-}
+    container.innerHTML =
+      teachers.map(
+        teacher => `
 
+          <div class="data-row">
 
-/* =========================================
-   SAVE BUTTON
-========================================= */
+            <div>
 
-function manualSave(){
+              <strong>
+                ${escapeHtml(
+                  teacher.name
+                )}
+              </strong>
 
-  saveData();
+              <span>
+                ${escapeHtml(
+                  teacher.building
+                )}
+                •
+                ${escapeHtml(
+                  teacher.subjects.join(
+                    ", "
+                  )
+                )}
+              </span>
 
-  showToast(
-    "All changes saved"
-  );
+            </div>
 
-}
+            <button
+              class="small-btn"
+              onclick="
+                editTeacher(
+                  ${teacher.id}
+                )
+              "
+            >
+              Edit
+            </button>
 
+          </div>
 
-/* =========================================
-   GLOBAL RENDER
-========================================= */
+        `
+      ).join("");
+  }
 
-function renderAll(){
+  function renderClasses(){
 
-  populateFilters();
+    const container =
+      document.getElementById(
+        "classesList"
+      );
 
-  renderTeachers();
+    if(!container) return;
 
-  renderClasses();
+    container.innerHTML =
+      classes.map(
+        currentClass => `
 
-  renderTimetable();
+          <div class="data-row">
 
-  renderAbsences();
+            <div>
 
-  renderReplacementPlan();
+              <strong>
+                ${escapeHtml(
+                  currentClass.name
+                )}
+              </strong>
 
-  renderBuildings();
+              <span>
+                ${escapeHtml(
+                  currentClass.building
+                )}
+                • Room
+                ${currentClass.room}
+              </span>
 
-  updateSettingsUI();
+            </div>
 
-  updateDashboard();
+            <button
+              class="small-btn"
+              onclick="
+                editClass(
+                  ${currentClass.id}
+                )
+              "
+            >
+              Edit
+            </button>
 
-}
+          </div>
 
+        `
+      ).join("");
+  }
 
-/* =========================================
-   SEARCH LISTENERS
-========================================= */
+  function editTeacher(
+    teacherId
+  ){
 
-document.addEventListener(
-  "input",
-  function(event){
+    const teacher =
+      getTeacher(
+        teacherId
+      );
+
+    if(!teacher) return;
+
+    const name =
+      prompt(
+        "Teacher name:",
+        teacher.name
+      );
 
     if(
-      event.target.id ===
-      "teacherSearch"
+      name === null
     ){
+
+      return;
+
+    }
+
+    const subjects =
+      prompt(
+        "Subjects separated by comma:",
+        teacher.subjects.join(
+          ", "
+        )
+      );
+
+    if(
+      subjects === null
+    ){
+
+      return;
+
+    }
+
+    const max =
+      prompt(
+        "Maximum lectures per day:",
+        teacher.maxLectures ||
+          DEFAULT_MAX_LECTURES
+      );
+
+    if(
+      max === null
+    ){
+
+      return;
+
+    }
+
+    teacher.name =
+      name.trim() ||
+      teacher.name;
+
+    teacher.subjects =
+      subjects
+        .split(",")
+        .map(
+          item =>
+            item
+              .trim()
+              .toUpperCase()
+        )
+        .filter(
+          Boolean
+        );
+
+    teacher.maxLectures =
+      Math.max(
+        1,
+        Number(max) ||
+          DEFAULT_MAX_LECTURES
+      );
+
+    saveDataSilent();
+
+    renderTeachers();
+
+    showToast(
+      "Teacher updated"
+    );
+  }
+
+  function editClass(
+    classId
+  ){
+
+    const currentClass =
+      getClass(
+        classId
+      );
+
+    if(!currentClass) return;
+
+    const name =
+      prompt(
+        "Class name:",
+        currentClass.name
+      );
+
+    if(
+      name === null
+    ){
+
+      return;
+
+    }
+
+    const room =
+      prompt(
+        "Room number:",
+        currentClass.room
+      );
+
+    if(
+      room === null
+    ){
+
+      return;
+
+    }
+
+    currentClass.name =
+      name.trim() ||
+      currentClass.name;
+
+    currentClass.room =
+      room.trim() ||
+      currentClass.room;
+
+    saveDataSilent();
+
+    renderClasses();
+
+    showToast(
+      "Class updated"
+    );
+  }
+  function renderSettings(){
+
+    const maxAbsenceInput =
+      document.getElementById(
+        "maxAbsencesInput"
+      );
+
+    const maxLectureInput =
+      document.getElementById(
+        "defaultMaxLecturesInput"
+      );
+
+    if(maxAbsenceInput){
+
+      maxAbsenceInput.value =
+        MAX_ABSENCES;
+
+    }
+
+    if(maxLectureInput){
+
+      maxLectureInput.value =
+        DEFAULT_MAX_LECTURES;
+
+    }
+
+    const periodList =
+      document.getElementById(
+        "periodList"
+      );
+
+    if(periodList){
+
+      periodList.innerHTML =
+        PERIODS.map(
+          (
+            period,
+            index
+          ) => `
+
+            <div class="period-setting">
+
+              <span>
+                Period ${index + 1}
+              </span>
+
+              <input
+                type="text"
+                value="${escapeHtml(
+                  period
+                )}"
+                onchange="
+                  updatePeriod(
+                    ${index},
+                    this.value
+                  )
+                "
+              >
+
+            </div>
+
+          `
+        ).join("");
+
+    }
+  }
+
+  function updatePeriod(
+    index,
+    value
+  ){
+
+    if(
+      index < 0 ||
+      index >= PERIODS.length
+    ){
+
+      return;
+
+    }
+
+    PERIODS[index] =
+      value.trim() ||
+      PERIODS[index];
+
+    saveDataSilent();
+
+    populateTimetableFilters();
+
+    showToast(
+      "Period updated"
+    );
+  }
+
+  function changeMaxAbsences(
+    value
+  ){
+
+    const number =
+      Number(value);
+
+    if(
+      !Number.isFinite(number) ||
+      number < 1
+    ){
+
+      showToast(
+        "Enter a valid number"
+      );
+
+      renderSettings();
+
+      return;
+
+    }
+
+    MAX_ABSENCES =
+      Math.floor(number);
+
+    const currentAbsent =
+      teachers.filter(
+        teacher =>
+          teacher.absent
+      ).length;
+
+    if(
+      currentAbsent >
+      MAX_ABSENCES
+    ){
+
+      teachers
+        .filter(
+          teacher =>
+            teacher.absent
+        )
+        .slice(
+          MAX_ABSENCES
+        )
+        .forEach(
+          teacher =>
+            teacher.absent =
+              false
+        );
+
+    }
+
+    saveDataSilent();
+
+    updateAbsenceCounter();
+
+    updateDashboard();
+
+    showToast(
+      "Absence limit updated"
+    );
+  }
+
+  function changeDefaultMax(
+    value
+  ){
+
+    const number =
+      Number(value);
+
+    if(
+      !Number.isFinite(number) ||
+      number < 1
+    ){
+
+      showToast(
+        "Enter a valid number"
+      );
+
+      renderSettings();
+
+      return;
+
+    }
+
+    DEFAULT_MAX_LECTURES =
+      Math.floor(number);
+
+    saveDataSilent();
+
+    showToast(
+      "Default lecture limit updated"
+    );
+  }
+
+  function resetDemoData(){
+
+    const confirmed =
+      confirm(
+        "Reset all demo data? This will remove your edits and attendance."
+      );
+
+    if(!confirmed){
+
+      return;
+
+    }
+
+    localStorage.removeItem(
+      STORAGE_KEY
+    );
+
+    createInitialData();
+
+    renderAttendance();
+
+    renderTeachers();
+
+    renderClasses();
+
+    renderSettings();
+
+    renderTimetable();
+
+    renderReplacementPlan();
+
+    updateDashboard();
+
+    showToast(
+      "Demo data reset"
+    );
+  }
+
+  function exportData(){
+
+    const data = {
+
+      teachers,
+
+      classes,
+
+      timetable,
+
+      replacementPlan,
+
+      periods:
+        PERIODS,
+
+      maxAbsences:
+        MAX_ABSENCES,
+
+      defaultMaxLectures:
+        DEFAULT_MAX_LECTURES,
+
+      exportedAt:
+        new Date().toISOString()
+
+    };
+
+    const blob =
+      new Blob(
+        [
+          JSON.stringify(
+            data,
+            null,
+            2
+          )
+        ],
+        {
+          type:
+            "application/json"
+        }
+      );
+
+    const url =
+      URL.createObjectURL(
+        blob
+      );
+
+    const link =
+      document.createElement(
+        "a"
+      );
+
+    link.href =
+      url;
+
+    link.download =
+      "institute-optimizer-data.json";
+
+    document.body.appendChild(
+      link
+    );
+
+    link.click();
+
+    link.remove();
+
+    URL.revokeObjectURL(
+      url
+    );
+
+    showToast(
+      "Data exported"
+    );
+  }
+
+  function searchAttendance(){
+
+    renderAttendance();
+  }
+
+  document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+      loadData();
+
+      populateTimetableFilters();
+
+      renderAttendance();
 
       renderTeachers();
 
-    }
-
-
-    if(
-      event.target.id ===
-      "classSearch"
-    ){
-
       renderClasses();
 
-    }
+      renderSettings();
 
-  }
-);
+      renderTimetable();
 
+      renderReplacementPlan();
 
-/* =========================================
-   NAVIGATION
-========================================= */
+      updateDashboard();
 
-function showSection(
-  sectionId,
-  button
-){
+      const attendanceSearch =
+        document.getElementById(
+          "attendanceSearch"
+        );
 
-  document
-    .querySelectorAll(
-      ".page-section"
-    )
-    .forEach(
-      section =>
-        section.classList.remove(
-          "active"
-        )
-    );
+      if(
+        attendanceSearch
+      ){
 
+        attendanceSearch.addEventListener(
+          "input",
+          searchAttendance
+        );
 
-  const section =
-    document.getElementById(
-      sectionId
-    );
-
-
-  if(section){
-
-    section.classList.add(
-      "active"
-    );
-
-  }
-
-
-  document
-    .querySelectorAll(
-      ".nav-item"
-    )
-    .forEach(
-      item =>
-        item.classList.remove(
-          "active"
-        )
-    );
-
-
-  if(button){
-
-    button.classList.add(
-      "active"
-    );
-
-  }
-
-}
-
-
-/* =========================================
-   DATA EXPORT
-========================================= */
-
-function exportData(){
-
-  const data = {
-
-    teachers,
-
-    classes,
-
-    timetable,
-
-    replacementPlan,
-
-    periods:
-      PERIODS,
-
-    maxAbsences:
-      MAX_ABSENCES,
-
-    defaultMaxLectures:
-      DEFAULT_MAX_LECTURES
-
-  };
-
-
-  const blob =
-    new Blob(
-      [
-        JSON.stringify(
-          data,
-          null,
-          2
-        )
-      ],
-      {
-        type:
-          "application/json"
       }
-    );
 
+      const buildingFilter =
+        document.getElementById(
+          "timetableBuilding"
+        );
 
-  const url =
-    URL.createObjectURL(
-      blob
-    );
+      if(
+        buildingFilter
+      ){
 
+        buildingFilter.addEventListener(
+          "change",
+          renderTimetable
+        );
 
-  const link =
-    document.createElement(
-      "a"
-    );
+      }
 
+      const periodFilter =
+        document.getElementById(
+          "timetablePeriod"
+        );
 
-  link.href = url;
+      if(
+        periodFilter
+      ){
 
-  link.download =
-    "institute-optimizer-data.json";
+        periodFilter.addEventListener(
+          "change",
+          renderTimetable
+        );
 
-  link.click();
-
-
-  URL.revokeObjectURL(
-    url
-  );
-
-
-  showToast(
-    "Data exported"
-  );
-
-}
-
-
-/* =========================================
-   KEYBOARD SHORTCUTS
-========================================= */
-
-document.addEventListener(
-  "keydown",
-  function(event){
-
-    /*
-      Ctrl + S
-    */
-
-    if(
-      event.ctrlKey &&
-      event.key.toLowerCase() === "s"
-    ){
-
-      event.preventDefault();
-
-      saveData();
-
-      showToast(
-        "Saved"
-      );
+      }
 
     }
-
-  }
-);
-
-
-/* =========================================
-   INITIAL LOAD
-========================================= */
-
-loadData();
-
-renderAll();
-
-
-/*
-  Small startup message so we know
-  the application initialized correctly.
-*/
-
-setTimeout(
-  () => {
-
-    showToast(
-      "Institute Optimizer ready"
-    );
-
-  },
-  500
-);
+  );
 
 </script>
 
 </body>
+
 </html>
+      
