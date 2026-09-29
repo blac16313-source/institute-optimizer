@@ -1302,4 +1302,759 @@ const absentTeacherIds = ["rahul"];
    ENGINE
 ===================================================== */
 
-let generated
+let generatedPlan = [];
+
+
+/*
+  Calculate how many periods a teacher
+  is already teaching.
+*/
+
+function teachingLoad(teacher){
+
+  return Object.values(teacher.schedule)
+    .filter(Boolean)
+    .length;
+
+}
+
+
+/*
+  Check whether teacher is free
+  during a particular period.
+*/
+
+function isFree(teacher,period){
+
+  return !teacher.schedule[period];
+
+}
+
+
+/*
+  Check whether teacher can teach
+  the required subject.
+*/
+
+function canTeach(teacher,subject){
+
+  return teacher.subjects.includes(subject);
+
+}
+
+
+/*
+  Calculate candidate score.
+
+  Higher score = better candidate.
+*/
+
+function scoreTeacher(teacher,affectedPeriod){
+
+  let score=0;
+
+  const subject=affectedPeriod.subject;
+
+  /* Must be qualified */
+
+  if(!canTeach(teacher,subject)){
+    return -9999;
+  }
+
+  /* Must be free */
+
+  if(!isFree(teacher,affectedPeriod.period)){
+    return -9999;
+  }
+
+  /* Subject match */
+
+  score+=50;
+
+  /* Same building */
+
+  if(teacher.building===affectedPeriod.building){
+
+    score+=25;
+
+  }else{
+
+    score+=5;
+
+  }
+
+  /* Prefer teachers with lower workload */
+
+  const load=teachingLoad(teacher);
+
+  score += Math.max(0,20-load*3);
+
+  /* Avoid assigning absent teacher */
+
+  if(absentTeacherIds.includes(teacher.id)){
+
+    return -9999;
+
+  }
+
+  return score;
+
+}
+
+
+/*
+  Find best replacement.
+*/
+
+function findReplacement(affectedPeriod){
+
+  const candidates=[];
+
+  teachers.forEach(teacher=>{
+
+    const score=scoreTeacher(
+      teacher,
+      affectedPeriod
+    );
+
+    if(score>-9999){
+
+      candidates.push({
+        teacher,
+        score
+      });
+
+    }
+
+  });
+
+  candidates.sort(
+    (a,b)=>b.score-a.score
+  );
+
+  return candidates;
+
+}
+
+
+/*
+  Generate full plan.
+
+  We temporarily reserve teachers as we assign them,
+  so one teacher cannot accidentally be assigned
+  to two affected classes during the same period.
+*/
+
+function runOptimizer(){
+
+  generatedPlan=[];
+
+  const reserved={};
+
+  timetable.forEach(affected=>{
+
+    const candidates=findReplacement(affected);
+
+    let chosen=null;
+
+    for(const candidate of candidates){
+
+      const id=candidate.teacher.id;
+
+      if(
+        !reserved[affected.period] ||
+        !reserved[affected.period].includes(id)
+      ){
+
+        chosen=candidate;
+
+        break;
+
+      }
+
+    }
+
+    if(chosen){
+
+      if(!reserved[affected.period]){
+        reserved[affected.period]=[];
+      }
+
+      reserved[affected.period]
+        .push(chosen.teacher.id);
+
+      generatedPlan.push({
+        ...affected,
+        replacement:chosen.teacher.name,
+        replacementId:chosen.teacher.id,
+        score:chosen.score,
+        status:"done",
+        candidates
+      });
+
+    }else{
+
+      generatedPlan.push({
+        ...affected,
+        replacement:null,
+        score:null,
+        status:"failed",
+        candidates
+      });
+
+    }
+
+  });
+
+  renderAffectedTable();
+  renderEngineResult();
+
+  const successful=generatedPlan
+    .filter(x=>x.status==="done")
+    .length;
+
+  document.getElementById("changeStat")
+    .textContent=successful;
+
+  showToast(
+    successful+" replacement"+
+    (successful===1?"":"s")+
+    " generated"
+  );
+
+}
+
+
+/* =====================================================
+   UI
+===================================================== */
+
+function renderAffectedTable(){
+
+  const tbody=
+    document.getElementById("affectedTable");
+
+  tbody.innerHTML="";
+
+  generatedPlan.forEach(item=>{
+
+    const period=periods
+      .find(p=>p.id===item.period);
+
+    const row=document.createElement("tr");
+
+    let replacement="—";
+    let statusHTML="";
+
+    if(item.status==="done"){
+
+      replacement=item.replacement;
+
+      statusHTML=`
+        <span class="status done">
+          <span class="status-dot"></span>
+          Assigned
+        </span>
+      `;
+
+    }else{
+
+      statusHTML=`
+        <span class="status failed">
+          <span class="status-dot"></span>
+          No match
+        </span>
+      `;
+
+    }
+
+    row.innerHTML=`
+
+      <td>
+        ${item.period} · ${period.time}
+      </td>
+
+      <td>
+        <strong>${item.className}</strong>
+      </td>
+
+      <td>
+        ${item.subject}
+      </td>
+
+      <td>
+        ${getTeacherName(item.teacher)}
+      </td>
+
+      <td>
+        ${item.room}
+      </td>
+
+      <td>
+        <strong>${replacement}</strong>
+      </td>
+
+      <td>
+        ${statusHTML}
+      </td>
+
+    `;
+
+    tbody.appendChild(row);
+
+  });
+
+}
+
+
+function renderEngineResult(){
+
+  const body=
+    document.getElementById("engineBody");
+
+  const status=
+    document.getElementById("engineStatus");
+
+  if(!generatedPlan.length){
+
+    body.innerHTML=`
+      <div class="engine-state">
+        <div class="engine-icon">◎</div>
+        <div>
+          <strong>No affected periods</strong>
+          <p>
+            The engine has nothing to optimize.
+          </p>
+        </div>
+      </div>
+    `;
+
+    status.textContent="No changes";
+
+    return;
+
+  }
+
+  const successful=
+    generatedPlan.filter(x=>x.status==="done");
+
+  const failed=
+    generatedPlan.filter(x=>x.status==="failed");
+
+  let html="";
+
+  if(successful.length){
+
+    html+=`
+
+      <div class="success-box">
+
+        <strong>
+          ${successful.length}
+          replacement${successful.length===1?"":"s"}
+          successfully assigned.
+        </strong>
+
+        <br>
+
+        The engine checked subject eligibility,
+        availability, building location and current workload.
+
+      </div>
+
+      <div style="margin-top:16px">
+
+    `;
+
+    successful.forEach(item=>{
+
+      html+=`
+
+        <div class="candidate">
+
+          <div class="candidate-info">
+
+            <strong>
+              Period ${item.period} · ${item.className}
+            </strong>
+
+            <p>
+              ${item.subject}
+              · ${getTeacherName(item.teacher)}
+              → ${item.replacement}
+              · ${item.building} building
+            </p>
+
+          </div>
+
+          <div class="score">
+            ${item.score}
+          </div>
+
+        </div>
+
+      `;
+
+    });
+
+    html+=`</div>`;
+
+  }
+
+  if(failed.length){
+
+    html+=`
+
+      <div class="failure-box"
+        style="margin-top:14px">
+
+        <strong>
+          ${failed.length}
+          period${failed.length===1?"":"s"}
+          could not be assigned.
+        </strong>
+
+        <br>
+
+        No qualified and available teacher
+        passed the current rules.
+
+      </div>
+
+    `;
+
+  }
+
+  body.innerHTML=html;
+
+  status.textContent=
+    failed.length
+      ? "Needs attention"
+      : "Plan generated";
+
+}
+
+
+/* =====================================================
+   TEACHER TABLE
+===================================================== */
+
+function renderTeachers(){
+
+  const tbody=
+    document.getElementById("teacherTable");
+
+  tbody.innerHTML="";
+
+  teachers.forEach(teacher=>{
+
+    const row=document.createElement("tr");
+
+    const load=teachingLoad(teacher);
+
+    const absent=
+      absentTeacherIds.includes(teacher.id);
+
+    row.innerHTML=`
+
+      <td>
+        <strong>${teacher.name}</strong>
+      </td>
+
+      <td>
+        ${teacher.subjects.join(", ")}
+      </td>
+
+      <td>
+        Building ${teacher.building}
+      </td>
+
+      <td>
+        ${load} / 7
+      </td>
+
+      <td>
+
+        ${
+          absent
+
+          ? `
+            <span class="status failed">
+              <span class="status-dot"></span>
+              Absent
+            </span>
+          `
+
+          : `
+            <span class="status done">
+              <span class="status-dot"></span>
+              Available
+            </span>
+          `
+        }
+
+      </td>
+
+    `;
+
+    tbody.appendChild(row);
+
+  });
+
+}
+
+
+/* =====================================================
+   HELPERS
+===================================================== */
+
+function getTeacherName(id){
+
+  const teacher=
+    teachers.find(t=>t.id===id);
+
+  return teacher
+    ? teacher.name
+    : "Unknown";
+
+}
+
+
+function navClick(button,name){
+
+  document
+    .querySelectorAll(".nav button")
+    .forEach(btn=>btn.classList.remove("active"));
+
+  button.classList.add("active");
+
+  if(name!=="Dashboard"){
+
+    showToast(
+      name+
+      " will become an editable module later"
+    );
+
+  }
+
+}
+
+
+function approvePlan(){
+
+  if(!generatedPlan.length){
+
+    showToast(
+      "Generate a plan first"
+    );
+
+    return;
+
+  }
+
+  const failed=
+    generatedPlan.filter(
+      x=>x.status==="failed"
+    ).length;
+
+  if(failed){
+
+    showToast(
+      "Resolve unassigned periods first"
+    );
+
+    return;
+
+  }
+
+  showToast(
+    "Plan approved for this prototype"
+  );
+
+}
+
+
+function resetOptimizer(){
+
+  generatedPlan=[];
+
+  document.getElementById("changeStat")
+    .textContent="—";
+
+  document.getElementById("affectedTable")
+    .innerHTML="";
+
+  document.getElementById("engineStatus")
+    .textContent="Waiting";
+
+  document.getElementById("engineBody")
+    .innerHTML=`
+
+      <div class="engine-state">
+
+        <div class="engine-icon">◎</div>
+
+        <div>
+
+          <strong>
+            Ready to optimize
+          </strong>
+
+          <p>
+            The engine will check availability,
+            subject eligibility, workload and conflicts.
+          </p>
+
+        </div>
+
+      </div>
+
+    `;
+
+  loadAffectedPreview();
+
+  showToast("Optimizer reset");
+
+}
+
+
+function loadAffectedPreview(){
+
+  const tbody=
+    document.getElementById("affectedTable");
+
+  tbody.innerHTML="";
+
+  timetable.forEach(item=>{
+
+    const period=
+      periods.find(p=>p.id===item.period);
+
+    const row=
+      document.createElement("tr");
+
+    row.innerHTML=`
+
+      <td>
+        ${item.period} · ${period.time}
+      </td>
+
+      <td>
+        <strong>${item.className}</strong>
+      </td>
+
+      <td>
+        ${item.subject}
+      </td>
+
+      <td>
+        ${getTeacherName(item.teacher)}
+      </td>
+
+      <td>
+        ${item.room}
+      </td>
+
+      <td>
+        —
+      </td>
+
+      <td>
+
+        <span class="status pending">
+          <span class="status-dot"></span>
+          Needs replacement
+        </span>
+
+      </td>
+
+    `;
+
+    tbody.appendChild(row);
+
+  });
+
+}
+
+
+function saveSetup(){
+
+  const data={
+
+    name:
+      document.getElementById("instituteName").value,
+
+    periods:
+      document.getElementById("periodCount").value,
+
+    buildings:
+      document.getElementById("buildingCount").value,
+
+    rooms:
+      document.getElementById("roomCount").value
+
+  };
+
+  localStorage.setItem(
+    "institute_optimizer_setup",
+    JSON.stringify(data)
+  );
+
+  showToast("Institute setup saved");
+
+}
+
+
+function resetSetup(){
+
+  document.getElementById("instituteName")
+    .value="Prototype Institute";
+
+  document.getElementById("periodCount")
+    .value="7";
+
+  document.getElementById("buildingCount")
+    .value="2";
+
+  document.getElementById("roomCount")
+    .value="10";
+
+  localStorage.removeItem(
+    "institute_optimizer_setup"
+  );
+
+  showToast("Setup reset");
+
+}
+
+
+function showToast(message){
+
+  const toast=
+    document.getElementById("toast");
+
+  toast.textContent=message;
+
+  toast.classList.add("show");
+
+  clearTimeout(window.toastTimer);
+
+  window.toastTimer=
+    setTimeout(()=>{
+      toast.classList.remove("show");
+    },2200);
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+loadAffectedPreview();
+renderTeachers();
+
+</script>
+
+</body>
+</html>
