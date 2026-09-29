@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Subject Requirements</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:Arial, sans-serif;
+  background:#f5f5f3;
+  color:#171717;
+  padding:20px;
+}
+
+.container{
+  max-width:900px;
+  margin:auto;
+}
+
+header{
+  background:#111;
+  color:white;
+  padding:24px;
+  border-radius:18px;
+  margin-bottom:20px;
+}
+
+header h1{
+  font-size:25px;
+  margin-bottom:7px;
+}
+
+header p{
+  color:#aaa;
+  font-size:14px;
+}
+
+.card{
+  background:white;
+  border-radius:18px;
+  padding:20px;
+  margin-bottom:18px;
+  border:1px solid #e5e5e5;
+}
+
+.card h2{
+  font-size:18px;
+  margin-bottom:6px;
+}
+
+.card-description{
+  color:#777;
+  font-size:13px;
+  margin-bottom:18px;
+}
+
+.section-block{
+  border:1px solid #e4e4e4;
+  border-radius:14px;
+  margin-bottom:14px;
+  overflow:hidden;
+}
+
+.section-header{
+  background:#fafafa;
+  padding:15px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:10px;
+}
+
+.section-title{
+  font-weight:bold;
+}
+
+.building{
+  color:#777;
+  font-size:12px;
+  margin-top:3px;
+}
+
+.subject-list{
+  padding:15px;
+}
+
+.subject-row{
+  display:grid;
+  grid-template-columns:1fr 120px;
+  gap:15px;
+  align-items:center;
+  padding:10px 0;
+  border-bottom:1px solid #eee;
+}
+
+.subject-row:last-child{
+  border-bottom:none;
+}
+
+.subject-name{
+  font-size:14px;
+}
+
+.subject-name small{
+  display:block;
+  color:#999;
+  margin-top:3px;
+}
+
+input{
+  width:100%;
+  padding:10px 11px;
+  border:1px solid #ccc;
+  border-radius:9px;
+  font-size:14px;
+  outline:none;
+}
+
+input:focus{
+  border-color:#111;
+}
+
+.actions{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+button{
+  border:none;
+  border-radius:10px;
+  padding:12px 17px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:bold;
+}
+
+.primary{
+  background:#111;
+  color:white;
+}
+
+.secondary{
+  background:#eee;
+  color:#111;
+}
+
+.danger{
+  background:#ffe7e7;
+  color:#b00000;
+}
+
+.status{
+  margin-top:15px;
+  padding:13px;
+  border-radius:10px;
+  display:none;
+  font-size:14px;
+}
+
+.success{
+  display:block;
+  background:#e8f8ed;
+  color:#166534;
+}
+
+.error{
+  display:block;
+  background:#ffe9e9;
+  color:#991b1b;
+}
+
+.empty{
+  text-align:center;
+  padding:30px 10px;
+  color:#777;
+}
+
+.summary{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:15px;
+}
+
+.stat{
+  background:#f7f7f7;
+  padding:15px;
+  border-radius:12px;
+}
+
+.stat strong{
+  display:block;
+  font-size:22px;
+  margin-bottom:4px;
+}
+
+.stat span{
+  color:#777;
+  font-size:12px;
+}
+
+@media(max-width:600px){
+  body{
+    padding:12px;
+  }
+
+  .subject-row{
+    grid-template-columns:1fr 95px;
+  }
+
+  .summary{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+  <h1>Subject Requirements</h1>
+  <p id="instituteName">Loading institute...</p>
+</header>
+
+<div class="card">
+  <h2>Weekly Lecture Requirements</h2>
+
+  <p class="card-description">
+    Enter how many lectures each subject should have for each section every week.
+    The timetable generator will use these numbers later.
+  </p>
+
+  <div id="sectionsContainer"></div>
+
+  <div id="status" class="status"></div>
+</div>
+
+<div class="card">
+
+  <h2>Summary</h2>
+
+  <div class="summary">
+
+    <div class="stat">
+      <strong id="sectionCount">0</strong>
+      <span>Sections</span>
+    </div>
+
+    <div class="stat">
+      <strong id="subjectCount">0</strong>
+      <span>Subject entries</span>
+    </div>
+
+    <div class="stat">
+      <strong id="totalLectures">0</strong>
+      <span>Total lectures/week</span>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="card">
+
+  <div class="actions">
+
+    <button class="primary" onclick="saveRequirements()">
+      Save Requirements
+    </button>
+
+    <button class="secondary" onclick="loadRequirements()">
+      Reload Saved
+    </button>
+
+    <button class="danger" onclick="clearRequirements()">
+      Clear Requirements
+    </button>
+
+  </div>
+
+</div>
+
+</div>
+
+<script>
+
+/* =========================================
+   STORAGE
+========================================= */
+
+const SETUP_KEY = "institute_optimizer_setup";
+const REQUIREMENT_KEY = "institute_optimizer_subject_requirements";
+
+
+/* =========================================
+   DATA
+========================================= */
+
+let setup = null;
+let requirements = {};
+
+
+/* =========================================
+   LOAD SETUP
+========================================= */
+
+function loadSetup(){
+
+  const saved = localStorage.getItem(SETUP_KEY);
+
+  if(!saved){
+
+    document.getElementById("sectionsContainer").innerHTML = `
+      <div class="empty">
+        No institute setup found.<br><br>
+        Open <b>institute-setup.html</b> first and save your institute.
+      </div>
+    `;
+
+    return false;
+  }
+
+  try{
+
+    setup = JSON.parse(saved);
+
+  }catch(error){
+
+    document.getElementById("sectionsContainer").innerHTML = `
+      <div class="empty">
+        Saved institute data is invalid.
+      </div>
+    `;
+
+    return false;
+  }
+
+  document.getElementById("instituteName").textContent =
+    setup.instituteName || "Institute";
+
+  return true;
+}
+
+
+/* =========================================
+   LOAD REQUIREMENTS
+========================================= */
+
+function loadRequirements(){
+
+  const saved = localStorage.getItem(REQUIREMENT_KEY);
+
+  requirements = {};
+
+  if(saved){
+
+    try{
+      requirements = JSON.parse(saved) || {};
+    }catch(error){
+      requirements = {};
+    }
+
+  }
+
+  renderSections();
+}
+
+
+/* =========================================
+   RENDER SECTIONS
+========================================= */
+
+function renderSections(){
+
+  const container =
+    document.getElementById("sectionsContainer");
+
+  if(!setup || !setup.sections || setup.sections.length === 0){
+
+    container.innerHTML = `
+      <div class="empty">
+        No sections found in your institute setup.
+      </div>
+    `;
+
+    updateSummary();
+
+    return;
+  }
+
+
+  let html = "";
+
+
+  setup.sections.forEach(section => {
+
+    const building =
+      (setup.buildings || []).find(
+        b => b.id === section.buildingId
+      );
+
+    const buildingName =
+      building ? building.name : "No building";
+
+
+    html += `
+      <div class="section-block">
+
+        <div class="section-header">
+
+          <div>
+            <div class="section-title">
+              ${escapeHtml(section.className || "")}
+              -
+              ${escapeHtml(section.name || "")}
+            </div>
+
+            <div class="building">
+              ${escapeHtml(buildingName)}
+            </div>
+          </div>
+
+        </div>
+
+        <div class="subject-list">
+    `;
+
+
+    const subjectIds =
+      Array.isArray(section.subjectIds)
+        ? section.subjectIds
+        : [];
+
+
+    if(subjectIds.length === 0){
+
+      html += `
+        <div class="empty">
+          No subjects assigned to this section.
+        </div>
+      `;
+
+    }else{
+
+      subjectIds.forEach(subjectId => {
+
+        const subject =
+          (setup.subjects || []).find(
+            s => s.id === subjectId
+          );
+
+        if(!subject) return;
+
+
+        const key =
+          section.id + "_" + subject.id;
+
+
+        const currentValue =
+          requirements[key] !== undefined
+            ? requirements[key]
+            : 0;
+
+
+        html += `
+          <div class="subject-row">
+
+            <div class="subject-name">
+
+              ${escapeHtml(subject.name)}
+
+              <small>
+                Lectures required per week
+              </small>
+
+            </div>
+
+            <input
+              type="number"
+              min="0"
+              max="50"
+              value="${currentValue}"
+              data-section="${escapeHtml(section.id)}"
+              data-subject="${escapeHtml(subject.id)}"
+              onchange="updateRequirement(this)"
+            >
+
+          </div>
+        `;
+
+      });
+
+    }
+
+
+    html += `
+        </div>
+      </div>
+    `;
+
+  });
+
+
+  container.innerHTML = html;
+
+  updateSummary();
+}
+
+
+/* =========================================
+   UPDATE REQUIREMENT
+========================================= */
+
+function updateRequirement(input){
+
+  const sectionId =
+    input.dataset.section;
+
+  const subjectId =
+    input.dataset.subject;
+
+  let value =
+    parseInt(input.value,10);
+
+
+  if(isNaN(value) || value < 0){
+    value = 0;
+  }
+
+  if(value > 50){
+    value = 50;
+  }
+
+  input.value = value;
+
+
+  const key =
+    sectionId + "_" + subjectId;
+
+
+  requirements[key] = value;
+
+  updateSummary();
+}
+
+
+/* =========================================
+   SAVE
+========================================= */
+
+function saveRequirements(){
+
+  if(!setup){
+
+    showStatus(
+      "Institute setup not found.",
+      "error"
+    );
+
+    return;
+  }
+
+
+  collectInputs();
+
+
+  localStorage.setItem(
+    REQUIREMENT_KEY,
+    JSON.stringify(requirements)
+  );
+
+
+  showStatus(
+    "Subject requirements saved successfully.",
+    "success"
+  );
+
+}
+
+
+/* =========================================
+   COLLECT INPUTS
+========================================= */
+
+function collectInputs(){
+
+  const inputs =
+    document.querySelectorAll(
+      'input[data-section][data-subject]'
+    );
+
+
+  inputs.forEach(input => {
+
+    const sectionId =
+      input.dataset.section;
+
+    const subjectId =
+      input.dataset.subject;
+
+
+    let value =
+      parseInt(input.value,10);
+
+
+    if(isNaN(value) || value < 0){
+      value = 0;
+    }
+
+    if(value > 50){
+      value = 50;
+    }
+
+
+    const key =
+      sectionId + "_" + subjectId;
+
+
+    requirements[key] = value;
+
+  });
+
+}
+
+
+/* =========================================
+   CLEAR
+========================================= */
+
+function clearRequirements(){
+
+  const confirmed =
+    confirm(
+      "Clear all saved subject requirements?"
+    );
+
+  if(!confirmed) return;
+
+
+  localStorage.removeItem(
+    REQUIREMENT_KEY
+  );
+
+  requirements = {};
+
+  renderSections();
+
+  showStatus(
+    "All subject requirements cleared.",
+    "success"
+  );
+
+}
+
+
+/* =========================================
+   SUMMARY
+========================================= */
+
+function updateSummary(){
+
+  let sections = 0;
+  let subjects = 0;
+  let total = 0;
+
+
+  if(setup && setup.sections){
+
+    sections =
+      setup.sections.length;
+
+
+    setup.sections.forEach(section => {
+
+      const subjectIds =
+        Array.isArray(section.subjectIds)
+          ? section.subjectIds
+          : [];
+
+
+      subjectIds.forEach(subjectId => {
+
+        subjects++;
+
+
+        const key =
+          section.id + "_" + subjectId;
+
+
+        const value =
+          parseInt(
+            requirements[key] || 0,
+            10
+          );
+
+
+        total += value;
+
+      });
+
+    });
+
+  }
+
+
+  document.getElementById(
+    "sectionCount"
+  ).textContent = sections;
+
+
+  document.getElementById(
+    "subjectCount"
+  ).textContent = subjects;
+
+
+  document.getElementById(
+    "totalLectures"
+  ).textContent = total;
+
+}
+
+
+/* =========================================
+   STATUS
+========================================= */
+
+function showStatus(message,type){
+
+  const box =
+    document.getElementById("status");
+
+
+  box.textContent = message;
+
+  box.className =
+    "status " + type;
+
+
+  setTimeout(() => {
+
+    box.className = "status";
+
+  },3000);
+
+}
+
+
+/* =========================================
+   ESCAPE HTML
+========================================= */
+
+function escapeHtml(value){
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* =========================================
+   START
+========================================= */
+
+if(loadSetup()){
+
+  loadRequirements();
+
+}
+
+</script>
+
+</body>
+</html>
