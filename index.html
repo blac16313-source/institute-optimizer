@@ -14,25 +14,25 @@
 }
 
 :root{
-  --bg:#f5f6f8;
-  --surface:#ffffff;
-  --surface-soft:#f8f9fb;
-  --border:#e5e7eb;
-  --text:#17202a;
-  --muted:#6b7280;
-  --primary:#2563eb;
-  --primary-dark:#1d4ed8;
+  --bg:#f5f7fa;
+  --card:#fff;
+  --soft:#f8fafc;
+  --border:#e4e7ec;
+  --text:#18212f;
+  --muted:#667085;
+  --blue:#2563eb;
+  --blue-soft:#eef4ff;
   --green:#16803c;
-  --green-bg:#ecfdf3;
-  --orange:#b45309;
-  --orange-bg:#fff7ed;
+  --green-soft:#ecfdf3;
   --red:#c62828;
-  --red-bg:#fef2f2;
-  --shadow:0 8px 30px rgba(15,23,42,.06);
+  --red-soft:#fef2f2;
+  --orange:#b45309;
+  --orange-soft:#fff7ed;
+  --shadow:0 8px 28px rgba(15,23,42,.05);
 }
 
 body{
-  font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   background:var(--bg);
   color:var(--text);
   min-height:100vh;
@@ -48,139 +48,118 @@ button{
   cursor:pointer;
 }
 
-.app{
-  min-height:100vh;
-}
-
-/* HEADER */
-
 .header{
-  height:72px;
-  background:rgba(255,255,255,.96);
+  height:70px;
+  background:#fff;
   border-bottom:1px solid var(--border);
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:0 28px;
+  padding:0 25px;
   position:sticky;
   top:0;
-  z-index:20;
+  z-index:10;
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:11px;
 }
 
 .logo{
   width:38px;
   height:38px;
-  border-radius:11px;
-  background:var(--text);
-  color:#fff;
+  border-radius:10px;
+  background:#18212f;
+  color:white;
   display:grid;
   place-items:center;
   font-weight:800;
+  font-size:13px;
 }
 
-.brand-text h1{
-  font-size:16px;
-  line-height:1.2;
+.brand h1{
+  font-size:15px;
 }
 
-.brand-text p{
+.brand p{
   color:var(--muted);
-  font-size:12px;
-  margin-top:3px;
+  font-size:11px;
+  margin-top:2px;
 }
 
 .header-actions{
   display:flex;
-  align-items:center;
-  gap:10px;
+  gap:8px;
 }
-
-/* BUTTONS */
 
 .btn{
   border:1px solid var(--border);
-  background:#fff;
+  background:white;
   color:var(--text);
-  border-radius:9px;
-  padding:9px 14px;
-  font-weight:600;
-  font-size:13px;
-  transition:.18s ease;
+  border-radius:8px;
+  padding:9px 13px;
+  font-size:12px;
+  font-weight:650;
 }
 
 .btn:hover{
   border-color:#cbd5e1;
-  transform:translateY(-1px);
 }
 
 .btn-primary{
-  background:var(--primary);
-  color:#fff;
-  border-color:var(--primary);
+  background:var(--blue);
+  border-color:var(--blue);
+  color:white;
 }
 
 .btn-primary:hover{
-  background:var(--primary-dark);
-  border-color:var(--primary-dark);
-}
-
-.btn-danger{
-  color:var(--red);
-  background:#fff;
+  background:#1d4ed8;
 }
 
 .btn-green{
   color:var(--green);
-  background:var(--green-bg);
+  background:var(--green-soft);
   border-color:#bbf7d0;
 }
 
-/* LAYOUT */
-
 .layout{
   display:grid;
-  grid-template-columns:235px minmax(0,1fr);
-  min-height:calc(100vh - 72px);
+  grid-template-columns:225px minmax(0,1fr);
+  min-height:calc(100vh - 70px);
 }
-
-/* SIDEBAR */
 
 .sidebar{
   background:#fff;
   border-right:1px solid var(--border);
-  padding:22px 14px;
+  padding:20px 13px;
 }
 
 .sidebar-label{
-  color:#9ca3af;
-  font-size:10px;
-  font-weight:800;
+  font-size:9px;
   letter-spacing:.12em;
-  margin:0 10px 10px;
+  color:#98a2b3;
+  font-weight:800;
+  margin:0 10px 9px;
 }
 
 .nav{
   display:flex;
   flex-direction:column;
-  gap:4px;
+  gap:3px;
 }
 
 .nav button{
-  width:100%;
-  text-align:left;
   border:0;
   background:transparent;
-  color:#596273;
-  padding:11px 12px;
-  border-radius:9px;
+  width:100%;
+  text-align:left;
+  color:#667085;
+  padding:10px 11px;
+  border-radius:8px;
+  font-size:12px;
   font-weight:600;
-  font-size:13px;
 }
 
 .nav button:hover{
@@ -189,34 +168,32 @@ button{
 }
 
 .nav button.active{
-  background:#eef4ff;
-  color:var(--primary);
+  color:var(--blue);
+  background:var(--blue-soft);
 }
 
-.sidebar-bottom{
-  margin-top:30px;
-  padding:13px;
-  background:var(--surface-soft);
+.sidebar-note{
+  margin-top:28px;
+  padding:12px;
+  background:var(--soft);
   border:1px solid var(--border);
-  border-radius:12px;
+  border-radius:10px;
 }
 
-.sidebar-bottom strong{
-  font-size:12px;
-}
-
-.sidebar-bottom p{
-  color:var(--muted);
+.sidebar-note strong{
   font-size:11px;
-  line-height:1.5;
-  margin-top:5px;
 }
 
-/* MAIN */
+.sidebar-note p{
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.5;
+  margin-top:4px;
+}
 
 main{
+  padding:27px;
   min-width:0;
-  padding:28px;
 }
 
 .page{
@@ -226,21 +203,21 @@ main{
 
 .page-title{
   display:flex;
-  align-items:flex-start;
   justify-content:space-between;
-  gap:20px;
-  margin-bottom:24px;
+  align-items:flex-start;
+  gap:15px;
+  margin-bottom:20px;
 }
 
 .page-title h2{
-  font-size:26px;
+  font-size:25px;
   letter-spacing:-.03em;
 }
 
 .page-title p{
   color:var(--muted);
-  margin-top:6px;
-  font-size:13px;
+  font-size:12px;
+  margin-top:5px;
 }
 
 .title-actions{
@@ -249,136 +226,75 @@ main{
   flex-wrap:wrap;
 }
 
-/* CARDS */
-
 .stats{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:14px;
-  margin-bottom:18px;
+  gap:13px;
+  margin-bottom:16px;
 }
 
 .card{
-  background:var(--surface);
+  background:var(--card);
   border:1px solid var(--border);
-  border-radius:14px;
+  border-radius:13px;
   box-shadow:var(--shadow);
 }
 
 .stat{
-  padding:18px;
+  padding:17px;
 }
 
 .stat-label{
   color:var(--muted);
-  font-size:12px;
+  font-size:11px;
   font-weight:600;
 }
 
 .stat-value{
-  font-size:27px;
-  font-weight:750;
-  margin-top:7px;
-  letter-spacing:-.04em;
+  font-size:25px;
+  font-weight:800;
+  margin-top:6px;
 }
 
 .stat-note{
   color:var(--muted);
-  font-size:11px;
-  margin-top:5px;
+  font-size:10px;
+  margin-top:3px;
 }
 
-/* GRID */
-
-.dashboard-grid{
+.grid{
   display:grid;
-  grid-template-columns:1.4fr .8fr;
-  gap:18px;
+  grid-template-columns:1.2fr .8fr;
+  gap:16px;
 }
 
 .card-header{
+  padding:15px 17px;
+  border-bottom:1px solid var(--border);
   display:flex;
   justify-content:space-between;
   align-items:center;
   gap:10px;
-  padding:17px 18px;
-  border-bottom:1px solid var(--border);
 }
 
 .card-header h3{
-  font-size:14px;
+  font-size:13px;
 }
 
 .card-header span{
   color:var(--muted);
-  font-size:11px;
+  font-size:10px;
 }
 
 .card-body{
-  padding:18px;
+  padding:17px;
 }
-
-/* ALERTS */
-
-.alert-list{
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-}
-
-.alert{
-  display:flex;
-  align-items:flex-start;
-  gap:11px;
-  padding:12px;
-  border-radius:10px;
-  border:1px solid var(--border);
-}
-
-.alert-icon{
-  width:28px;
-  height:28px;
-  border-radius:8px;
-  display:grid;
-  place-items:center;
-  font-size:13px;
-  flex:none;
-}
-
-.alert.red .alert-icon{
-  background:var(--red-bg);
-  color:var(--red);
-}
-
-.alert.orange .alert-icon{
-  background:var(--orange-bg);
-  color:var(--orange);
-}
-
-.alert.green .alert-icon{
-  background:var(--green-bg);
-  color:var(--green);
-}
-
-.alert-content strong{
-  font-size:12px;
-  display:block;
-}
-
-.alert-content p{
-  color:var(--muted);
-  font-size:11px;
-  margin-top:3px;
-  line-height:1.45;
-}
-
-/* ABSENCES */
 
 .absence{
   display:flex;
-  justify-content:space-between;
   align-items:center;
-  padding:12px 0;
+  justify-content:space-between;
+  padding:11px 0;
   border-bottom:1px solid var(--border);
 }
 
@@ -389,22 +305,22 @@ main{
 .person{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:9px;
 }
 
 .avatar{
-  width:34px;
-  height:34px;
+  width:32px;
+  height:32px;
   border-radius:50%;
   background:#eef2f7;
   display:grid;
   place-items:center;
-  font-size:11px;
+  font-size:10px;
   font-weight:800;
 }
 
 .person strong{
-  font-size:12px;
+  font-size:11px;
   display:block;
 }
 
@@ -414,21 +330,68 @@ main{
 }
 
 .badge{
-  padding:5px 8px;
   border-radius:20px;
-  font-size:10px;
+  padding:5px 8px;
+  font-size:9px;
   font-weight:700;
 }
 
 .badge-red{
   color:var(--red);
-  background:var(--red-bg);
+  background:var(--red-soft);
 }
 
-/* TABLE */
+.alert{
+  display:flex;
+  gap:10px;
+  padding:11px;
+  border:1px solid var(--border);
+  border-radius:9px;
+  margin-bottom:9px;
+}
+
+.alert:last-child{
+  margin-bottom:0;
+}
+
+.alert-icon{
+  width:27px;
+  height:27px;
+  border-radius:7px;
+  display:grid;
+  place-items:center;
+  flex:none;
+  font-weight:800;
+}
+
+.alert.red .alert-icon{
+  color:var(--red);
+  background:var(--red-soft);
+}
+
+.alert.orange .alert-icon{
+  color:var(--orange);
+  background:var(--orange-soft);
+}
+
+.alert.green .alert-icon{
+  color:var(--green);
+  background:var(--green-soft);
+}
+
+.alert strong{
+  font-size:11px;
+}
+
+.alert p{
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.4;
+  margin-top:3px;
+}
 
 .table-card{
-  margin-top:18px;
+  margin-top:16px;
 }
 
 .table-wrap{
@@ -438,36 +401,36 @@ main{
 table{
   width:100%;
   border-collapse:collapse;
-  min-width:700px;
+  min-width:760px;
 }
 
 th,
 td{
+  padding:11px 16px;
   text-align:left;
-  padding:13px 18px;
   border-bottom:1px solid var(--border);
-  font-size:12px;
+  font-size:11px;
 }
 
 th{
-  color:var(--muted);
   background:#fafafa;
-  font-size:10px;
+  color:var(--muted);
+  font-size:9px;
   text-transform:uppercase;
   letter-spacing:.05em;
 }
 
 td strong{
-  font-weight:700;
+  font-weight:750;
 }
 
 .status{
   display:inline-flex;
   align-items:center;
   gap:5px;
-  padding:5px 8px;
   border-radius:20px;
-  font-size:10px;
+  padding:5px 8px;
+  font-size:9px;
   font-weight:700;
 }
 
@@ -480,93 +443,174 @@ td strong{
 
 .status.pending{
   color:var(--orange);
-  background:var(--orange-bg);
+  background:var(--orange-soft);
 }
 
 .status.done{
   color:var(--green);
-  background:var(--green-bg);
+  background:var(--green-soft);
 }
 
-/* FORMS */
+.status.failed{
+  color:var(--red);
+  background:var(--red-soft);
+}
+
+.engine{
+  margin-top:16px;
+}
+
+.engine-body{
+  padding:18px;
+}
+
+.engine-state{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:13px;
+  background:var(--soft);
+  border:1px solid var(--border);
+  border-radius:10px;
+}
+
+.engine-icon{
+  width:38px;
+  height:38px;
+  border-radius:10px;
+  background:var(--blue-soft);
+  color:var(--blue);
+  display:grid;
+  place-items:center;
+  font-weight:800;
+}
+
+.engine-state strong{
+  font-size:12px;
+}
+
+.engine-state p{
+  color:var(--muted);
+  font-size:10px;
+  margin-top:3px;
+}
+
+.candidate{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:11px 0;
+  border-bottom:1px solid var(--border);
+}
+
+.candidate:last-child{
+  border-bottom:0;
+}
+
+.candidate-info strong{
+  font-size:11px;
+}
+
+.candidate-info p{
+  color:var(--muted);
+  font-size:9px;
+  margin-top:3px;
+}
+
+.score{
+  font-weight:800;
+  font-size:12px;
+  color:var(--blue);
+}
+
+.success-box{
+  padding:13px;
+  border-radius:9px;
+  background:var(--green-soft);
+  border:1px solid #bbf7d0;
+  color:var(--green);
+  font-size:11px;
+  line-height:1.5;
+}
+
+.failure-box{
+  padding:13px;
+  border-radius:9px;
+  background:var(--red-soft);
+  border:1px solid #fecaca;
+  color:var(--red);
+  font-size:11px;
+  line-height:1.5;
+}
 
 .form-grid{
   display:grid;
   grid-template-columns:repeat(2,1fr);
-  gap:14px;
+  gap:13px;
 }
 
 .field{
   display:flex;
   flex-direction:column;
-  gap:6px;
-}
-
-.field.full{
-  grid-column:1/-1;
+  gap:5px;
 }
 
 .field label{
-  font-size:11px;
-  color:#4b5563;
+  font-size:10px;
   font-weight:700;
+  color:#475467;
 }
 
 .field input,
 .field select{
-  width:100%;
   border:1px solid var(--border);
-  background:#fff;
-  border-radius:9px;
-  padding:10px 11px;
+  border-radius:8px;
+  padding:9px 10px;
   outline:none;
+  background:white;
+  font-size:12px;
 }
 
 .field input:focus,
 .field select:focus{
   border-color:#93b4f7;
-  box-shadow:0 0 0 3px #eef4ff;
+  box-shadow:0 0 0 3px var(--blue-soft);
 }
 
 .form-actions{
   display:flex;
   justify-content:flex-end;
   gap:8px;
-  margin-top:18px;
+  margin-top:15px;
 }
 
-/* EMPTY */
-
-.empty{
-  text-align:center;
-  padding:35px 20px;
-  color:var(--muted);
-}
-
-.empty-icon{
-  width:42px;
-  height:42px;
-  border-radius:12px;
-  background:#f1f5f9;
-  display:grid;
-  place-items:center;
-  margin:0 auto 10px;
-}
-
-.empty strong{
-  display:block;
-  color:var(--text);
-  font-size:13px;
-}
-
-.empty p{
+.toast{
+  position:fixed;
+  right:18px;
+  bottom:18px;
+  background:#18212f;
+  color:#fff;
+  padding:11px 15px;
+  border-radius:8px;
   font-size:11px;
-  margin-top:4px;
+  opacity:0;
+  transform:translateY(8px);
+  pointer-events:none;
+  transition:.2s;
+  z-index:100;
 }
 
-/* MOBILE */
+.toast.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.hidden{
+  display:none;
+}
 
 @media(max-width:900px){
+
   .layout{
     grid-template-columns:1fr;
   }
@@ -579,18 +623,15 @@ td strong{
     grid-template-columns:repeat(2,1fr);
   }
 
-  .dashboard-grid{
+  .grid{
     grid-template-columns:1fr;
   }
 }
 
 @media(max-width:600px){
-  .header{
-    padding:0 15px;
-  }
 
-  .brand-text p{
-    display:none;
+  .header{
+    padding:0 14px;
   }
 
   .header-actions .btn:not(.btn-primary){
@@ -598,7 +639,7 @@ td strong{
   }
 
   main{
-    padding:18px 14px;
+    padding:18px 13px;
   }
 
   .page-title{
@@ -610,75 +651,51 @@ td strong{
   }
 
   .stats{
-    grid-template-columns:1fr 1fr;
-    gap:9px;
+    gap:8px;
   }
 
   .stat{
-    padding:14px;
+    padding:13px;
   }
 
   .stat-value{
-    font-size:22px;
+    font-size:21px;
   }
 
   .form-grid{
     grid-template-columns:1fr;
   }
 }
-
-/* TOAST */
-
-.toast{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  background:#17202a;
-  color:#fff;
-  padding:12px 16px;
-  border-radius:9px;
-  font-size:12px;
-  opacity:0;
-  transform:translateY(10px);
-  pointer-events:none;
-  transition:.2s;
-  z-index:100;
-}
-
-.toast.show{
-  opacity:1;
-  transform:translateY(0);
-}
 </style>
 </head>
 
 <body>
-
-<div class="app">
 
 <header class="header">
 
   <div class="brand">
     <div class="logo">IO</div>
 
-    <div class="brand-text">
+    <div>
       <h1>Institute Optimizer</h1>
       <p>Daily operations & scheduling</p>
     </div>
   </div>
 
   <div class="header-actions">
-    <button class="btn" onclick="showToast('Settings will be available soon')">
-      Settings
-    </button>
 
-    <button class="btn" onclick="showToast('Data import will be available soon')">
+    <button class="btn" onclick="showToast('Import will be added after the data model')">
       Import Data
     </button>
 
-    <button class="btn btn-primary" onclick="generatePlan()">
+    <button class="btn" onclick="showToast('Settings will be added later')">
+      Settings
+    </button>
+
+    <button class="btn btn-primary" onclick="runOptimizer()">
       Generate Plan
     </button>
+
   </div>
 
 </header>
@@ -686,483 +703,603 @@ td strong{
 
 <div class="layout">
 
-  <aside class="sidebar">
+<aside class="sidebar">
 
-    <div class="sidebar-label">OPERATIONS</div>
+  <div class="sidebar-label">OPERATIONS</div>
 
-    <nav class="nav">
+  <nav class="nav">
 
-      <button class="active" onclick="setActive(this,'dashboard')">
-        Dashboard
-      </button>
+    <button class="active" onclick="navClick(this,'Dashboard')">
+      Dashboard
+    </button>
 
-      <button onclick="setActive(this,'timetable')">
-        Timetable
-      </button>
+    <button onclick="navClick(this,'Timetable')">
+      Timetable
+    </button>
 
-      <button onclick="setActive(this,'teachers')">
-        Teachers
-      </button>
+    <button onclick="navClick(this,'Teachers')">
+      Teachers
+    </button>
 
-      <button onclick="setActive(this,'classes')">
-        Classes
-      </button>
+    <button onclick="navClick(this,'Classes')">
+      Classes
+    </button>
 
-      <button onclick="setActive(this,'rooms')">
-        Rooms & Buildings
-      </button>
+    <button onclick="navClick(this,'Rooms & Buildings')">
+      Rooms & Buildings
+    </button>
 
-      <button onclick="setActive(this,'absences')">
-        Today's Absences
-      </button>
+    <button onclick="navClick(this,'Absences')">
+      Today's Absences
+    </button>
 
-      <button onclick="setActive(this,'schedule')">
-        Generated Schedule
-      </button>
+    <button onclick="navClick(this,'Generated Schedule')">
+      Generated Schedule
+    </button>
 
-      <button onclick="setActive(this,'reports')">
-        Reports
-      </button>
+    <button onclick="navClick(this,'Reports')">
+      Reports
+    </button>
 
-    </nav>
+  </nav>
 
-    <div class="sidebar-label" style="margin-top:25px;">
-      DATA
+  <div class="sidebar-label" style="margin-top:24px;">
+    SETUP
+  </div>
+
+  <nav class="nav">
+
+    <button onclick="navClick(this,'Institute Setup')">
+      Institute Setup
+    </button>
+
+    <button onclick="navClick(this,'Data Management')">
+      Data Management
+    </button>
+
+  </nav>
+
+  <div class="sidebar-note">
+    <strong>V0.2 · Working Engine</strong>
+    <p>
+      The first replacement algorithm is running locally in your browser.
+    </p>
+  </div>
+
+</aside>
+
+
+<main>
+
+<div class="page">
+
+  <div class="page-title">
+
+    <div>
+      <h2>Today's Operations</h2>
+      <p>Monday · Prototype Institute · 7 periods</p>
     </div>
 
-    <nav class="nav">
+    <div class="title-actions">
 
-      <button onclick="showToast('Institute settings coming soon')">
-        Institute Setup
+      <button class="btn" onclick="resetOptimizer()">
+        Reset
       </button>
 
-      <button onclick="showToast('Data management coming soon')">
-        Data Management
+      <button class="btn btn-green" onclick="approvePlan()">
+        Approve Plan
       </button>
 
-    </nav>
-
-    <div class="sidebar-bottom">
-      <strong>V0.1 Prototype</strong>
-      <p>
-        The scheduling engine is being built first.
-        Automation will be added step by step.
-      </p>
     </div>
 
-  </aside>
+  </div>
 
 
-  <main>
+  <!-- STATS -->
 
-    <div class="page">
+  <section class="stats">
 
-      <div class="page-title">
+    <div class="card stat">
+      <div class="stat-label">Teachers</div>
+      <div class="stat-value" id="teacherStat">8</div>
+      <div class="stat-note">7 available today</div>
+    </div>
 
-        <div>
-          <h2>Today's Operations</h2>
-          <p>Monday · Prototype Institute · 7 periods</p>
+    <div class="card stat">
+      <div class="stat-label">Classes</div>
+      <div class="stat-value">5</div>
+      <div class="stat-note">Across 2 buildings</div>
+    </div>
+
+    <div class="card stat">
+      <div class="stat-label">Absences</div>
+      <div class="stat-value" id="absenceStat">1</div>
+      <div class="stat-note">3 periods affected</div>
+    </div>
+
+    <div class="card stat">
+      <div class="stat-label">Changes</div>
+      <div class="stat-value" id="changeStat">—</div>
+      <div class="stat-note">Not generated yet</div>
+    </div>
+
+  </section>
+
+
+  <section class="grid">
+
+    <!-- ALERTS -->
+
+    <div class="card">
+
+      <div class="card-header">
+        <h3>Operational Alerts</h3>
+        <span>Live prototype</span>
+      </div>
+
+      <div class="card-body">
+
+        <div class="alert red">
+
+          <div class="alert-icon">!</div>
+
+          <div>
+            <strong>Rahul Sharma is absent</strong>
+            <p>
+              3 Mathematics periods need a replacement.
+            </p>
+          </div>
+
         </div>
 
-        <div class="title-actions">
+        <div class="alert orange">
 
-          <button class="btn" onclick="showToast('Export will be available after schedule generation')">
-            Export
-          </button>
+          <div class="alert-icon">↔</div>
 
-          <button class="btn btn-green" onclick="approvePlan()">
-            Approve Plan
-          </button>
+          <div>
+            <strong>Building movement matters</strong>
+            <p>
+              The engine will consider building location when ranking teachers.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="alert green">
+
+          <div class="alert-icon">✓</div>
+
+          <div>
+            <strong>No room conflict in base timetable</strong>
+            <p>
+              All current rooms are uniquely assigned.
+            </p>
+          </div>
 
         </div>
 
       </div>
 
-
-      <!-- STATS -->
-
-      <section class="stats">
-
-        <div class="card stat">
-          <div class="stat-label">Teachers</div>
-          <div class="stat-value">30</div>
-          <div class="stat-note">Available today: 27</div>
-        </div>
-
-        <div class="card stat">
-          <div class="stat-label">Classes</div>
-          <div class="stat-value">20</div>
-          <div class="stat-note">Across 3 buildings</div>
-        </div>
-
-        <div class="card stat">
-          <div class="stat-label">Absences</div>
-          <div class="stat-value">3</div>
-          <div class="stat-note">12 periods affected</div>
-        </div>
-
-        <div class="card stat">
-          <div class="stat-label">Changes</div>
-          <div class="stat-value" id="changeCount">—</div>
-          <div class="stat-note">Generate today's plan</div>
-        </div>
-
-      </section>
+    </div>
 
 
-      <section class="dashboard-grid">
+    <!-- ABSENCES -->
 
-        <!-- ALERTS -->
+    <div class="card">
 
-        <div class="card">
+      <div class="card-header">
 
-          <div class="card-header">
-            <h3>Operational Alerts</h3>
-            <span>Today</span>
-          </div>
+        <h3>Today's Absences</h3>
 
-          <div class="card-body">
+        <button class="btn"
+          style="padding:6px 9px"
+          onclick="showToast('Absence management will become editable next')">
+          + Add
+        </button>
 
-            <div class="alert-list">
+      </div>
 
-              <div class="alert red">
+      <div class="card-body">
 
-                <div class="alert-icon">!</div>
+        <div class="absence">
 
-                <div class="alert-content">
-                  <strong>3 teachers are absent</strong>
-                  <p>
-                    12 scheduled periods may require replacement.
-                  </p>
-                </div>
+          <div class="person">
 
-              </div>
+            <div class="avatar">RS</div>
 
-
-              <div class="alert orange">
-
-                <div class="alert-icon">↔</div>
-
-                <div class="alert-content">
-                  <strong>Building movement detected</strong>
-                  <p>
-                    4 teachers have consecutive periods in different buildings.
-                  </p>
-                </div>
-
-              </div>
-
-
-              <div class="alert green">
-
-                <div class="alert-icon">✓</div>
-
-                <div class="alert-content">
-                  <strong>No room conflicts detected</strong>
-                  <p>
-                    Current timetable has no known room overlap.
-                  </p>
-                </div>
-
-              </div>
-
+            <div>
+              <strong>Rahul Sharma</strong>
+              <span>Mathematics</span>
             </div>
 
           </div>
 
-        </div>
-
-
-        <!-- ABSENCES -->
-
-        <div class="card">
-
-          <div class="card-header">
-            <h3>Today's Absences</h3>
-
-            <button class="btn" style="padding:6px 9px;"
-              onclick="showToast('Absence form coming next')">
-              + Add
-            </button>
-          </div>
-
-          <div class="card-body">
-
-            <div class="absence">
-
-              <div class="person">
-                <div class="avatar">RS</div>
-
-                <div>
-                  <strong>Rahul Sharma</strong>
-                  <span>Mathematics</span>
-                </div>
-              </div>
-
-              <span class="badge badge-red">Absent</span>
-
-            </div>
-
-
-            <div class="absence">
-
-              <div class="person">
-                <div class="avatar">AK</div>
-
-                <div>
-                  <strong>Amit Kumar</strong>
-                  <span>Physics</span>
-                </div>
-              </div>
-
-              <span class="badge badge-red">Absent</span>
-
-            </div>
-
-
-            <div class="absence">
-
-              <div class="person">
-                <div class="avatar">PS</div>
-
-                <div>
-                  <strong>Priya Singh</strong>
-                  <span>Chemistry</span>
-                </div>
-              </div>
-
-              <span class="badge badge-red">Absent</span>
-
-            </div>
-
-          </div>
+          <span class="badge badge-red">Absent</span>
 
         </div>
 
-      </section>
+      </div>
+
+    </div>
+
+  </section>
 
 
-      <!-- AFFECTED PERIODS -->
+  <!-- AFFECTED PERIODS -->
 
-      <section class="card table-card">
+  <section class="card table-card">
 
-        <div class="card-header">
+    <div class="card-header">
 
-          <div>
-            <h3>Affected Periods</h3>
-            <span>Periods that need an operational decision</span>
-          </div>
+      <div>
+        <h3>Affected Periods</h3>
+        <span>Classes originally assigned to the absent teacher</span>
+      </div>
 
-          <button class="btn btn-primary"
-            onclick="generatePlan()">
-            Generate Plan
-          </button>
+      <button class="btn btn-primary"
+        onclick="runOptimizer()">
+        Generate Plan
+      </button>
+
+    </div>
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+          <tr>
+            <th>Period</th>
+            <th>Class</th>
+            <th>Subject</th>
+            <th>Original Teacher</th>
+            <th>Room</th>
+            <th>Replacement</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+
+        <tbody id="affectedTable"></tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <!-- ENGINE RESULTS -->
+
+  <section class="card engine">
+
+    <div class="card-header">
+
+      <div>
+        <h3>Optimization Result</h3>
+        <span>Rule-based scheduling engine</span>
+      </div>
+
+      <span id="engineStatus">Waiting</span>
+
+    </div>
+
+    <div class="engine-body" id="engineBody">
+
+      <div class="engine-state">
+
+        <div class="engine-icon">◎</div>
+
+        <div>
+          <strong>Ready to optimize</strong>
+
+          <p>
+            The engine will check availability,
+            subject eligibility, workload and conflicts.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TEACHER DATA -->
+
+  <section class="card table-card">
+
+    <div class="card-header">
+
+      <div>
+        <h3>Teacher Availability</h3>
+        <span>Prototype data used by the engine</span>
+      </div>
+
+    </div>
+
+    <div class="table-wrap">
+
+      <table>
+
+        <thead>
+
+          <tr>
+            <th>Teacher</th>
+            <th>Subjects</th>
+            <th>Building</th>
+            <th>Today's Periods</th>
+            <th>Status</th>
+          </tr>
+
+        </thead>
+
+        <tbody id="teacherTable"></tbody>
+
+      </table>
+
+    </div>
+
+  </section>
+
+
+  <!-- SETUP -->
+
+  <section class="card table-card">
+
+    <div class="card-header">
+
+      <div>
+        <h3>Institute Setup</h3>
+        <span>Prototype configuration</span>
+      </div>
+
+    </div>
+
+    <div class="card-body">
+
+      <div class="form-grid">
+
+        <div class="field">
+
+          <label>Institute Name</label>
+
+          <input
+            id="instituteName"
+            value="Prototype Institute">
 
         </div>
 
-        <div class="table-wrap">
+        <div class="field">
 
-          <table>
+          <label>Periods Per Day</label>
 
-            <thead>
-              <tr>
-                <th>Period</th>
-                <th>Class</th>
-                <th>Subject</th>
-                <th>Teacher</th>
-                <th>Room</th>
-                <th>Status</th>
-              </tr>
-            </thead>
+          <select id="periodCount">
 
-            <tbody id="affectedTable">
+            <option>6</option>
+            <option selected>7</option>
+            <option>8</option>
 
-              <tr>
-                <td>1 · 8:00</td>
-                <td><strong>10A</strong></td>
-                <td>Mathematics</td>
-                <td>Rahul Sharma</td>
-                <td>Building A · 201</td>
-                <td>
-                  <span class="status pending">
-                    <span class="status-dot"></span>
-                    Needs replacement
-                  </span>
-                </td>
-              </tr>
-
-              <tr>
-                <td>2 · 8:50</td>
-                <td><strong>9B</strong></td>
-                <td>Mathematics</td>
-                <td>Rahul Sharma</td>
-                <td>Building A · 104</td>
-                <td>
-                  <span class="status pending">
-                    <span class="status-dot"></span>
-                    Needs replacement
-                  </span>
-                </td>
-              </tr>
-
-              <tr>
-                <td>4 · 10:30</td>
-                <td><strong>11A</strong></td>
-                <td>Mathematics</td>
-                <td>Rahul Sharma</td>
-                <td>Building B · 302</td>
-                <td>
-                  <span class="status pending">
-                    <span class="status-dot"></span>
-                    Needs replacement
-                  </span>
-                </td>
-              </tr>
-
-            </tbody>
-
-          </table>
+          </select>
 
         </div>
 
-      </section>
+        <div class="field">
 
+          <label>Buildings</label>
 
-      <!-- QUICK DATA -->
-
-      <section class="card table-card">
-
-        <div class="card-header">
-
-          <div>
-            <h3>Quick Institute Setup</h3>
-            <span>Prototype data configuration</span>
-          </div>
+          <input
+            id="buildingCount"
+            type="number"
+            value="2">
 
         </div>
 
-        <div class="card-body">
+        <div class="field">
 
-          <div class="form-grid">
+          <label>Rooms</label>
 
-            <div class="field">
-              <label>Institute Name</label>
-              <input id="instituteName"
-                value="Prototype Institute"
-                placeholder="Enter institute name">
-            </div>
-
-            <div class="field">
-              <label>Working Periods</label>
-
-              <select id="periodCount">
-                <option>6</option>
-                <option selected>7</option>
-                <option>8</option>
-                <option>9</option>
-              </select>
-
-            </div>
-
-            <div class="field">
-
-              <label>Buildings</label>
-
-              <input
-                id="buildingCount"
-                type="number"
-                value="3"
-                min="1">
-
-            </div>
-
-
-            <div class="field">
-
-              <label>Rooms</label>
-
-              <input
-                id="roomCount"
-                type="number"
-                value="20"
-                min="1">
-
-            </div>
-
-
-            <div class="field">
-
-              <label>Teachers</label>
-
-              <input
-                id="teacherCount"
-                type="number"
-                value="30"
-                min="1">
-
-            </div>
-
-
-            <div class="field">
-
-              <label>Classes</label>
-
-              <input
-                id="classCount"
-                type="number"
-                value="20"
-                min="1">
-
-            </div>
-
-          </div>
-
-
-          <div class="form-actions">
-
-            <button class="btn"
-              onclick="resetData()">
-              Reset
-            </button>
-
-            <button class="btn btn-primary"
-              onclick="saveSetup()">
-              Save Setup
-            </button>
-
-          </div>
+          <input
+            id="roomCount"
+            type="number"
+            value="10">
 
         </div>
 
-      </section>
+      </div>
+
+      <div class="form-actions">
+
+        <button class="btn"
+          onclick="resetSetup()">
+          Reset
+        </button>
+
+        <button class="btn btn-primary"
+          onclick="saveSetup()">
+          Save Setup
+        </button>
+
+      </div>
+
+    </div>
+
+  </section>
+
+</div>
+
+</main>
+
+</div>
 
 
-      <!-- FUTURE ENGINE -->
+<div class="toast" id="toast"></div>
 
-      <section class="card table-card">
 
-        <div class="card-header">
-          <h3>Optimization Engine</h3>
-          <span>Coming in the next build step</span>
-        </div>
+<script>
 
-        <div class="card-body">
+/* =====================================================
+   PROTOTYPE DATA
+===================================================== */
 
-          <div class="empty">
+const periods = [
+  {id:1,time:"8:00 - 8:50"},
+  {id:2,time:"8:50 - 9:40"},
+  {id:3,time:"9:40 - 10:30"},
+  {id:4,time:"10:30 - 11:20"},
+  {id:5,time:"11:20 - 12:10"},
+  {id:6,time:"12:10 - 1:00"},
+  {id:7,time:"1:00 - 1:50"}
+];
 
-            <div class="empty-icon">◎</div>
 
-            <strong>No optimized schedule generated yet</strong>
+const teachers = [
 
-            <p>
-              The engine will evaluate teacher availability,
-              conflicts, rooms, buildings, workload and movement.
-            </p>
+  {
+    id:"rahul",
+    name:"Rahul Sharma",
+    subjects:["Mathematics"],
+    building:"A",
+    schedule:{
+      1:"10A",
+      2:"9B",
+      3:null,
+      4:"11A",
+      5:null,
+      6:"10B",
+      7:null
+    }
+  },
 
-            <br>
+  {
+    id:"amit",
+    name:"Amit Kumar",
+    subjects:["Mathematics","Physics"],
+    building:"A",
+    schedule:{
+      1:"9A",
+      2:null,
+      3:"10B",
+      4:null,
+      5:"11B",
+      6:null,
+      7:"9B"
+    }
+  },
 
-            <button class="btn btn-primary"
-              onclick="generatePlan()">
-              Run First Optimization
-              </button>
-          
+  {
+    id:"vikram",
+    name:"Vikram Singh",
+    subjects:["Mathematics","Computer Science"],
+    building:"B",
+    schedule:{
+      1:null,
+      2:"11B",
+      3:null,
+      4:"9A",
+      5:null,
+      6:"10A",
+      7:null
+    }
+  },
+
+  {
+    id:"priya",
+    name:"Priya Singh",
+    subjects:["Chemistry","Biology"],
+    building:"B",
+    schedule:{
+      1:"11A",
+      2:null,
+      3:"11B",
+      4:null,
+      5:"10A",
+      6:null,
+      7:"10B"
+    }
+  },
+
+  {
+    id:"sanjay",
+    name:"Sanjay Verma",
+    subjects:["Physics","Mathematics"],
+    building:"A",
+    schedule:{
+      1:null,
+      2:"10A",
+      3:null,
+      4:"10B",
+      5:null,
+      6:"11A",
+      7:null
+    }
+  },
+
+  {
+    id:"neha",
+    name:"Neha Gupta",
+    subjects:["English","Computer Science"],
+    building:"B",
+    schedule:{
+      1:"9B",
+      2:null,
+      3:"9A",
+      4:null,
+      5:"11B",
+      6:null,
+      7:"10A"
+    }
+  },
+
+  {
+    id:"rohit",
+    name:"Rohit Mehta",
+    subjects:["Physics","Chemistry"],
+    building:"A",
+    schedule:{
+      1:null,
+      2:"11A",
+      3:"9B",
+      4:null,
+      5:"10B",
+      6:null,
+      7:"11B"
+    }
+  },
+
+  {
+    id:"anjali",
+    name:"Anjali Patel",
+    subjects:["English","Mathematics"],
+    building:"A",
+    schedule:{
+      1:"10B",
+      2:null,
+      3:"11A",
+      4:"11B",
+      5:null,
+      6:"9A",
+      7:null
+    }
+  }
+
+];
+
+
+const timetable = [
+
+  {period:1,className:"10A",subject:"Mathematics",teacher:"rahul",room:"A-201",building:"A"},
+  {period:2,className:"9B",subject:"Mathematics",teacher:"rahul",room:"A-104",building:"A"},
+  {period:4,className:"11A",subject:"Mathematics",teacher:"rahul",room:"B-302",building:"B"}
+
+];
+
+
+const absentTeacherIds = ["rahul"];
+
+
+/* =====================================================
+   ENGINE
+===================================================== */
+
+let generated
